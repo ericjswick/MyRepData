@@ -1,0 +1,56 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // User profile images
+    match /users/{userId}/profile/{allPaths=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Case documents and images
+    match /cases/{caseId}/{allPaths=**} {
+      allow read, write: if request.auth != null;
+      
+      // Limit file size to 10MB
+      allow write: if request.resource.size < 10 * 1024 * 1024;
+    }
+    
+    // Facility images and documents
+    match /facilities/{facilityId}/{allPaths=**} {
+      allow read, write: if request.auth != null;
+      
+      // Limit file size to 5MB
+      allow write: if request.resource.size < 5 * 1024 * 1024;
+    }
+    
+    // Physician documents and images
+    match /physicians/{physicianId}/{allPaths=**} {
+      allow read, write: if request.auth != null;
+      
+      // Limit file size to 5MB
+      allow write: if request.resource.size < 5 * 1024 * 1024;
+    }
+    
+    // Tray images and documentation
+    match /trays/{trayId}/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && 
+        (request.auth.token.admin == true || request.auth.token.role == 'admin');
+    }
+    
+    // Bulk upload files (CSV, Excel)
+    match /uploads/{userId}/{allPaths=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Limit file size to 25MB for bulk uploads
+      allow write: if request.resource.size < 25 * 1024 * 1024;
+    }
+    
+    // Public assets (logos, etc.)
+    match /public/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+        (request.auth.token.admin == true || request.auth.token.role == 'admin');
+    }
+  }
+}
+
