@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, List, Plus, Search, Filter, Clock, MapPin, User, Building2, Package, Edit, Trash2, Eye, CheckCircle, AlertCircle, XCircle } from 'lucide-react';
+import { Calendar, List, Plus, Search, Filter, Clock, MapPin, User, Building2, Package, Edit, Trash2, Eye, CheckCircle, AlertCircle, XCircle, CalendarPlus, Share2, Mail, MessageSquare } from 'lucide-react';
 
 const CasesModule = () => {
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'calendar'
@@ -195,6 +195,58 @@ const CasesModule = () => {
     setShowScheduleModal(true);
   };
 
+  const handleImportToCalendar = (case_item) => {
+    // Create calendar event data
+    const eventTitle = `${case_item.case_type} - ${case_item.physician}`;
+    const eventDetails = `Procedure: ${case_item.procedure_name}\nFacility: ${case_item.facility}\nPhysician: ${case_item.physician}\nDuration: ${case_item.duration} minutes`;
+    
+    // Create date object for the event
+    const eventDate = new Date(`${case_item.date} ${case_item.time}`);
+    const endDate = new Date(eventDate.getTime() + (case_item.duration * 60000)); // Add duration in milliseconds
+    
+    // Format dates for calendar URL
+    const startDateStr = eventDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    
+    // Create Google Calendar URL
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${startDateStr}/${endDateStr}&details=${encodeURIComponent(eventDetails)}&location=${encodeURIComponent(case_item.facility)}`;
+    
+    // Open calendar in new tab
+    window.open(googleCalendarUrl, '_blank');
+  };
+
+  const handleShareCase = (case_item) => {
+    const shareText = `Surgical Case: ${case_item.case_type}\n\nProcedure: ${case_item.procedure_name}\nPhysician: ${case_item.physician}\nFacility: ${case_item.facility}\nDate: ${case_item.date} at ${case_item.time}\nDuration: ${case_item.duration} minutes\n\nTray Status: ${case_item.tray_status}\nRequired Trays: ${case_item.required_trays.length}`;
+    
+    if (navigator.share) {
+      // Use native sharing if available (mobile devices)
+      navigator.share({
+        title: `Surgical Case: ${case_item.case_type}`,
+        text: shareText,
+      });
+    } else {
+      // Fallback: copy to clipboard and show options
+      navigator.clipboard.writeText(shareText).then(() => {
+        // Show sharing options
+        const emailSubject = encodeURIComponent(`Surgical Case: ${case_item.case_type}`);
+        const emailBody = encodeURIComponent(shareText);
+        const smsBody = encodeURIComponent(shareText);
+        
+        const shareOptions = `
+          Case details copied to clipboard!
+          
+          Share via:
+          • Email: mailto:?subject=${emailSubject}&body=${emailBody}
+          • SMS: sms:?body=${smsBody}
+        `;
+        
+        if (confirm('Case details copied to clipboard!\n\nWould you like to open email to share?')) {
+          window.open(`mailto:?subject=${emailSubject}&body=${emailBody}`);
+        }
+      });
+    }
+  };
+
   const renderListView = () => (
     <div className="space-y-4">
       {filteredCases.map((case_item) => (
@@ -233,6 +285,20 @@ const CasesModule = () => {
             </div>
             
             <div className="flex items-center gap-2 ml-4">
+              <button
+                onClick={() => handleImportToCalendar(case_item)}
+                className="p-2 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
+                title="Import to Calendar"
+              >
+                <CalendarPlus className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => handleShareCase(case_item)}
+                className="p-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
+                title="Share Case"
+              >
+                <Share2 className="w-4 h-4" />
+              </button>
               <button
                 onClick={() => handleViewCase(case_item)}
                 className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
@@ -310,7 +376,7 @@ const CasesModule = () => {
                           {case_item.status}
                         </span>
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-gray-500 mb-2">
                         <p>{case_item.physician}</p>
                         <p>{case_item.facility}</p>
                         <div className="flex items-center gap-1 mt-1">
@@ -318,6 +384,40 @@ const CasesModule = () => {
                           <span className={getTrayStatusColor(case_item.tray_status).replace('bg-', 'text-').replace('-100', '-600')}>
                             Trays {case_item.tray_status}
                           </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between pt-2 border-t border-gray-200">
+                        <div className="flex items-center gap-1">
+                          <button
+                            onClick={() => handleImportToCalendar(case_item)}
+                            className="p-1 text-purple-600 hover:bg-purple-50 rounded transition-colors"
+                            title="Import to Calendar"
+                          >
+                            <CalendarPlus className="w-3 h-3" />
+                          </button>
+                          <button
+                            onClick={() => handleShareCase(case_item)}
+                            className="p-1 text-orange-600 hover:bg-orange-50 rounded transition-colors"
+                            title="Share Case"
+                          >
+                            <Share2 className="w-3 h-3" />
+                          </button>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <button
+                            onClick={() => handleViewCase(case_item)}
+                            className="p-1 text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                            title="View Details"
+                          >
+                            <Eye className="w-3 h-3" />
+                          </button>
+                          <button
+                            onClick={() => handleEditCase(case_item)}
+                            className="p-1 text-green-600 hover:bg-green-50 rounded transition-colors"
+                            title="Edit Case"
+                          >
+                            <Edit className="w-3 h-3" />
+                          </button>
                         </div>
                       </div>
                     </div>
