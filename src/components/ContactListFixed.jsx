@@ -105,7 +105,7 @@ const ContactListFixed = () => {
 
   const AddContactModal = () => (
     <Dialog open={showAddModal} onOpenChange={setShowAddModal}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white border border-gray-200 shadow-xl">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Users className="w-5 h-5 text-blue-600" />
