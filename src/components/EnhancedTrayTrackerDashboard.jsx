@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, AlertTriangle, CheckCircle, RefreshCw, Settings, BarChart3, Plus } from 'lucide-react';
 import physiciansData from '@/data/physicians.json';
 
+// Real physicians from database - moved before component to avoid reference error
+const physicians = physiciansData.map(physician => ({
+  value: `Dr. ${physician.first_name} ${physician.last_name}`,
+  label: `Dr. ${physician.first_name} ${physician.last_name} - ${physician.specialty}`,
+  specialty: physician.specialty
+}));
+
 const EnhancedTrayTrackerDashboard = () => {
   const [selectedCaseType, setSelectedCaseType] = useState('L4-L5 Fusion');
   const [selectedPhysician, setSelectedPhysician] = useState(physicians.length > 0 ? physicians[0].value : '');
@@ -22,13 +29,6 @@ const EnhancedTrayTrackerDashboard = () => {
     'Spine fusion – Short construct',
     'Sacral fracture – TNT/TORQ'
   ];
-
-  // Real physicians from database
-  const physicians = physiciansData.map(physician => ({
-    value: `Dr. ${physician.first_name} ${physician.last_name}`,
-    label: `Dr. ${physician.first_name} ${physician.last_name} - ${physician.specialty}`,
-    specialty: physician.specialty
-  }));
 
   const facilities = [
     'Advanced Spine Center',
