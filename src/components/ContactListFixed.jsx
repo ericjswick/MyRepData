@@ -35,6 +35,9 @@ const ContactListFixed = () => {
   ])
 
   const [showAddModal, setShowAddModal] = useState(false)
+  const [showEditModal, setShowEditModal] = useState(false)
+  const [showViewModal, setShowViewModal] = useState(false)
+  const [selectedContact, setSelectedContact] = useState(null)
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -52,6 +55,54 @@ const ContactListFixed = () => {
 
   const handleAddContact = () => {
     setShowAddModal(true)
+  }
+
+  const handleEditContact = (contact) => {
+    setSelectedContact(contact)
+    setFormData({
+      first_name: contact.first_name,
+      last_name: contact.last_name,
+      title: contact.title,
+      email: contact.email,
+      phone: contact.phone,
+      mobile: contact.mobile || '',
+      fax: contact.fax || '',
+      facility_id: contact.facility_id || '',
+      department: contact.department || '',
+      specialty: contact.specialty,
+      is_primary: contact.is_primary,
+      notes: contact.notes || ''
+    })
+    setShowEditModal(true)
+  }
+
+  const handleViewContact = (contact) => {
+    setSelectedContact(contact)
+    setShowViewModal(true)
+  }
+
+  const handleCloseEditModal = () => {
+    setShowEditModal(false)
+    setSelectedContact(null)
+    setFormData({
+      first_name: '',
+      last_name: '',
+      title: '',
+      email: '',
+      phone: '',
+      mobile: '',
+      fax: '',
+      facility_id: '',
+      department: '',
+      specialty: '',
+      is_primary: false,
+      notes: ''
+    })
+  }
+
+  const handleCloseViewModal = () => {
+    setShowViewModal(false)
+    setSelectedContact(null)
   }
 
   const handleCloseModal = () => {
@@ -337,10 +388,20 @@ const ContactListFixed = () => {
                   </div>
 
                   <div className="flex gap-2 mt-4">
-                    <Button variant="outline" size="sm" className="flex-1">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex-1"
+                      onClick={() => handleEditContact(contact)}
+                    >
                       Edit
                     </Button>
-                    <Button variant="outline" size="sm" className="flex-1">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex-1"
+                      onClick={() => handleViewContact(contact)}
+                    >
                       View Details
                     </Button>
                   </div>
@@ -353,6 +414,218 @@ const ContactListFixed = () => {
 
       {/* Add Contact Modal */}
       <AddContactModal />
+
+      {/* Edit Contact Modal */}
+      {showEditModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-t-lg">
+              <div className="flex justify-between items-center">
+                <h2 className="text-xl font-semibold">Edit Contact</h2>
+                <button 
+                  onClick={handleCloseEditModal}
+                  className="text-white hover:text-gray-200"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+            </div>
+            
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    First Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.first_name}
+                    onChange={(e) => setFormData({...formData, first_name: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter first name"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Last Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.last_name}
+                    onChange={(e) => setFormData({...formData, last_name: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter last name"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Title/Position
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.title}
+                    onChange={(e) => setFormData({...formData, title: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter title or position"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter email address"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone *
+                  </label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter phone number"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Specialty
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.specialty}
+                    onChange={(e) => setFormData({...formData, specialty: e.target.value})}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter specialty"
+                  />
+                </div>
+              </div>
+              
+              <div className="mt-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Notes
+                </label>
+                <textarea
+                  value={formData.notes}
+                  onChange={(e) => setFormData({...formData, notes: e.target.value})}
+                  rows={3}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Additional notes..."
+                />
+              </div>
+              
+              <div className="flex justify-end gap-3 mt-6">
+                <button
+                  onClick={handleCloseEditModal}
+                  className="px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleCloseEditModal}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* View Details Modal */}
+      {showViewModal && selectedContact && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div className="bg-gradient-to-r from-green-600 to-green-700 text-white p-6 rounded-t-lg">
+              <div className="flex justify-between items-center">
+                <h2 className="text-xl font-semibold">Contact Details</h2>
+                <button 
+                  onClick={handleCloseViewModal}
+                  className="text-white hover:text-gray-200"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+            </div>
+            
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Personal Information</h3>
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-500">Full Name</label>
+                      <p className="text-gray-900">{selectedContact.first_name} {selectedContact.last_name}</p>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-500">Title/Position</label>
+                      <p className="text-gray-900">{selectedContact.title}</p>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-500">Specialty</label>
+                      <p className="text-gray-900">{selectedContact.specialty}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-500">Email</label>
+                      <p className="text-gray-900">{selectedContact.email}</p>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-500">Phone</label>
+                      <p className="text-gray-900">{selectedContact.phone}</p>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-500">Primary Contact</label>
+                      <p className="text-gray-900">{selectedContact.is_primary ? 'Yes' : 'No'}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Facility Information</h3>
+                <div>
+                  <label className="block text-sm font-medium text-gray-500">Facility</label>
+                  <p className="text-gray-900">{selectedContact.facility.account_name}</p>
+                </div>
+              </div>
+              
+              {selectedContact.notes && (
+                <div className="mt-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Notes</h3>
+                  <p className="text-gray-700 bg-gray-50 p-3 rounded-md">{selectedContact.notes}</p>
+                </div>
+              )}
+              
+              <div className="flex justify-end mt-6">
+                <button
+                  onClick={handleCloseViewModal}
+                  className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
