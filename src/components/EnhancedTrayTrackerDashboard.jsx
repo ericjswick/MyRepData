@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, AlertTriangle, CheckCircle, RefreshCw, Settings, BarChart3, Plus } from 'lucide-react';
+import physiciansData from '@/data/physicians.json';
 
 const EnhancedTrayTrackerDashboard = () => {
   const [selectedCaseType, setSelectedCaseType] = useState('L4-L5 Fusion');
-  const [selectedPhysician, setSelectedPhysician] = useState('Dr. John Smith');
+  const [selectedPhysician, setSelectedPhysician] = useState(physicians.length > 0 ? physicians[0].value : '');
   const [selectedFacility, setSelectedFacility] = useState('Advanced Spine Center');
   const [trayRequirements, setTrayRequirements] = useState([]);
   const [trayAvailability, setTrayAvailability] = useState({});
@@ -22,12 +23,12 @@ const EnhancedTrayTrackerDashboard = () => {
     'Sacral fracture – TNT/TORQ'
   ];
 
-  const physicians = [
-    'Dr. John Smith',
-    'Dr. Jane Doe',
-    'Dr. Michael Johnson',
-    'Dr. Sarah Wilson'
-  ];
+  // Real physicians from database
+  const physicians = physiciansData.map(physician => ({
+    value: `Dr. ${physician.first_name} ${physician.last_name}`,
+    label: `Dr. ${physician.first_name} ${physician.last_name} - ${physician.specialty}`,
+    specialty: physician.specialty
+  }));
 
   const facilities = [
     'Advanced Spine Center',
@@ -88,12 +89,12 @@ const EnhancedTrayTrackerDashboard = () => {
     'sacral_fracture___tnt_torq_backup': { status: 'cleaning', location: 'Sterilization', expected_available: '2024-08-30 12:00' }
   };
 
-  // Mock upcoming cases with tray status
+  // Mock upcoming cases with tray status using real physician names
   const mockUpcomingCases = [
     {
       id: 1,
       case_type: 'SI fusion – lateral',
-      physician: 'Dr. John Smith',
+      physician: physicians.length > 0 ? physicians[0].value : 'Dr. Max Ots',
       facility: 'Advanced Spine Center',
       date: '2024-09-02',
       time: '08:00 AM',
@@ -104,7 +105,7 @@ const EnhancedTrayTrackerDashboard = () => {
     {
       id: 2,
       case_type: 'SI fusion – Intra–articular',
-      physician: 'Dr. Jane Doe',
+      physician: physicians.length > 1 ? physicians[1].value : 'Dr. Branko Prpa',
       facility: 'Regional Medical Center',
       date: '2024-09-02',
       time: '10:30 AM',
@@ -115,7 +116,7 @@ const EnhancedTrayTrackerDashboard = () => {
     {
       id: 3,
       case_type: 'Spine fusion – Long Construct',
-      physician: 'Dr. Michael Johnson',
+      physician: physicians.length > 2 ? physicians[2].value : 'Dr. Shekhar Dagam',
       facility: 'Milwaukee Surgical Center',
       date: '2024-09-03',
       time: '09:00 AM',
@@ -126,7 +127,7 @@ const EnhancedTrayTrackerDashboard = () => {
     {
       id: 4,
       case_type: 'Sacral fracture – TNT/TORQ',
-      physician: 'Dr. Sarah Wilson',
+      physician: physicians.length > 3 ? physicians[3].value : 'Dr. Vishal Patel',
       facility: 'Wisconsin Spine Institute',
       date: '2024-09-04',
       time: '07:30 AM',
@@ -209,14 +210,14 @@ const EnhancedTrayTrackerDashboard = () => {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Physician</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Treating Physician</label>
           <select 
             value={selectedPhysician}
             onChange={(e) => setSelectedPhysician(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
           >
             {physicians.map(physician => (
-              <option key={physician} value={physician}>{physician}</option>
+              <option key={physician.value} value={physician.value}>{physician.label}</option>
             ))}
           </select>
         </div>
