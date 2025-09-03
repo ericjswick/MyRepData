@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, List, Plus, Search, Filter, Clock, MapPin, User, Building2, Package, Edit, Trash2, Eye, CheckCircle, AlertCircle, XCircle, CalendarPlus, Share2, Mail, MessageSquare } from 'lucide-react';
+import physiciansData from '../data/physicians.json';
+import facilitiesData from '../data/facilities.json';
 
 const CasesModule = () => {
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'calendar'
@@ -18,16 +20,14 @@ const CasesModule = () => {
       id: 1,
       case_type: 'SI fusion – lateral',
       procedure_name: 'L4-L5 Posterior Spinal Fusion',
-      physician: 'Dr. John Smith',
+      physician: 'Dr. Branko Prpa',
       physician_id: 1,
-      facility: 'Advanced Spine Center',
+      facility: 'Advanced Spine Center (Neenah WI)',
       facility_id: 1,
       facility_type: 'ASC',
       date: '2024-09-02',
       time: '08:00 AM',
       duration: 180,
-      patient_name: 'John Doe',
-      patient_age: 45,
       status: 'confirmed',
       required_trays: ['SPINE-001', 'INST-001', 'GRAFT-001'],
       tray_status: 'ready',
@@ -37,16 +37,14 @@ const CasesModule = () => {
       id: 2,
       case_type: 'SI fusion – Intra–articular',
       procedure_name: 'C5-C6 Anterior Cervical Discectomy',
-      physician: 'Dr. Jane Doe',
+      physician: 'Dr. Max Ots',
       physician_id: 2,
-      facility: 'Regional Medical Center',
+      facility: 'Access Medical Center',
       facility_id: 2,
-      facility_type: 'Hospital',
+      facility_type: 'ASC',
       date: '2024-09-02',
       time: '10:30 AM',
       duration: 120,
-      patient_name: 'Mary Johnson',
-      patient_age: 52,
       status: 'pending',
       required_trays: ['CERV-001', 'MICRO-001'],
       tray_status: 'missing',
@@ -56,16 +54,14 @@ const CasesModule = () => {
       id: 3,
       case_type: 'Spine fusion – Long Construct',
       procedure_name: 'L3-L4 Lumbar Laminectomy',
-      physician: 'Dr. Michael Johnson',
+      physician: 'Dr. Shekhar Dagam',
       physician_id: 3,
-      facility: 'Milwaukee Surgical Center',
+      facility: 'Milwaukee Surgical Suites',
       facility_id: 3,
       facility_type: 'ASC',
       date: '2024-09-03',
       time: '09:00 AM',
       duration: 90,
-      patient_name: 'Robert Wilson',
-      patient_age: 38,
       status: 'confirmed',
       required_trays: ['LUMB-001', 'LAMIN-001'],
       tray_status: 'ready',
@@ -75,7 +71,7 @@ const CasesModule = () => {
       id: 4,
       case_type: 'SI fusion – Oblique/Postero lateral',
       procedure_name: 'T11-T12 Posterior Fusion',
-      physician: 'Dr. Sarah Wilson',
+      physician: 'Dr. Vishal Patel',
       physician_id: 4,
       facility: 'Wisconsin Spine Institute',
       facility_id: 4,
@@ -252,34 +248,46 @@ const CasesModule = () => {
         <div key={case_item.id} className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
           <div className="flex justify-between items-start mb-4">
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-2">
-                <h3 className="text-lg font-semibold text-gray-900">{case_item.case_type}</h3>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(case_item.status)}`}>
+              {/* Primary Info: Date/Time first, then Case Type */}
+              <div className="flex items-center gap-4 mb-3">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-blue-600" />
+                  <div>
+                    <span className="text-lg font-bold text-gray-900">{case_item.date}</span>
+                    <span className="text-lg font-bold text-blue-600 ml-2">{case_item.time}</span>
+                  </div>
+                </div>
+                <div className="h-6 w-px bg-gray-300"></div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">{case_item.case_type}</h3>
+                  <p className="text-sm text-gray-600">{case_item.procedure_name}</p>
+                </div>
+              </div>
+              
+              {/* Secondary Info: Doctor then Facility */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-3">
+                <div className="flex items-center gap-2">
+                  <User className="w-4 h-4 text-green-600" />
+                  <span className="text-gray-600">Doctor:</span>
+                  <span className="font-medium text-gray-900">{case_item.physician}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Building2 className="w-4 h-4 text-purple-600" />
+                  <span className="text-gray-600">Facility:</span>
+                  <span className="font-medium text-gray-900">{case_item.facility}</span>
+                </div>
+              </div>
+
+              {/* Status and Tray Info */}
+              <div className="flex items-center gap-3">
+                <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(case_item.status)}`}>
                   {case_item.status}
                 </span>
-                <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${getTrayStatusColor(case_item.tray_status)}`}>
+                <div className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${getTrayStatusColor(case_item.tray_status)}`}>
                   {getTrayStatusIcon(case_item.tray_status)}
                   Trays {case_item.tray_status}
                 </div>
-              </div>
-              <p className="text-gray-600 mb-3">{case_item.procedure_name}</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4 text-blue-600" />
-                  <span className="text-gray-600">Physician:</span>
-                  <span className="font-medium">{case_item.physician}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Building2 className="w-4 h-4 text-green-600" />
-                  <span className="text-gray-600">Facility:</span>
-                  <span className="font-medium">{case_item.facility}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-purple-600" />
-                  <span className="text-gray-600">Date/Time:</span>
-                  <span className="font-medium">{case_item.date} at {case_item.time}</span>
-                </div>
+                <span className="text-xs text-gray-500">{case_item.duration} min</span>
               </div>
             </div>
             
