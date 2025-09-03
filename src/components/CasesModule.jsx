@@ -187,9 +187,19 @@ const CasesModule = () => {
   };
 
   const handleImportToCalendar = (case_item) => {
-    // Create calendar event data
-    const eventTitle = `${case_item.case_type} - ${case_item.physician}`;
-    const eventDetails = `Procedure: ${case_item.procedure_name}\nFacility: ${case_item.facility}\nPhysician: ${case_item.physician}\nDuration: ${case_item.duration} minutes`;
+    // Create calendar event data with consistent structure
+    // Event name: Case Type, Physician (Doctor)
+    const eventTitle = `${case_item.case_type}, ${case_item.physician}`;
+    
+    // Location: Facility name & address
+    const facilityLocation = case_item.facility_address ? 
+      `${case_item.facility}, ${case_item.facility_address}` : 
+      case_item.facility;
+    
+    // Notes: Any additional details
+    const eventDetails = case_item.notes ? 
+      `${case_item.notes}\n\nDuration: ${case_item.duration} minutes\nTray Status: ${case_item.tray_status}` :
+      `Duration: ${case_item.duration} minutes\nTray Status: ${case_item.tray_status}`;
     
     // Create date object for the event
     const eventDate = new Date(`${case_item.date} ${case_item.time}`);
@@ -199,8 +209,8 @@ const CasesModule = () => {
     const startDateStr = eventDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     
-    // Create Google Calendar URL
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${startDateStr}/${endDateStr}&details=${encodeURIComponent(eventDetails)}&location=${encodeURIComponent(case_item.facility)}`;
+    // Create Google Calendar URL with consistent structure
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${startDateStr}/${endDateStr}&details=${encodeURIComponent(eventDetails)}&location=${encodeURIComponent(facilityLocation)}`;
     
     // Open calendar in new tab
     window.open(googleCalendarUrl, '_blank');
