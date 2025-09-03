@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react'
-import { ArrowLeft, Edit, MapPin, Phone, Mail, Globe, Calendar, Building2, User, Stethoscope, Plus, TrendingUp, Clock, CheckCircle, AlertCircle, BarChart3, X } from 'lucide-react'
+import { ArrowLeft, Edit, MapPin, Phone, Mail, Globe, Calendar, Building2, User, Stethoscope, Plus, TrendingUp, Clock, CheckCircle, AlertCircle, BarChart3, X, Save, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs.jsx'
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog.jsx'
+import { Input } from '@/components/ui/input.jsx'
+import { Label } from '@/components/ui/label.jsx'
+import { Textarea } from '@/components/ui/textarea.jsx'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx'
 
 const PhysicianDetails = ({ physicianId, onBack }) => {
   const [physician, setPhysician] = useState(null)
@@ -11,6 +16,206 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
   const [procedureStats, setProcedureStats] = useState({})
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('overview')
+  
+  // Tray editing state
+  const [trayPreferences, setTrayPreferences] = useState([])
+  const [editingCaseType, setEditingCaseType] = useState(null)
+  const [editingTray, setEditingTray] = useState(null)
+  const [showAddCaseTypeModal, setShowAddCaseTypeModal] = useState(false)
+  const [showEditTrayModal, setShowEditTrayModal] = useState(false)
+  const [showAddTrayModal, setShowAddTrayModal] = useState(false)
+  
+  // Available case types
+  const availableCaseTypes = [
+    'SI fusion – lateral',
+    'SI fusion – Intra–articular',
+    'SI fusion – Oblique/Postero lateral',
+    'SI fusion – Medial to lateral',
+    'Spine fusion – Long Construct',
+    'Spine fusion – Short construct',
+    'Sacral fracture – TNT/TORQ'
+  ]
+
+  // Initialize tray preferences
+  useEffect(() => {
+    const initialTrayPreferences = [
+      {
+        caseType: 'SI fusion – lateral',
+        trays: [
+          { 
+            id: 'si_fusion_lateral_primary',
+            name: 'SI fusion – lateral Primary Tray', 
+            required: true, 
+            notes: 'Primary tray for all SI fusion – lateral cases',
+            status: 'available'
+          },
+          { 
+            id: 'si_fusion_lateral_backup',
+            name: 'SI fusion – lateral Backup Tray', 
+            required: false, 
+            notes: 'Backup tray for complex SI fusion – lateral cases',
+            status: 'available'
+          }
+        ]
+      },
+      {
+        caseType: 'SI fusion – Intra–articular',
+        trays: [
+          { 
+            id: 'si_fusion_intra_articular_primary',
+            name: 'SI fusion – Intra–articular Primary Tray', 
+            required: true, 
+            notes: 'Primary tray for SI fusion – Intra–articular procedures',
+            status: 'in_use'
+          },
+          { 
+            id: 'si_fusion_intra_articular_backup',
+            name: 'SI fusion – Intra–articular Backup Tray', 
+            required: false, 
+            notes: 'Backup tray for SI fusion – Intra–articular procedures',
+            status: 'available'
+          }
+        ]
+      },
+      {
+        caseType: 'Spine fusion – Long Construct',
+        trays: [
+          { 
+            id: 'spine_fusion_long_construct_primary',
+            name: 'Spine fusion – Long Construct Primary Tray', 
+            required: true, 
+            notes: 'Primary tray for long construct spine fusion',
+            status: 'maintenance'
+          },
+          { 
+            id: 'spine_fusion_long_construct_backup',
+            name: 'Spine fusion – Long Construct Backup Tray', 
+            required: false, 
+            notes: 'Backup tray for long construct spine fusion',
+            status: 'available'
+          }
+        ]
+      },
+      {
+        caseType: 'Sacral fracture – TNT/TORQ',
+        trays: [
+          { 
+            id: 'sacral_fracture_tnt_torq_primary',
+            name: 'Sacral fracture – TNT/TORQ Primary Tray', 
+            required: true, 
+            notes: 'Primary tray for sacral fracture TNT/TORQ procedures',
+            status: 'available'
+          },
+          { 
+            id: 'sacral_fracture_tnt_torq_backup',
+            name: 'Sacral fracture – TNT/TORQ Backup Tray', 
+            required: false, 
+            notes: 'Backup tray for sacral fracture TNT/TORQ procedures',
+            status: 'cleaning'
+          }
+        ]
+      }
+    ]
+    setTrayPreferences(initialTrayPreferences)
+  }, [])
+
+  // Tray editing functions
+  const handleEditCaseType = (caseType) => {
+    setEditingCaseType(caseType)
+  }
+
+  const handleEditTray = (caseType, tray) => {
+    setEditingCaseType(caseType)
+    setEditingTray(tray)
+    setShowEditTrayModal(true)
+  }
+
+  const handleAddTray = (caseType) => {
+    setEditingCaseType(caseType)
+    setEditingTray({
+      id: '',
+      name: '',
+      required: false,
+      notes: '',
+      status: 'available'
+    })
+    setShowAddTrayModal(true)
+  }
+
+  const handleSaveTray = (updatedTray) => {
+    setTrayPreferences(prev => 
+      prev.map(caseTypeData => 
+        caseTypeData.caseType === editingCaseType
+          ? {
+              ...caseTypeData,
+              trays: caseTypeData.trays.map(tray => 
+                tray.id === updatedTray.id ? updatedTray : tray
+              )
+            }
+          : caseTypeData
+      )
+    )
+    setShowEditTrayModal(false)
+    setEditingTray(null)
+  }
+
+  const handleAddNewTray = (newTray) => {
+    const trayId = newTray.name.toLowerCase().replace(/[^a-z0-9]/g, '_')
+    const trayWithId = { ...newTray, id: trayId }
+    
+    setTrayPreferences(prev => 
+      prev.map(caseTypeData => 
+        caseTypeData.caseType === editingCaseType
+          ? {
+              ...caseTypeData,
+              trays: [...caseTypeData.trays, trayWithId]
+            }
+          : caseTypeData
+      )
+    )
+    setShowAddTrayModal(false)
+    setEditingTray(null)
+  }
+
+  const handleRemoveTray = (caseType, trayId) => {
+    setTrayPreferences(prev => 
+      prev.map(caseTypeData => 
+        caseTypeData.caseType === caseType
+          ? {
+              ...caseTypeData,
+              trays: caseTypeData.trays.filter(tray => tray.id !== trayId)
+            }
+          : caseTypeData
+      )
+    )
+  }
+
+  const handleAddCaseType = (newCaseType) => {
+    const primaryTray = {
+      id: `${newCaseType.toLowerCase().replace(/[^a-z0-9]/g, '_')}_primary`,
+      name: `${newCaseType} Primary Tray`,
+      required: true,
+      notes: `Primary tray for ${newCaseType} procedures`,
+      status: 'available'
+    }
+    
+    const backupTray = {
+      id: `${newCaseType.toLowerCase().replace(/[^a-z0-9]/g, '_')}_backup`,
+      name: `${newCaseType} Backup Tray`,
+      required: false,
+      notes: `Backup tray for ${newCaseType} procedures`,
+      status: 'available'
+    }
+
+    setTrayPreferences(prev => [
+      ...prev,
+      {
+        caseType: newCaseType,
+        trays: [primaryTray, backupTray]
+      }
+    ])
+    setShowAddCaseTypeModal(false)
+  }
 
   useEffect(() => {
     if (physicianId) {
@@ -590,74 +795,112 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
         <TabsContent value="trays" className="space-y-6">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold">Physician Tray Preferences</h3>
-            <Button className="bg-blue-600 hover:bg-blue-700">
-              <Plus className="w-4 h-4 mr-2" />
-              Add Tray Preference
-            </Button>
+            <Dialog open={showAddCaseTypeModal} onOpenChange={setShowAddCaseTypeModal}>
+              <DialogTrigger asChild>
+                <Button className="bg-blue-600 hover:bg-blue-700">
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add Case Type Preference
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Add Case Type Preference</DialogTitle>
+                  <DialogDescription>
+                    Select a case type to configure tray preferences for this physician.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="caseType">Case Type</Label>
+                    <Select onValueChange={(value) => handleAddCaseType(value)}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a case type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {availableCaseTypes
+                          .filter(caseType => !trayPreferences.some(pref => pref.caseType === caseType))
+                          .map((caseType) => (
+                            <SelectItem key={caseType} value={caseType}>
+                              {caseType}
+                            </SelectItem>
+                          ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
-          {/* Tray Preferences by Procedure */}
+          {/* Tray Preferences by Case Type */}
           <div className="space-y-6">
-            {/* Mock tray preferences data */}
-            {[
-              {
-                procedure: 'L4-L5 Fusion',
-                trays: [
-                  { name: 'SI Bone Fusion Tray A', required: true, notes: 'Primary tray for all L4-L5 cases' },
-                  { name: 'SI Bone Fusion Tray B', required: false, notes: 'Backup tray for complex cases' },
-                  { name: 'Instrumentation Tray', required: true, notes: 'Standard instrumentation' }
-                ]
-              },
-              {
-                procedure: 'Cervical Discectomy',
-                trays: [
-                  { name: 'Cervical Tray Standard', required: true, notes: 'Standard cervical approach' },
-                  { name: 'Microsurgery Tray', required: false, notes: 'For microscopic procedures' }
-                ]
-              },
-              {
-                procedure: 'Lumbar Laminectomy',
-                trays: [
-                  { name: 'Lumbar Decompression Tray', required: true, notes: 'Standard decompression' },
-                  { name: 'Bone Graft Tray', required: false, notes: 'When fusion is needed' }
-                ]
-              }
-            ].map((procedureData, index) => (
+            {trayPreferences.map((caseTypeData, index) => (
               <Card key={index}>
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">{procedureData.procedure}</CardTitle>
-                    <Button variant="outline" size="sm">
+                    <CardTitle className="text-lg">{caseTypeData.caseType}</CardTitle>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => handleEditCaseType(caseTypeData.caseType)}
+                    >
                       <Edit className="w-4 h-4 mr-2" />
                       Edit Preferences
                     </Button>
                   </div>
                   <CardDescription>
-                    Tray preferences for {procedureData.procedure} procedures
+                    Tray preferences for {caseTypeData.caseType} procedures
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {procedureData.trays.map((tray, trayIndex) => (
-                      <div key={trayIndex} className="flex items-start justify-between p-4 border rounded-lg">
+                    {caseTypeData.trays.map((tray, trayIndex) => (
+                      <div key={trayIndex} className="flex items-start justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
                         <div className="flex-1">
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 mb-2">
                             <div className={`w-3 h-3 rounded-full ${tray.required ? 'bg-red-500' : 'bg-yellow-500'}`}></div>
                             <h4 className="font-medium text-gray-900">{tray.name}</h4>
                             <Badge variant={tray.required ? "destructive" : "secondary"}>
                               {tray.required ? 'Required' : 'Optional'}
                             </Badge>
+                            <Badge 
+                              className={
+                                tray.status === 'available' ? 'bg-green-100 text-green-800' :
+                                tray.status === 'in_use' ? 'bg-yellow-100 text-yellow-800' :
+                                tray.status === 'cleaning' ? 'bg-blue-100 text-blue-800' :
+                                tray.status === 'maintenance' ? 'bg-red-100 text-red-800' :
+                                'bg-gray-100 text-gray-800'
+                              }
+                            >
+                              {tray.status.replace('_', ' ')}
+                            </Badge>
                           </div>
                           {tray.notes && (
-                            <p className="text-sm text-gray-600 mt-2 ml-6">{tray.notes}</p>
+                            <p className="text-sm text-gray-600 ml-6">{tray.notes}</p>
                           )}
+                          <div className="flex items-center gap-4 mt-2 ml-6 text-xs text-gray-500">
+                            <span>Tray ID: {tray.id}</span>
+                            <span>•</span>
+                            <span>Last updated: 2 hours ago</span>
+                          </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Button variant="ghost" size="sm">
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            title="Edit tray details"
+                            onClick={() => handleEditTray(caseTypeData.caseType, tray)}
+                          >
                             <Edit className="w-4 h-4" />
                           </Button>
-                          <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-800">
-                            <X className="w-4 h-4" />
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="text-red-600 hover:text-red-800" 
+                            title="Remove tray"
+                            onClick={() => handleRemoveTray(caseTypeData.caseType, tray.id)}
+                          >
+                            <Trash2 className="w-4 h-4" />
                           </Button>
                         </div>
                       </div>
@@ -665,15 +908,40 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
                   </div>
                   
                   <div className="mt-4 pt-4 border-t">
-                    <Button variant="outline" size="sm" className="w-full">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full"
+                      onClick={() => handleAddTray(caseTypeData.caseType)}
+                    >
                       <Plus className="w-4 h-4 mr-2" />
-                      Add Tray to {procedureData.procedure}
+                      Add Tray to {caseTypeData.caseType}
                     </Button>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
+
+          {/* Empty State */}
+          {trayPreferences.length === 0 && (
+            <Card>
+              <CardContent className="p-12 text-center">
+                <Building2 className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No tray preferences set</h3>
+                <p className="text-gray-600 mb-4">
+                  Set up tray preferences for this physician's procedures to ensure proper surgical preparation
+                </p>
+                <Button 
+                  className="bg-blue-600 hover:bg-blue-700"
+                  onClick={() => setShowAddCaseTypeModal(true)}
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add First Tray Preference
+                </Button>
+              </CardContent>
+            </Card>
+          )}
 
           {/* TrayTracker Integration Status */}
           <Card>
@@ -721,22 +989,44 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
             </CardContent>
           </Card>
 
-          {/* Empty State for New Physicians */}
-          {false && (
-            <Card>
-              <CardContent className="p-12 text-center">
-                <Building2 className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No tray preferences set</h3>
-                <p className="text-gray-600 mb-4">
-                  Set up tray preferences for this physician's procedures to ensure proper surgical preparation
-                </p>
-                <Button className="bg-blue-600 hover:bg-blue-700">
-                  <Plus className="w-4 h-4 mr-2" />
-                  Add First Tray Preference
-                </Button>
-              </CardContent>
-            </Card>
-          )}
+          {/* Edit Tray Modal */}
+          <Dialog open={showEditTrayModal} onOpenChange={setShowEditTrayModal}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Edit Tray Details</DialogTitle>
+                <DialogDescription>
+                  Modify the tray configuration for {editingCaseType}
+                </DialogDescription>
+              </DialogHeader>
+              {editingTray && (
+                <TrayEditForm
+                  tray={editingTray}
+                  onSave={handleSaveTray}
+                  onCancel={() => setShowEditTrayModal(false)}
+                />
+              )}
+            </DialogContent>
+          </Dialog>
+
+          {/* Add Tray Modal */}
+          <Dialog open={showAddTrayModal} onOpenChange={setShowAddTrayModal}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add New Tray</DialogTitle>
+                <DialogDescription>
+                  Add a new tray configuration for {editingCaseType}
+                </DialogDescription>
+              </DialogHeader>
+              {editingTray && (
+                <TrayEditForm
+                  tray={editingTray}
+                  onSave={handleAddNewTray}
+                  onCancel={() => setShowAddTrayModal(false)}
+                  isNew={true}
+                />
+              )}
+            </DialogContent>
+          </Dialog>
         </TabsContent>
 
         <TabsContent value="offices" className="space-y-6">
@@ -919,6 +1209,101 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
         </TabsContent>
       </Tabs>
     </div>
+  )
+}
+
+// TrayEditForm Component
+const TrayEditForm = ({ tray, onSave, onCancel, isNew = false }) => {
+  const [formData, setFormData] = useState({
+    name: tray.name || '',
+    required: tray.required || false,
+    notes: tray.notes || '',
+    status: tray.status || 'available'
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    onSave({
+      ...tray,
+      ...formData
+    })
+  }
+
+  const handleChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }))
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <Label htmlFor="trayName">Tray Name</Label>
+        <Input
+          id="trayName"
+          value={formData.name}
+          onChange={(e) => handleChange('name', e.target.value)}
+          placeholder="Enter tray name"
+          required
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="required">Requirement Level</Label>
+        <Select 
+          value={formData.required ? 'required' : 'optional'} 
+          onValueChange={(value) => handleChange('required', value === 'required')}
+        >
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="required">Required</SelectItem>
+            <SelectItem value="optional">Optional</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div>
+        <Label htmlFor="status">Tray Status</Label>
+        <Select 
+          value={formData.status} 
+          onValueChange={(value) => handleChange('status', value)}
+        >
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="available">Available</SelectItem>
+            <SelectItem value="in_use">In Use</SelectItem>
+            <SelectItem value="cleaning">Cleaning</SelectItem>
+            <SelectItem value="maintenance">Maintenance</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div>
+        <Label htmlFor="notes">Notes</Label>
+        <Textarea
+          id="notes"
+          value={formData.notes}
+          onChange={(e) => handleChange('notes', e.target.value)}
+          placeholder="Enter any notes about this tray"
+          rows={3}
+        />
+      </div>
+
+      <DialogFooter>
+        <Button type="button" variant="outline" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+          <Save className="w-4 h-4 mr-2" />
+          {isNew ? 'Add Tray' : 'Save Changes'}
+        </Button>
+      </DialogFooter>
+    </form>
   )
 }
 

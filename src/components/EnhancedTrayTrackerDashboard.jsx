@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Calendar, Clock, MapPin, AlertTriangle, CheckCircle, RefreshCw, Settings, BarChart3, Plus } from 'lucide-react';
 
 const EnhancedTrayTrackerDashboard = () => {
   const [selectedCaseType, setSelectedCaseType] = useState('L4-L5 Fusion');
@@ -7,6 +8,8 @@ const EnhancedTrayTrackerDashboard = () => {
   const [trayRequirements, setTrayRequirements] = useState([]);
   const [trayAvailability, setTrayAvailability] = useState({});
   const [upcomingCases, setUpcomingCases] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [lastSyncTime, setLastSyncTime] = useState(new Date());
 
   // Mock data for case types and their tray requirements
   const caseTypes = [
@@ -33,37 +36,56 @@ const EnhancedTrayTrackerDashboard = () => {
     'Wisconsin Spine Institute'
   ];
 
-  // Mock tray requirements data
+  // Function to generate tray requirements based on case type
+  const generateTrayRequirements = (caseType) => {
+    if (!caseType) return []
+    
+    const primaryTray = {
+      tray_id: `${caseType.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_primary`,
+      tray_name: `${caseType} Primary Tray`,
+      requirement_type: 'required',
+      quantity: 1,
+      priority: 1
+    }
+    
+    const backupTray = {
+      tray_id: `${caseType.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_backup`,
+      tray_name: `${caseType} Backup Tray`,
+      requirement_type: 'optional',
+      quantity: 1,
+      priority: 2
+    }
+    
+    return [primaryTray, backupTray]
+  }
+
+  // Mock tray requirements data using the new naming convention
   const mockTrayRequirements = {
-    'L4-L5 Fusion': [
-      { tray_id: 'SPINE-001', tray_name: 'SI Bone Fusion Tray A', requirement_type: 'required', quantity: 1, priority: 1 },
-      { tray_id: 'SPINE-002', tray_name: 'SI Bone Fusion Tray B', requirement_type: 'preferred', quantity: 1, priority: 2 },
-      { tray_id: 'INST-001', tray_name: 'Instrumentation Tray', requirement_type: 'required', quantity: 1, priority: 1 },
-      { tray_id: 'GRAFT-001', tray_name: 'Bone Graft Tray', requirement_type: 'optional', quantity: 1, priority: 3 }
-    ],
-    'Cervical Discectomy': [
-      { tray_id: 'CERV-001', tray_name: 'Cervical Tray Standard', requirement_type: 'required', quantity: 1, priority: 1 },
-      { tray_id: 'MICRO-001', tray_name: 'Microsurgery Tray', requirement_type: 'preferred', quantity: 1, priority: 2 },
-      { tray_id: 'DISC-001', tray_name: 'Discectomy Instruments', requirement_type: 'required', quantity: 1, priority: 1 }
-    ],
-    'Lumbar Laminectomy': [
-      { tray_id: 'LUMB-001', tray_name: 'Lumbar Decompression Tray', requirement_type: 'required', quantity: 1, priority: 1 },
-      { tray_id: 'LAMIN-001', tray_name: 'Laminectomy Instruments', requirement_type: 'required', quantity: 1, priority: 1 },
-      { tray_id: 'GRAFT-001', tray_name: 'Bone Graft Tray', requirement_type: 'optional', quantity: 1, priority: 3 }
-    ]
+    'SI fusion – lateral': generateTrayRequirements('SI fusion – lateral'),
+    'SI fusion – Intra–articular': generateTrayRequirements('SI fusion – Intra–articular'),
+    'SI fusion – Oblique/Postero lateral': generateTrayRequirements('SI fusion – Oblique/Postero lateral'),
+    'SI fusion – Medial to lateral': generateTrayRequirements('SI fusion – Medial to lateral'),
+    'Spine fusion – Long Construct': generateTrayRequirements('Spine fusion – Long Construct'),
+    'Spine fusion – Short construct': generateTrayRequirements('Spine fusion – Short construct'),
+    'Sacral fracture – TNT/TORQ': generateTrayRequirements('Sacral fracture – TNT/TORQ')
   };
 
   // Mock tray availability data
   const mockTrayAvailability = {
-    'SPINE-001': { status: 'available', location: 'OR Suite 1', last_cleaned: '2024-08-30 06:00' },
-    'SPINE-002': { status: 'in_use', location: 'OR Suite 3', expected_available: '2024-08-30 14:00' },
-    'INST-001': { status: 'available', location: 'Sterile Storage', last_cleaned: '2024-08-30 05:30' },
-    'GRAFT-001': { status: 'cleaning', location: 'Sterilization', expected_available: '2024-08-30 12:00' },
-    'CERV-001': { status: 'available', location: 'OR Suite 2', last_cleaned: '2024-08-30 07:00' },
-    'MICRO-001': { status: 'available', location: 'Neuro Storage', last_cleaned: '2024-08-30 06:30' },
-    'DISC-001': { status: 'maintenance', location: 'Repair Shop', expected_available: '2024-08-31 08:00' },
-    'LUMB-001': { status: 'available', location: 'OR Suite 4', last_cleaned: '2024-08-30 05:45' },
-    'LAMIN-001': { status: 'available', location: 'Sterile Storage', last_cleaned: '2024-08-30 06:15' }
+    'si_fusion___lateral_primary': { status: 'available', location: 'OR Suite 1', last_cleaned: '2024-08-30 06:00' },
+    'si_fusion___lateral_backup': { status: 'available', location: 'Sterile Storage', last_cleaned: '2024-08-30 05:30' },
+    'si_fusion___intra_articular_primary': { status: 'in_use', location: 'OR Suite 3', expected_available: '2024-08-30 14:00' },
+    'si_fusion___intra_articular_backup': { status: 'available', location: 'Sterile Storage', last_cleaned: '2024-08-30 06:30' },
+    'si_fusion___oblique_postero_lateral_primary': { status: 'cleaning', location: 'Sterilization', expected_available: '2024-08-30 12:00' },
+    'si_fusion___oblique_postero_lateral_backup': { status: 'available', location: 'OR Suite 2', last_cleaned: '2024-08-30 07:00' },
+    'si_fusion___medial_to_lateral_primary': { status: 'available', location: 'OR Suite 4', last_cleaned: '2024-08-30 05:45' },
+    'si_fusion___medial_to_lateral_backup': { status: 'available', location: 'Sterile Storage', last_cleaned: '2024-08-30 06:15' },
+    'spine_fusion___long_construct_primary': { status: 'maintenance', location: 'Repair Shop', expected_available: '2024-08-31 08:00' },
+    'spine_fusion___long_construct_backup': { status: 'available', location: 'Neuro Storage', last_cleaned: '2024-08-30 06:30' },
+    'spine_fusion___short_construct_primary': { status: 'available', location: 'OR Suite 1', last_cleaned: '2024-08-30 06:00' },
+    'spine_fusion___short_construct_backup': { status: 'available', location: 'Sterile Storage', last_cleaned: '2024-08-30 05:30' },
+    'sacral_fracture___tnt_torq_primary': { status: 'available', location: 'OR Suite 2', last_cleaned: '2024-08-30 07:00' },
+    'sacral_fracture___tnt_torq_backup': { status: 'cleaning', location: 'Sterilization', expected_available: '2024-08-30 12:00' }
   };
 
   // Mock upcoming cases with tray status
@@ -88,7 +110,7 @@ const EnhancedTrayTrackerDashboard = () => {
       time: '10:30 AM',
       patient: 'Mary Johnson',
       ready_for_surgery: false,
-      missing_trays: ['DISC-001']
+      missing_trays: ['si_fusion___intra_articular_primary']
     },
     {
       id: 3,
@@ -98,6 +120,17 @@ const EnhancedTrayTrackerDashboard = () => {
       date: '2024-09-03',
       time: '09:00 AM',
       patient: 'Robert Wilson',
+      ready_for_surgery: false,
+      missing_trays: ['spine_fusion___long_construct_primary']
+    },
+    {
+      id: 4,
+      case_type: 'Sacral fracture – TNT/TORQ',
+      physician: 'Dr. Sarah Wilson',
+      facility: 'Wisconsin Spine Institute',
+      date: '2024-09-04',
+      time: '07:30 AM',
+      patient: 'Lisa Brown',
       ready_for_surgery: true,
       missing_trays: []
     }
@@ -128,6 +161,29 @@ const EnhancedTrayTrackerDashboard = () => {
       case 'optional': return 'bg-green-100 text-green-800 border-green-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
+  };
+
+  // Quick Action Handlers
+  const handleScheduleCase = () => {
+    alert(`Scheduling new case with auto tray assignment for ${selectedCaseType}\nPhysician: ${selectedPhysician}\nFacility: ${selectedFacility}`);
+  };
+
+  const handleSyncAvailability = () => {
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setLastSyncTime(new Date());
+      setIsLoading(false);
+      alert('Tray availability synced successfully from TrayTracker!');
+    }, 2000);
+  };
+
+  const handlePhysicianPreferences = () => {
+    alert(`Opening physician preferences for ${selectedPhysician}\nManage tray settings for different case types`);
+  };
+
+  const handleUtilizationReport = () => {
+    alert(`Generating utilization report for:\nCase Type: ${selectedCaseType}\nPhysician: ${selectedPhysician}\nFacility: ${selectedFacility}`);
   };
 
   return (
@@ -260,24 +316,43 @@ const EnhancedTrayTrackerDashboard = () => {
       <div className="bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <button className="p-4 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors">
+          <button 
+            onClick={handleScheduleCase}
+            className="p-4 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors flex flex-col items-center"
+          >
+            <Plus className="w-6 h-6 text-blue-600 mb-2" />
             <div className="text-blue-600 font-medium mb-1">Schedule Case</div>
-            <div className="text-sm text-blue-500">with Auto Tray Assignment</div>
+            <div className="text-sm text-blue-500 text-center">with Auto Tray Assignment</div>
           </button>
           
-          <button className="p-4 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors">
-            <div className="text-green-600 font-medium mb-1">Sync Availability</div>
-            <div className="text-sm text-green-500">from TrayTracker</div>
+          <button 
+            onClick={handleSyncAvailability}
+            disabled={isLoading}
+            className="p-4 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors flex flex-col items-center disabled:opacity-50"
+          >
+            <RefreshCw className={`w-6 h-6 text-green-600 mb-2 ${isLoading ? 'animate-spin' : ''}`} />
+            <div className="text-green-600 font-medium mb-1">
+              {isLoading ? 'Syncing...' : 'Sync Availability'}
+            </div>
+            <div className="text-sm text-green-500 text-center">from TrayTracker</div>
           </button>
           
-          <button className="p-4 bg-purple-50 border border-purple-200 rounded-lg hover:bg-purple-100 transition-colors">
+          <button 
+            onClick={handlePhysicianPreferences}
+            className="p-4 bg-purple-50 border border-purple-200 rounded-lg hover:bg-purple-100 transition-colors flex flex-col items-center"
+          >
+            <Settings className="w-6 h-6 text-purple-600 mb-2" />
             <div className="text-purple-600 font-medium mb-1">Physician Preferences</div>
-            <div className="text-sm text-purple-500">Manage Tray Settings</div>
+            <div className="text-sm text-purple-500 text-center">Manage Tray Settings</div>
           </button>
           
-          <button className="p-4 bg-orange-50 border border-orange-200 rounded-lg hover:bg-orange-100 transition-colors">
+          <button 
+            onClick={handleUtilizationReport}
+            className="p-4 bg-orange-50 border border-orange-200 rounded-lg hover:bg-orange-100 transition-colors flex flex-col items-center"
+          >
+            <BarChart3 className="w-6 h-6 text-orange-600 mb-2" />
             <div className="text-orange-600 font-medium mb-1">Utilization Report</div>
-            <div className="text-sm text-orange-500">Tray Usage Analytics</div>
+            <div className="text-sm text-orange-500 text-center">Tray Usage Analytics</div>
           </button>
         </div>
       </div>
@@ -287,7 +362,9 @@ const EnhancedTrayTrackerDashboard = () => {
         <div className="flex items-center">
           <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
           <span className="text-green-800 font-medium">Connected to TrayTracker API</span>
-          <span className="ml-2 text-green-600 text-sm">• Last sync: 2 minutes ago</span>
+          <span className="ml-2 text-green-600 text-sm">
+            • Last sync: {lastSyncTime.toLocaleTimeString()}
+          </span>
         </div>
       </div>
     </div>

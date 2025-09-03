@@ -22,8 +22,32 @@ function SurgeriesSectionFixed() {
     date: '',
     time: '',
     duration: '',
-    notes: ''
+    notes: '',
+    requiredTrays: []
   })
+
+  // Function to generate default trays based on case type
+  const generateDefaultTrays = (caseType) => {
+    if (!caseType) return []
+    
+    const primaryTray = {
+      id: `${caseType.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_primary`,
+      name: `${caseType} Primary Tray`,
+      required: true,
+      notes: `Primary tray for ${caseType} procedures`,
+      status: 'pending'
+    }
+    
+    const backupTray = {
+      id: `${caseType.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_backup`,
+      name: `${caseType} Backup Tray`,
+      required: false,
+      notes: `Backup tray for ${caseType} procedures (optional)`,
+      status: 'pending'
+    }
+    
+    return [primaryTray, backupTray]
+  }
   
   const [surgicalCases, setSurgicalCases] = useState([
     {
@@ -81,10 +105,19 @@ function SurgeriesSectionFixed() {
 
   // Form handlers for Schedule Surgery modal
   const handleScheduleFormChange = (field, value) => {
-    setScheduleForm(prev => ({
-      ...prev,
-      [field]: value
-    }))
+    setScheduleForm(prev => {
+      const updated = {
+        ...prev,
+        [field]: value
+      }
+      
+      // Generate default trays when case type changes
+      if (field === 'caseType') {
+        updated.requiredTrays = generateDefaultTrays(value)
+      }
+      
+      return updated
+    })
   }
 
   const handleSaveSchedule = () => {
@@ -122,7 +155,8 @@ function SurgeriesSectionFixed() {
       date: '',
       time: '',
       duration: '',
-      notes: ''
+      notes: '',
+      requiredTrays: []
     })
     setShowScheduleModal(false)
   }
@@ -541,6 +575,35 @@ function SurgeriesSectionFixed() {
                     placeholder="Enter procedure notes and special requirements..."
                   />
                 </div>
+
+                {/* Tray Requirements Section */}
+                {scheduleForm.requiredTrays.length > 0 && (
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Required Trays
+                    </label>
+                    <div className="space-y-3 bg-gray-50 p-4 rounded-lg">
+                      {scheduleForm.requiredTrays.map((tray, index) => (
+                        <div key={index} className="flex items-center justify-between bg-white p-3 rounded-md border">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <div className={`w-3 h-3 rounded-full ${tray.required ? 'bg-red-500' : 'bg-yellow-500'}`}></div>
+                              <span className="font-medium text-gray-900">{tray.name}</span>
+                              <span className={`px-2 py-1 text-xs rounded-full ${
+                                tray.required 
+                                  ? 'bg-red-100 text-red-800' 
+                                  : 'bg-yellow-100 text-yellow-800'
+                              }`}>
+                                {tray.required ? 'Required' : 'Optional'}
+                              </span>
+                            </div>
+                            <p className="text-sm text-gray-600 mt-1">{tray.notes}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </form>
               
               <div className="flex justify-end space-x-3 pt-6 border-t mt-6">

@@ -22,8 +22,28 @@ function DashboardMobile({ onNavigate }) {
     date: '',
     time: '',
     duration: '',
-    notes: ''
+    notes: '',
+    requiredTrays: []
   })
+
+  // Function to generate default trays based on case type
+  const generateDefaultTrays = (caseType) => {
+    if (!caseType) return []
+    
+    const primaryTray = {
+      name: `${caseType} Primary Tray`,
+      required: true,
+      notes: `Primary tray for ${caseType} procedures`
+    }
+    
+    const backupTray = {
+      name: `${caseType} Backup Tray`,
+      required: false,
+      notes: `Backup tray for ${caseType} procedures`
+    }
+    
+    return [primaryTray, backupTray]
+  }
 
   const handleAddAppointment = () => {
     console.log('Add appointment clicked')
@@ -69,15 +89,25 @@ function DashboardMobile({ onNavigate }) {
       date: '',
       time: '',
       duration: '',
-      notes: ''
+      notes: '',
+      requiredTrays: []
     })
   }
 
   const handleCaseFormChange = (field, value) => {
-    setCaseForm(prev => ({
-      ...prev,
-      [field]: value
-    }))
+    setCaseForm(prev => {
+      const updated = {
+        ...prev,
+        [field]: value
+      }
+      
+      // Generate default trays when case type changes
+      if (field === 'caseType') {
+        updated.requiredTrays = generateDefaultTrays(value)
+      }
+      
+      return updated
+    })
   }
 
   const handleSaveCase = () => {
@@ -563,6 +593,35 @@ function DashboardMobile({ onNavigate }) {
                     placeholder="Enter procedure notes and special requirements..."
                   />
                 </div>
+
+                {/* Tray Requirements Section */}
+                {caseForm.requiredTrays.length > 0 && (
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Required Trays
+                    </label>
+                    <div className="space-y-3 bg-gray-50 p-4 rounded-lg">
+                      {caseForm.requiredTrays.map((tray, index) => (
+                        <div key={index} className="flex items-center justify-between bg-white p-3 rounded-md border">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <div className={`w-3 h-3 rounded-full ${tray.required ? 'bg-red-500' : 'bg-yellow-500'}`}></div>
+                              <span className="font-medium text-gray-900">{tray.name}</span>
+                              <span className={`px-2 py-1 text-xs rounded-full ${
+                                tray.required 
+                                  ? 'bg-red-100 text-red-800' 
+                                  : 'bg-yellow-100 text-yellow-800'
+                              }`}>
+                                {tray.required ? 'Required' : 'Optional'}
+                              </span>
+                            </div>
+                            <p className="text-sm text-gray-600 mt-1">{tray.notes}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </form>
               
               <div className="flex justify-end space-x-3 pt-6 border-t mt-6">
