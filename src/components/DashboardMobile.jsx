@@ -114,26 +114,6 @@ function DashboardMobile() {
         </div>
       </div>
 
-      {/* Quick Stats */}
-      <div className="grid grid-cols-2 gap-4">
-        {stats.map((stat, index) => {
-          const Icon = stat.icon
-          return (
-            <Card key={index}>
-              <CardContent className="p-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">{stat.label}</p>
-                    <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
-                  </div>
-                  <Icon className={`h-6 w-6 ${stat.color}`} />
-                </div>
-              </CardContent>
-            </Card>
-          )
-        })}
-      </div>
-
       {/* Surgical Cases Section */}
       <Card className="bg-blue-600 text-white">
         <CardContent className="p-6">
@@ -161,6 +141,34 @@ function DashboardMobile() {
               <div className="text-2xl font-bold">0</div>
               <div className="text-sm text-blue-100">Recent</div>
             </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Quick Actions */}
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="text-lg">Quick Actions</CardTitle>
+          <CardDescription>Common tasks and shortcuts</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 gap-3">
+            <Button variant="outline" className="h-16 flex flex-col gap-1">
+              <Plus className="w-5 h-5" />
+              <span className="text-xs">Add Physician</span>
+            </Button>
+            <Button variant="outline" className="h-16 flex flex-col gap-1">
+              <Building2 className="w-5 h-5" />
+              <span className="text-xs">Add Facility</span>
+            </Button>
+            <Button variant="outline" className="h-16 flex flex-col gap-1">
+              <Calendar className="w-5 h-5" />
+              <span className="text-xs">Schedule</span>
+            </Button>
+            <Button variant="outline" className="h-16 flex flex-col gap-1">
+              <Package className="w-5 h-5" />
+              <span className="text-xs">Track Trays</span>
+            </Button>
           </div>
         </CardContent>
       </Card>
@@ -228,33 +236,25 @@ function DashboardMobile() {
         </CardContent>
       </Card>
 
-      {/* Quick Actions */}
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-lg">Quick Actions</CardTitle>
-          <CardDescription>Common tasks and shortcuts</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-16 flex flex-col gap-1">
-              <Plus className="w-5 h-5" />
-              <span className="text-xs">Add Physician</span>
-            </Button>
-            <Button variant="outline" className="h-16 flex flex-col gap-1">
-              <Building2 className="w-5 h-5" />
-              <span className="text-xs">Add Facility</span>
-            </Button>
-            <Button variant="outline" className="h-16 flex flex-col gap-1">
-              <Calendar className="w-5 h-5" />
-              <span className="text-xs">Schedule</span>
-            </Button>
-            <Button variant="outline" className="h-16 flex flex-col gap-1">
-              <Package className="w-5 h-5" />
-              <span className="text-xs">Track Trays</span>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Quick Stats - Moved to Bottom */}
+      <div className="grid grid-cols-2 gap-4">
+        {stats.map((stat, index) => {
+          const Icon = stat.icon
+          return (
+            <Card key={index}>
+              <CardContent className="p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-gray-600">{stat.label}</p>
+                    <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
+                  </div>
+                  <Icon className={`h-6 w-6 ${stat.color}`} />
+                </div>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </div>
 
       {/* Add Appointment Modal */}
       {showAddAppointmentModal && (
