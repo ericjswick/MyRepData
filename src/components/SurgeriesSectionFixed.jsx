@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import CalendarIntegration from '@/components/CalendarIntegration.jsx'
+import physiciansData from '../data/physicians.json'
 
 function SurgeriesSectionFixed() {
   const [showCalendarModal, setShowCalendarModal] = useState(false)
@@ -60,9 +61,7 @@ function SurgeriesSectionFixed() {
       duration: 180,
       status: 'scheduled',
       notes: 'Posterior approach with instrumentation',
-      patientName: 'John Smith',
-      patientAge: 65,
-      surgeryType: 'Spinal Fusion',
+      surgeryType: 'Spine fusion – Short construct',
     },
     {
       id: 2,
@@ -74,9 +73,7 @@ function SurgeriesSectionFixed() {
       duration: 120,
       status: 'confirmed',
       notes: 'C5-C6 level',
-      patientName: 'Jane Doe',
-      patientAge: 52,
-      surgeryType: 'Discectomy',
+      surgeryType: 'Spine fusion – Short construct',
     }
   ])
 
@@ -499,11 +496,11 @@ function SurgeriesSectionFixed() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select Physician</option>
-                      <option value="Dr. Branko Prpa">Dr. Branko Prpa - Spine Surgery</option>
-                      <option value="Dr. Sarah Johnson">Dr. Sarah Johnson - Orthopedic Surgery</option>
-                      <option value="Dr. Michael Chen">Dr. Michael Chen - Joint Replacement</option>
-                      <option value="Dr. Emily Rodriguez">Dr. Emily Rodriguez - Sports Medicine</option>
-                      <option value="Dr. Max Ots">Dr. Max Ots - Neurosurgery</option>
+                      {physiciansData.map((physician) => (
+                        <option key={physician.id} value={physician.full_name}>
+                          {physician.full_name} - {physician.specialty}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   
