@@ -13,7 +13,7 @@ import AppointmentSchedulerFixed from '@/components/AppointmentSchedulerFixed.js
 import TrayTracking from '@/components/TrayTracking.jsx'
 import BulkUploadEnhanced from '@/components/BulkUploadEnhanced.jsx'
 import EnhancedTrayTrackerDashboard from '@/components/EnhancedTrayTrackerDashboard.jsx'
-import CasesModule from '@/components/CasesModule.jsx'
+import CasesModuleSimple from '@/components/CasesModuleSimple.jsx'
 
 function AppMobileOnly() {
   const [activeSection, setActiveSection] = useState('dashboard')
@@ -37,7 +37,7 @@ function AppMobileOnly() {
       case 'dashboard':
         return <DashboardMobile onNavigate={setActiveSection} />
       case 'cases':
-        return <CasesModule />
+        return <CasesModuleSimple />
       case 'facilities':
         return <FacilityListFixedNew />
       case 'physicians':
