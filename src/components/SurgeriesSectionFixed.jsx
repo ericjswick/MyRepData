@@ -663,10 +663,11 @@ function SurgeriesSectionFixed() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select Physician</option>
-                      <option value="Dr. Branko Prpa">Dr. Branko Prpa</option>
-                      <option value="Dr. Max Ots">Dr. Max Ots</option>
-                      <option value="Dr. John Smith">Dr. John Smith</option>
-                      <option value="Dr. Jane Doe">Dr. Jane Doe</option>
+                      {physiciansData.map((physician) => (
+                        <option key={physician.id} value={physician.full_name}>
+                          {physician.full_name} - {physician.specialty}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   

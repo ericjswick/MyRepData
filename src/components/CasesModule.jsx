@@ -118,12 +118,8 @@ const CasesModule = () => {
     'Sacral fracture – TNT/TORQ'
   ];
 
-  const physicians = [
-    { id: 1, name: 'Dr. John Smith', specialty: 'Ortho Spine' },
-    { id: 2, name: 'Dr. Jane Doe', specialty: 'Neurosurgery' },
-    { id: 3, name: 'Dr. Michael Johnson', specialty: 'Ortho Spine' },
-    { id: 4, name: 'Dr. Sarah Wilson', specialty: 'Neurosurgery' }
-  ];
+  // Use real physicians data instead of mock data
+  const physicians = physiciansData;
 
   const facilities = [
     { id: 1, name: 'Advanced Spine Center', type: 'ASC' },
@@ -508,7 +504,7 @@ const CasesModule = () => {
             >
               <option value="all">All Physicians</option>
               {physicians.map(physician => (
-                <option key={physician.id} value={physician.id}>{physician.name}</option>
+                <option key={physician.id} value={physician.id}>{physician.full_name} - {physician.specialty}</option>
               ))}
             </select>
             
@@ -626,7 +622,7 @@ const CasesModule = () => {
                   <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     {physicians.map(physician => (
                       <option key={physician.id} value={physician.id}>
-                        {physician.name} - {physician.specialty}
+                        {physician.full_name} - {physician.specialty}
                       </option>
                     ))}
                   </select>
