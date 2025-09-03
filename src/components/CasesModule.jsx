@@ -243,100 +243,92 @@ const CasesModule = () => {
   };
 
   const renderListView = () => (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {filteredCases.map((case_item) => (
-        <div key={case_item.id} className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-          <div className="flex justify-between items-start mb-4">
-            <div className="flex-1">
-              {/* Primary Info: Date/Time first, then Case Type */}
-              <div className="flex items-center gap-4 mb-3">
-                <div className="flex items-center gap-2">
+        <div key={case_item.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+          {/* Header Section - Date & Time */}
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-100">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="bg-blue-100 p-2 rounded-lg">
                   <Clock className="w-5 h-5 text-blue-600" />
-                  <div>
-                    <span className="text-lg font-bold text-gray-900">{case_item.date}</span>
-                    <span className="text-lg font-bold text-blue-600 ml-2">{case_item.time}</span>
-                  </div>
                 </div>
-                <div className="h-6 w-px bg-gray-300"></div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900">{case_item.case_type}</h3>
-                  <p className="text-sm text-gray-600">{case_item.procedure_name}</p>
+                  <div className="text-xl font-bold text-gray-900">{case_item.date}</div>
+                  <div className="text-lg font-semibold text-blue-600">{case_item.time}</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleImportToCalendar(case_item)}
+                  className="p-2 text-purple-600 hover:bg-purple-100 rounded-lg transition-colors"
+                  title="Import to Calendar"
+                >
+                  <CalendarPlus className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => handleShareCase(case_item)}
+                  className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors"
+                  title="Share Case"
+                >
+                  <Share2 className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setSelectedCase(case_item)}
+                  className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                  title="View Details"
+                >
+                  <Eye className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content Section */}
+          <div className="p-6">
+            {/* Case Type & Procedure */}
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{case_item.case_type}</h3>
+              <p className="text-gray-600 text-base">{case_item.procedure_name}</p>
+            </div>
+
+            {/* Doctor & Facility Info */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <div className="flex items-start gap-3">
+                <div className="bg-green-100 p-2 rounded-lg mt-1">
+                  <User className="w-4 h-4 text-green-600" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">Treating Physician</div>
+                  <div className="text-lg font-semibold text-gray-900 mt-1">{case_item.physician}</div>
                 </div>
               </div>
               
-              {/* Secondary Info: Doctor then Facility */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-3">
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4 text-green-600" />
-                  <span className="text-gray-600">Doctor:</span>
-                  <span className="font-medium text-gray-900">{case_item.physician}</span>
-                </div>
-                <div className="flex items-center gap-2">
+              <div className="flex items-start gap-3">
+                <div className="bg-purple-100 p-2 rounded-lg mt-1">
                   <Building2 className="w-4 h-4 text-purple-600" />
-                  <span className="text-gray-600">Facility:</span>
-                  <span className="font-medium text-gray-900">{case_item.facility}</span>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">Facility</div>
+                  <div className="text-lg font-semibold text-gray-900 mt-1">{case_item.facility}</div>
                 </div>
               </div>
+            </div>
 
-              {/* Status and Tray Info */}
-              <div className="flex items-center gap-3">
-                <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(case_item.status)}`}>
-                  {case_item.status}
-                </span>
-                <div className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${getTrayStatusColor(case_item.tray_status)}`}>
-                  {getTrayStatusIcon(case_item.tray_status)}
-                  Trays {case_item.tray_status}
-                </div>
-                <span className="text-xs text-gray-500">{case_item.duration} min</span>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-2 ml-4">
-              <button
-                onClick={() => handleImportToCalendar(case_item)}
-                className="p-2 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
-                title="Import to Calendar"
-              >
-                <CalendarPlus className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => handleShareCase(case_item)}
-                className="p-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
-                title="Share Case"
-              >
-                <Share2 className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => handleViewCase(case_item)}
-                className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                title="View Details"
-              >
-                <Eye className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => handleEditCase(case_item)}
-                className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors"
-                title="Edit Case"
-              >
-                <Edit className="w-4 h-4" />
-              </button>
-              <button
-                className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                title="Cancel Case"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-          
-          <div className="border-t pt-3">
-            <div className="flex justify-between items-center text-sm text-gray-600">
+            {/* Status & Duration Footer */}
+            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
               <div className="flex items-center gap-4">
-                <span>Duration: {case_item.duration} min</span>
+                <span className={`px-4 py-2 rounded-full text-sm font-medium ${getStatusColor(case_item.status)}`}>
+                  {case_item.status.charAt(0).toUpperCase() + case_item.status.slice(1)}
+                </span>
+                <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ${getTrayStatusColor(case_item.tray_status)}`}>
+                  {getTrayStatusIcon(case_item.tray_status)}
+                  <span>Trays {case_item.tray_status}</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 text-gray-500">
                 <Package className="w-4 h-4" />
-                <span>{case_item.required_trays.length} trays required</span>
+                <span className="text-sm font-medium">{case_item.duration} minutes</span>
               </div>
             </div>
           </div>
