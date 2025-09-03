@@ -3,10 +3,8 @@ import { Calendar, TrendingUp, Users, Building2, Package, Clock, MapPin, User, P
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
-import SurgeriesSectionFixed from '@/components/SurgeriesSectionFixed.jsx'
 
 function DashboardMobile({ onNavigate }) {
-  const [activeView, setActiveView] = useState('overview')
   const [showAddAppointmentModal, setShowAddAppointmentModal] = useState(false)
   const [showScheduleCaseModal, setShowScheduleCaseModal] = useState(false)
   const [appointmentForm, setAppointmentForm] = useState({
@@ -133,10 +131,6 @@ function DashboardMobile({ onNavigate }) {
     }
   ]
 
-  if (activeView === 'surgeries') {
-    return <SurgeriesSectionFixed />
-  }
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -176,7 +170,7 @@ function DashboardMobile({ onNavigate }) {
               <Button 
                 variant="secondary" 
                 size="sm"
-                onClick={() => setActiveView('surgeries')}
+                onClick={() => onNavigate && onNavigate('cases')}
                 className="bg-white text-blue-600 hover:bg-blue-50"
               >
                 View All
