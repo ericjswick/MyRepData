@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { X, Save, User, MapPin, Phone, Mail, Stethoscope, Building2 } from 'lucide-react'
+import React, { useState, useEffect } from 'react'
+import { X, Save, User, MapPin, Phone, Mail, Stethoscope, Building2, Plus } from 'lucide-react'
 
 const PhysicianEditModal = ({ physician, isOpen, onClose, onSave }) => {
   const [formData, setFormData] = useState({
@@ -25,6 +25,15 @@ const PhysicianEditModal = ({ physician, isOpen, onClose, onSave }) => {
   })
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState({})
+  const [showCustomSpecialty, setShowCustomSpecialty] = useState(false)
+  const [customSpecialty, setCustomSpecialty] = useState('')
+  const [specialties, setSpecialties] = useState([
+    'Neuro',
+    'Ortho-Spine', 
+    'Pain',
+    'Trauma',
+    'IR'
+  ])
 
   useEffect(() => {
     if (physician && isOpen) {
@@ -65,6 +74,33 @@ const PhysicianEditModal = ({ physician, isOpen, onClose, onSave }) => {
         ...prev,
         [name]: ''
       }))
+    }
+  }
+
+  const handleSpecialtyChange = (e) => {
+    const value = e.target.value
+    if (value === 'add_new') {
+      setShowCustomSpecialty(true)
+      setCustomSpecialty('')
+    } else {
+      setShowCustomSpecialty(false)
+      setFormData(prev => ({
+        ...prev,
+        specialty: value
+      }))
+    }
+  }
+
+  const handleAddCustomSpecialty = () => {
+    if (customSpecialty.trim()) {
+      const newSpecialty = customSpecialty.trim()
+      setSpecialties(prev => [...prev, newSpecialty])
+      setFormData(prev => ({
+        ...prev,
+        specialty: newSpecialty
+      }))
+      setShowCustomSpecialty(false)
+      setCustomSpecialty('')
     }
   }
 
@@ -250,17 +286,36 @@ const PhysicianEditModal = ({ physician, isOpen, onClose, onSave }) => {
                 <select
                   name="specialty"
                   value={formData.specialty}
-                  onChange={handleInputChange}
+                  onChange={handleSpecialtyChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value="">Select specialty</option>
-                  <option value="Neuro">Neuro</option>
-                  <option value="Ortho Spine">Ortho Spine</option>
-                  <option value="Ortho">Ortho</option>
-                  <option value="Ortho Hip">Ortho Hip</option>
-                  <option value="Trauma">Trauma</option>
-                  <option value="Other">Other</option>
+                  {specialties.map((specialty) => (
+                    <option key={specialty} value={specialty}>{specialty}</option>
+                  ))}
+                  <option value="add_new">+ Add New Specialty</option>
                 </select>
+                
+                {showCustomSpecialty && (
+                  <div className="mt-2 flex gap-2">
+                    <input
+                      type="text"
+                      value={customSpecialty}
+                      onChange={(e) => setCustomSpecialty(e.target.value)}
+                      placeholder="Enter new specialty"
+                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      onKeyPress={(e) => e.key === 'Enter' && handleAddCustomSpecialty()}
+                    />
+                    <button
+                      type="button"
+                      onClick={handleAddCustomSpecialty}
+                      className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-1"
+                    >
+                      <Plus className="w-4 h-4" />
+                      Add
+                    </button>
+                  </div>
+                )}
               </div>
 
               <div>
