@@ -1,0 +1,3874 @@
+[
+  {
+    "id": 1,
+    "account_name": "Access Medical Center",
+    "npi": "1114942315",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "4216 Old Green Bay Rd",
+      "city": "Racine",
+      "state": "WI",
+      "zip": "53403"
+    },
+    "contact": {
+      "phone": "(888) 901-7246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.apmhealth.com/"
+    }
+  },
+  {
+    "id": 2,
+    "account_name": "Advanced Spine Center (Neenah WI)",
+    "npi": "1215492061",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1380 Tullar Road",
+      "city": "Neenah",
+      "state": "WI",
+      "zip": "54956"
+    },
+    "contact": {
+      "phone": "(920) 215-3603",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://ascofwi.com/contact/"
+    }
+  },
+  {
+    "id": 3,
+    "account_name": "Algonquin Road Surgery Center",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2550 West Algonquin Road",
+      "city": "Lake In The Hills",
+      "state": "IL",
+      "zip": "60156"
+    },
+    "contact": {
+      "phone": "(847) 458-1246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.algonquinsurgerycenter.com/"
+    }
+  },
+  {
+    "id": 4,
+    "account_name": "Ambulatory Surgical Center of Stevens Point",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "500 Vincent St",
+      "city": "Stevens Point",
+      "state": "WI",
+      "zip": "54481"
+    },
+    "contact": {
+      "phone": "(715) 345-0500",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.ascstevenspoint.com/"
+    }
+  },
+  {
+    "id": 5,
+    "account_name": "Aspirus Stevens Point Surgery Center",
+    "npi": "1386677060",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "5409 Vern Holmes Dr",
+      "city": "Stevens Point",
+      "state": "WI",
+      "zip": "54482"
+    },
+    "contact": {
+      "phone": "(715) 342-1015",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aspirus.org"
+    }
+  },
+  {
+    "id": 6,
+    "account_name": "Aurora Ambulatory Surgery Center",
+    "npi": "1659839686",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "9000 W Sura Ln",
+      "city": "Greenfield",
+      "state": "WI",
+      "zip": "53228"
+    },
+    "contact": {
+      "phone": "(414) 246-6800",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aurorahealthcare.org/locations/surgery-center/aurora-surgery-center-greenfield-9000-sura-ln"
+    }
+  },
+  {
+    "id": 7,
+    "account_name": "Aurora East Mequon Surgery Center",
+    "npi": "1346235058",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "12203 Corporate Pkwy",
+      "city": "Mequon",
+      "state": "WI",
+      "zip": "53092"
+    },
+    "contact": {
+      "phone": "(262) 387-8383",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aurorahealthcare.org/locations/surgery-center/aurora-advanced-healthcare-east-mequon-surgery-center-12203-corporate-pkwy"
+    }
+  },
+  {
+    "id": 8,
+    "account_name": "Aurora Surgery Center - Manitowoc (FKA Manitowoc Surgery Center)",
+    "npi": "1033140397",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1720 Memorial Dr",
+      "city": "Manitowoc",
+      "state": "WI",
+      "zip": "54220"
+    },
+    "contact": {
+      "phone": "(920) 683-1250",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aurorabaycare.com/maps-and-facilities/surgery-center/aurora-surgery-center-1720-memorial-dr"
+    }
+  },
+  {
+    "id": 9,
+    "account_name": "Bellin Health Marinette Ambulatory Surgery Center",
+    "npi": "1881129351",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2820 Roosevelt Rd",
+      "city": "Marinette",
+      "state": "WI",
+      "zip": "54143"
+    },
+    "contact": {
+      "phone": "(715) 735-5225",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "care.bellin.org/location/bellin-health-marinette-ambulatory-surgery-center-54143"
+    }
+  },
+  {
+    "id": 10,
+    "account_name": "Blue Ridge Surgery Center",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "10630 Clemson Boulevard, Suite 200",
+      "city": "Seneca",
+      "state": "SC",
+      "zip": "29678"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 11,
+    "account_name": "Bluemound Surgery Center",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "N4W22370 Bluemound rd",
+      "city": "Waukesha",
+      "state": "WI",
+      "zip": "53186"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "bluemoundsurgerycenter.com"
+    }
+  },
+  {
+    "id": 12,
+    "account_name": "Bone & Joint Center - Plover",
+    "npi": "1477900710",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1767 Park Ave",
+      "city": "Plover",
+      "state": "WI",
+      "zip": "54467"
+    },
+    "contact": {
+      "phone": "(800) 445-6442",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.bonejoint.net/"
+    }
+  },
+  {
+    "id": 13,
+    "account_name": "Bone & Joint Surgery Center - Wausau",
+    "npi": "1053585125",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "225000 Hummingbird Rd",
+      "city": "Wausau",
+      "state": "WI",
+      "zip": "54401"
+    },
+    "contact": {
+      "phone": "(715) 359-6442",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.bonejoint.net/services/bone-joint-surgery-center/"
+    }
+  },
+  {
+    "id": 14,
+    "account_name": "Drexel Town Square Surgery Center",
+    "npi": "1942722798",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "7901 S 6th St",
+      "city": "Oak Creek",
+      "state": "WI",
+      "zip": "53154"
+    },
+    "contact": {
+      "phone": "(414) 346-8000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.froedtert.com/locations/surgery-center/drexel-town-square-surgery-center"
+    }
+  },
+  {
+    "id": 15,
+    "account_name": "Fox Valley Surgery Center",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1600-1628 N. Casaloma Drive",
+      "city": "Appleton",
+      "state": "WI",
+      "zip": "54913"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 16,
+    "account_name": "Franklin SurgiCenter",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "4202 W. Oakwood Park Ct.",
+      "city": "Franklin",
+      "state": "WI",
+      "zip": "53132"
+    },
+    "contact": {
+      "phone": "(414) 423-5250",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 17,
+    "account_name": "Geneva Surgical Suites",
+    "npi": "1447799580",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "119 Elizabeth Ln",
+      "city": "Genoa City",
+      "state": "WI",
+      "zip": "53128"
+    },
+    "contact": {
+      "phone": "(262) 295-1213",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.genevasurgicalsuites.com/"
+    }
+  },
+  {
+    "id": 18,
+    "account_name": "Madison Surgery Center",
+    "npi": "1295755023",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1 S Park St",
+      "city": "Madison",
+      "state": "WI",
+      "zip": "53701"
+    },
+    "contact": {
+      "phone": "(608) 287-2200",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.uwhealth.org/our-services/madison-surgery-center/madison-surgery-center/48832"
+    }
+  },
+  {
+    "id": 19,
+    "account_name": "Marshfield Clinic Wausau Center - Outpatient Surgery Center",
+    "npi": "1649649187",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2727 Plaza Dr.",
+      "city": "Wausau",
+      "state": "WI",
+      "zip": "54401"
+    },
+    "contact": {
+      "phone": "(715) 847-3000",
+      "mobile": null,
+      "email": null,
+      "fax": "(715) 847-3329",
+      "website": "www.marshfieldclinic.org/locations/centers/wausau%20center"
+    }
+  },
+  {
+    "id": 20,
+    "account_name": "Menomonee Falls Surgery Center",
+    "npi": "1689666596",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "W180 N8045 Town Hall Rd",
+      "city": "Menomonee Falls",
+      "state": "WI",
+      "zip": "53051"
+    },
+    "contact": {
+      "phone": "(262) 250-0950",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.froedtert.com/locations/surgery-center/menomonee-falls-surgery-center"
+    }
+  },
+  {
+    "id": 21,
+    "account_name": "Metropolitan Medical Center",
+    "npi": "1417904756",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "4495 N Oakland Ave",
+      "city": "Shorewood",
+      "state": "WI",
+      "zip": "53211"
+    },
+    "contact": {
+      "phone": "(414) 967-3550",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 22,
+    "account_name": "Milwaukee Surgical Suites",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "6945 S 27th St",
+      "city": "Franklin",
+      "state": "WI",
+      "zip": "53132"
+    },
+    "contact": {
+      "phone": "(414) 574-0253",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://milwaukee-surgical-suites-llc.business.site"
+    }
+  },
+  {
+    "id": 23,
+    "account_name": "Neurosurgery and Endovascular Associates",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "10500 W Loomis Rd #130",
+      "city": "Franklin",
+      "state": "WI",
+      "zip": "53132"
+    },
+    "contact": {
+      "phone": "(414)-488-1111",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 24,
+    "account_name": "New Berlin Medical Services",
+    "npi": "1396193033",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "15324 W Beloit Rd",
+      "city": "New Berlin",
+      "state": "WI",
+      "zip": "53151"
+    },
+    "contact": {
+      "phone": "(262) 788-5290",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "newberlinmedical.com/index.html"
+    }
+  },
+  {
+    "id": 25,
+    "account_name": "Niagara Health Center",
+    "npi": "1699745067",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1601 Roosevelt Rd",
+      "city": "Niagara",
+      "state": "WI",
+      "zip": "54151"
+    },
+    "contact": {
+      "phone": "(715) 251-1780",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "niagarahealthcenter.net/index.html"
+    }
+  },
+  {
+    "id": 26,
+    "account_name": "North Shore Surgical Center",
+    "npi": "1104811918",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "7007 N Range Line Rd",
+      "city": "Glendale",
+      "state": "WI",
+      "zip": "53209"
+    },
+    "contact": {
+      "phone": "(414) 352-3341",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aurorahealthcare.org/locations/surgery-center/aurora-advanced-healthcare-north-shore-surgical-center-7007-range-line-rd"
+    }
+  },
+  {
+    "id": 27,
+    "account_name": "NorthShore Surgical Suites",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "8400 Lakeview Parkway, Suite 800",
+      "city": "Pleasant Prairie",
+      "state": "WI",
+      "zip": "53158"
+    },
+    "contact": {
+      "phone": "(262) 455-7548",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 28,
+    "account_name": "Northwoods Surgery Center",
+    "npi": "1407046436",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "611 Veterans Parkway",
+      "city": "Woodruff",
+      "state": "WI",
+      "zip": "54568"
+    },
+    "contact": {
+      "phone": "(715) 358-8600",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.northwoodssurgerywi.com/"
+    }
+  },
+  {
+    "id": 29,
+    "account_name": "NovaMed Surgery Center of Madison",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1200 John Q. Hammons Drive Suite 102",
+      "city": "Madison",
+      "state": "WI",
+      "zip": "53717"
+    },
+    "contact": {
+      "phone": "(608) 827-5504",
+      "mobile": null,
+      "email": null,
+      "fax": "(608) 827-5779",
+      "website": null
+    }
+  },
+  {
+    "id": 30,
+    "account_name": "Orthoillinois ASC",
+    "npi": "1356412894",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "346 Roxbury Rd",
+      "city": "Rockford",
+      "state": "IL",
+      "zip": "61107"
+    },
+    "contact": {
+      "phone": "(815) 381-7400",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 31,
+    "account_name": "OrthoMidwest Surgery Center Beloit",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2102 Freeman Pkwy",
+      "city": "Beloit",
+      "state": "WI",
+      "zip": "53511"
+    },
+    "contact": {
+      "phone": "(779) 221-3000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.orthoillinois.com"
+    }
+  },
+  {
+    "id": 32,
+    "account_name": "Orthopaedic Associates of Wisconsin - Orthopaedic Surgery Center",
+    "npi": "1003976929",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "N15w28300 Golf Rd",
+      "city": "Pewaukee",
+      "state": "WI",
+      "zip": "53072"
+    },
+    "contact": {
+      "phone": "(262) 303-5055",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.orthowisconsin.com/theorthosurgerycenter"
+    }
+  },
+  {
+    "id": 33,
+    "account_name": "Orthopedic and Sports Institute of the Fox Valley",
+    "npi": "1043254162",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2105 E Enterprise Ave # 101",
+      "city": "Appleton",
+      "state": "WI",
+      "zip": "54913"
+    },
+    "contact": {
+      "phone": "(920) 560-1000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 34,
+    "account_name": "Orthopedic Surgery Center of Green Bay (FKA Bellin Orthopedic Surgery Center)",
+    "npi": "1922334101",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2223 Lime Kiln Rd",
+      "city": "Green Bay",
+      "state": "WI",
+      "zip": "54311"
+    },
+    "contact": {
+      "phone": "(920) 569-4300",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "osmsgb.com/our-surgery-centers/"
+    }
+  },
+  {
+    "id": 35,
+    "account_name": "Rockford Ambulatory Surgery Center",
+    "npi": "1265486849",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1016 Featherstone Rd",
+      "city": "Rockford",
+      "state": "IL",
+      "zip": "61107"
+    },
+    "contact": {
+      "phone": "(815) 226-3300",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.rockfordambulatory.com/"
+    }
+  },
+  {
+    "id": 36,
+    "account_name": "Spine & Neuro Health & Wellness Center",
+    "npi": "1831858455",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "850 Geneva Parkway N. Suite 200",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    },
+    "contact": {
+      "phone": "(803) 252-7979",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 37,
+    "account_name": "Spine Solutions of Green Bay, LLC",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2595 Development Drive, Suite 100",
+      "city": "Green Bay",
+      "state": "WI",
+      "zip": "54311"
+    },
+    "contact": {
+      "phone": "(833) 821-7246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://wispineandpain.com/"
+    }
+  },
+  {
+    "id": 38,
+    "account_name": "Spine Solutions of Sheboygan, LLC",
+    "npi": "1366487241",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2124 Kohler Memorial Dr.",
+      "city": "Sheboygan",
+      "state": "WI",
+      "zip": "53081"
+    },
+    "contact": {
+      "phone": "(888) 901-7246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.apmhealth.com/"
+    }
+  },
+  {
+    "id": 39,
+    "account_name": "Spine Solutions of West Bend, LLC",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1000 Gateway Ct, Suite 200",
+      "city": "West Bend",
+      "state": "WI",
+      "zip": "53095"
+    },
+    "contact": {
+      "phone": "(833) 821-7246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.wispineandpain.com/"
+    }
+  },
+  {
+    "id": 40,
+    "account_name": "Surgery Center of Wisconsin Rapids (AKA Wisconsin River Orthopaedics Surgery Center)",
+    "npi": "1194813840",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "140 24th St S",
+      "city": "Wisconsin Rapids",
+      "state": "WI",
+      "zip": "54494"
+    },
+    "contact": {
+      "phone": "(715) 424-1881",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.wroinstitute.com/surgery-center"
+    }
+  },
+  {
+    "id": 41,
+    "account_name": "Surgi Center of Greater Madison",
+    "npi": "1720017973",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "34 Schroeder Ct",
+      "city": "Madison",
+      "state": "WI",
+      "zip": "53711"
+    },
+    "contact": {
+      "phone": "(608) 288-7246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.apmhealth.com/"
+    }
+  },
+  {
+    "id": 42,
+    "account_name": "Surgical Associates - Wausau",
+    "npi": "1710910476",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2400 Pine Ridge Blvd",
+      "city": "Wausau",
+      "state": "WI",
+      "zip": "54401"
+    },
+    "contact": {
+      "phone": "(715) 847-2022",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "sawisconsin.com/locations/"
+    }
+  },
+  {
+    "id": 43,
+    "account_name": "The Surgery Center, LLC (Franklin WI)",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3111 W Rawson Ave #100",
+      "city": "Franklin",
+      "state": "WI",
+      "zip": "53132"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.thesurgerycenter-llc.com/"
+    }
+  },
+  {
+    "id": 44,
+    "account_name": "United Medical Center",
+    "npi": "1346372240",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "9120 W Capitol Dr",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53222"
+    },
+    "contact": {
+      "phone": "(414) 438-7246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.apmhealth.com/"
+    }
+  },
+  {
+    "id": 45,
+    "account_name": "Waukesha SurgiCenter",
+    "npi": "1164019485",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "813 W Moreland Blvd",
+      "city": "Waukesha",
+      "state": "WI",
+      "zip": "53188"
+    },
+    "contact": {
+      "phone": "(262) 297-7246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.ppwhealth.com/"
+    }
+  },
+  {
+    "id": 46,
+    "account_name": "Wausau Surgery Center",
+    "npi": "1851356786",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3801 Stewart Ave.",
+      "city": "Wausau",
+      "state": "WI",
+      "zip": "54401"
+    },
+    "contact": {
+      "phone": "(715) 842-4490",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aspirus.org/find-a-location/wausau-surgery-center-llc-417"
+    }
+  },
+  {
+    "id": 47,
+    "account_name": "Wauwatosa Surgery Center",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "10900 W Potter Rd",
+      "city": "Wauwatosa",
+      "state": "WI",
+      "zip": "53226-3424"
+    },
+    "contact": {
+      "phone": "414-774-9227",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 48,
+    "account_name": "Wisconsin Health Center",
+    "npi": "1528083110",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "4448 W Loomis Rd",
+      "city": "Greenfield",
+      "state": "WI",
+      "zip": "53220"
+    },
+    "contact": {
+      "phone": "(414) 281-5150",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 49,
+    "account_name": "Wisconsin Specialty Surgery Center",
+    "npi": "1053721530",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "7401 104th Ave",
+      "city": "Kenosha",
+      "state": "WI",
+      "zip": "53142"
+    },
+    "contact": {
+      "phone": "(262) 697-1006",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://wisconsinspecialty.com/"
+    }
+  },
+  {
+    "id": 50,
+    "account_name": "Wisconsin Spine and Pain",
+    "npi": null,
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2124 Kohler Memorial Dr Suite 110",
+      "city": "Sheboygan",
+      "state": "WI",
+      "zip": "53081"
+    },
+    "contact": {
+      "phone": "(833) 821-7246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.wispineandpain.com/?utm_source=gmb_auth"
+    }
+  },
+  {
+    "id": 51,
+    "account_name": "Wisconsin Surgery Center",
+    "npi": "1396774543",
+    "account_record_type": "ASC",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3305 S 20th St",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53215"
+    },
+    "contact": {
+      "phone": "(414) 384-2100",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.wiasc.com"
+    }
+  },
+  {
+    "id": 52,
+    "account_name": "Agnesian HealthCare",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "430 E Division St",
+      "city": "Fond Du Lac",
+      "state": "WI",
+      "zip": "54935"
+    },
+    "contact": {
+      "phone": "(920) 929-2300",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.agnesian.com/"
+    }
+  },
+  {
+    "id": 53,
+    "account_name": "All Saints Healthcare",
+    "npi": "1639123284",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3807 Spring St",
+      "city": "Racine",
+      "state": "WI",
+      "zip": "53405"
+    },
+    "contact": {
+      "phone": "(414) 465-3000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.mywheaton.org"
+    }
+  },
+  {
+    "id": 54,
+    "account_name": "Appleton Medical Center",
+    "npi": "1902832306",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1818 N. Meade St.",
+      "city": "Appleton",
+      "state": "WI",
+      "zip": "54911"
+    },
+    "contact": {
+      "phone": "(800) 236-4101",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.thedacare.org/Hospitals-and-Clinics/Appleton-Medical-Center.aspx"
+    }
+  },
+  {
+    "id": 55,
+    "account_name": "Ascension Calumet Hospital",
+    "npi": "1376541748",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "614 Memorial Drive",
+      "city": "Chilton",
+      "state": "WI",
+      "zip": "53014"
+    },
+    "contact": {
+      "phone": "1-800-458-4042",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 56,
+    "account_name": "Ascension Columbia St Marys Hospital Milwaukee",
+    "npi": "1871656082",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2301 N Lake Dr",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53211"
+    },
+    "contact": {
+      "phone": "(414) 585-1000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "healthcare.ascension.org/Locations/Wisconsin/WIMIL/Milwaukee-Ascension-Columbia-St-Marys-Hospital-Milwaukee"
+    }
+  },
+  {
+    "id": 57,
+    "account_name": "Ascension NE Wisconsin Mercy Hospital (Oshkosh)",
+    "npi": "1023065356",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "500 South Oakwood Road",
+      "city": "Oshkosh",
+      "state": "WI",
+      "zip": "54904"
+    },
+    "contact": {
+      "phone": "(920) 223-2000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 58,
+    "account_name": "Ascension NE Wisconsin St. Elizabeth Hospital (Appleton)",
+    "npi": "1407803638",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1506 S. Oneida Street",
+      "city": "Appleton",
+      "state": "WI",
+      "zip": "54915"
+    },
+    "contact": {
+      "phone": "(920) 738-2000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 59,
+    "account_name": "Aspirus Iron River",
+    "npi": "1497750830",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "400 W Ice Lake Rd",
+      "city": "Iron River",
+      "state": "MI",
+      "zip": "49935"
+    },
+    "contact": {
+      "phone": "(715) 847-2927",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "aspirus.org"
+    }
+  },
+  {
+    "id": 60,
+    "account_name": "Aspirus Ironwood Hospital",
+    "npi": "1649297342",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "N10561 Grandview Ln",
+      "city": "Ironwood",
+      "state": "MI",
+      "zip": "49938"
+    },
+    "contact": {
+      "phone": "(906) 932-2525",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aspirus.org/find-a-location/aspirus-ironwood-hospital-28"
+    }
+  },
+  {
+    "id": 61,
+    "account_name": "Aspirus Keweenaw Hospital",
+    "npi": "1326115569",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "205 Osceola St",
+      "city": "Laurium",
+      "state": "MI",
+      "zip": "49913"
+    },
+    "contact": {
+      "phone": "(906) 337-6500",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aspirus.org/find-a-location/aspirus-keweenaw-hospital-26"
+    }
+  },
+  {
+    "id": 62,
+    "account_name": "Aspirus Langlade Hospital",
+    "npi": "1639187412",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "112 E 5th Ave",
+      "city": "Antigo",
+      "state": "WI",
+      "zip": "54409"
+    },
+    "contact": {
+      "phone": "(715) 623-2331",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aspirus.org/find-a-location/aspirus-langlade-hospital-283"
+    }
+  },
+  {
+    "id": 63,
+    "account_name": "Aspirus Riverview Hospital (FKA Riverview Hospital Association)",
+    "npi": "1295754844",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "410 Dewey St",
+      "city": "Wisconsin Rapids",
+      "state": "WI",
+      "zip": "54494"
+    },
+    "contact": {
+      "phone": "(715) 423-6060",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aspirus.org/find-a-location/aspirus-riverview-hospital-437"
+    }
+  },
+  {
+    "id": 64,
+    "account_name": "Aspirus Wausau Hospital",
+    "npi": "1558363986",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "333 Pine Ridge Blvd",
+      "city": "Wausau",
+      "state": "WI",
+      "zip": "54401"
+    },
+    "contact": {
+      "phone": "(715) 847-2121",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.aspirus.org/AspirusWausauHospital/Our-Locations/518.aspx"
+    }
+  },
+  {
+    "id": 65,
+    "account_name": "Aurora Bay Area",
+    "npi": "1043397177",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3003 University Dr",
+      "city": "Marinette",
+      "state": "WI",
+      "zip": "54143"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 66,
+    "account_name": "Aurora BayCare Medical Ctr",
+    "npi": "1255387726",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2845 Greenbier Road",
+      "city": "Green Bay",
+      "state": "WI",
+      "zip": "54311"
+    },
+    "contact": {
+      "phone": "(920) 288-8000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 67,
+    "account_name": "Aurora Lakeland Medical Center",
+    "npi": "1972628006",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "W3985 County Rd NN",
+      "city": "Elkhorn",
+      "state": "WI",
+      "zip": "53121"
+    },
+    "contact": {
+      "phone": "262-741-2000",
+      "mobile": null,
+      "email": null,
+      "fax": "262-741-2759",
+      "website": null
+    }
+  },
+  {
+    "id": 68,
+    "account_name": "Aurora Medica Center Kenosha",
+    "npi": "1225156888",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "10400 75th St",
+      "city": "Kenosha",
+      "state": "WI",
+      "zip": "53142"
+    },
+    "contact": {
+      "phone": "(262) 948-7000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 69,
+    "account_name": "Aurora Medical Center - Oshkosh",
+    "npi": "1275578064",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "855 N Westhaven Dr",
+      "city": "Oshkosh",
+      "state": "WI",
+      "zip": "54904"
+    },
+    "contact": {
+      "phone": "(920) 456-6000",
+      "mobile": null,
+      "email": null,
+      "fax": "(920) 456-7601",
+      "website": null
+    }
+  },
+  {
+    "id": 70,
+    "account_name": "Aurora Medical Center Grafton",
+    "npi": "1265740195",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "975 Port Washington Rd.",
+      "city": "Grafton",
+      "state": "WI",
+      "zip": "53024"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 71,
+    "account_name": "Aurora Medical Center Manitowoc County",
+    "npi": "1477508687",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "5000 Memorial Drive",
+      "city": "Two Rivers",
+      "state": "WI",
+      "zip": "54241"
+    },
+    "contact": {
+      "phone": "(920) 794-5000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.aurorahealthcare.org/"
+    }
+  },
+  {
+    "id": 72,
+    "account_name": "Aurora Medical Center Washington County",
+    "npi": "1760420103",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1032 E Sumner St",
+      "city": "Hartford",
+      "state": "WI",
+      "zip": "53027"
+    },
+    "contact": {
+      "phone": "262-673-2300",
+      "mobile": null,
+      "email": null,
+      "fax": "262-670-7620",
+      "website": null
+    }
+  },
+  {
+    "id": 73,
+    "account_name": "Aurora Memorial Hospital of Burlington",
+    "npi": "1861557753",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "252 McHenry St",
+      "city": "Burlington",
+      "state": "WI",
+      "zip": "53105"
+    },
+    "contact": {
+      "phone": "262-767-6000",
+      "mobile": null,
+      "email": null,
+      "fax": "262-767-6711",
+      "website": null
+    }
+  },
+  {
+    "id": 74,
+    "account_name": "Aurora Sheboygan Memorial Medical Center",
+    "npi": "1164700316",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3400 Union Avenue",
+      "city": "Sheboygan",
+      "state": "WI",
+      "zip": "53083"
+    },
+    "contact": {
+      "phone": "(920) 451-5000",
+      "mobile": null,
+      "email": null,
+      "fax": "(920) 451-5333",
+      "website": "http://www.aurorahealthcare.org/find-a-location/hospital/aurora-sheboygan-memorial-medical-center"
+    }
+  },
+  {
+    "id": 75,
+    "account_name": "Aurora Sinai Medical Center",
+    "npi": "1811941263",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "945 N 12th St",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53233"
+    },
+    "contact": {
+      "phone": "414-219-2000",
+      "mobile": null,
+      "email": null,
+      "fax": "414-219-7402",
+      "website": null
+    }
+  },
+  {
+    "id": 76,
+    "account_name": "Aurora St. Luke's South Shore",
+    "npi": "1205044906",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "5900 S Lake Dr",
+      "city": "Cudahy",
+      "state": "WI",
+      "zip": "53110"
+    },
+    "contact": {
+      "phone": "414-489-9000",
+      "mobile": null,
+      "email": null,
+      "fax": "414-489-4153",
+      "website": null
+    }
+  },
+  {
+    "id": 77,
+    "account_name": "Aurora Summit Hospital",
+    "npi": "1699008029",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "36500 Aurora Drive",
+      "city": "Oconomowoc",
+      "state": "WI",
+      "zip": "53066"
+    },
+    "contact": {
+      "phone": "(262) 434-1000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aurora.org"
+    }
+  },
+  {
+    "id": 78,
+    "account_name": "Aurora West Allis Medical Center",
+    "npi": "1407801640",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "8901 W Lincoln Ave",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53227"
+    },
+    "contact": {
+      "phone": "(414) 328-7910",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.aurora.org"
+    }
+  },
+  {
+    "id": 79,
+    "account_name": "Baraga County Memorial Hospital",
+    "npi": "1558479824",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "18341 Us Highway 41",
+      "city": "Lanse",
+      "state": "MI",
+      "zip": "49946"
+    },
+    "contact": {
+      "phone": "(906) 524-3300",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.bcmh.org"
+    }
+  },
+  {
+    "id": 80,
+    "account_name": "Bellin Health Oconto Hospital",
+    "npi": "1356373302",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "820 Arbutus Ave",
+      "city": "Oconto",
+      "state": "WI",
+      "zip": "54153"
+    },
+    "contact": {
+      "phone": "(920) 835-1100",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.bellin.org/locations/hospital_surgery-locations/bellin-oconto-hospital/contact-oconto"
+    }
+  },
+  {
+    "id": 81,
+    "account_name": "Bellin Hospital",
+    "npi": "1891740585",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "744 S Webster Ave",
+      "city": "Green Bay",
+      "state": "WI",
+      "zip": "54305"
+    },
+    "contact": {
+      "phone": "(920) 433-3500",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.bellin.org"
+    }
+  },
+  {
+    "id": 82,
+    "account_name": "Beloit Hospital",
+    "npi": "1982780094",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1969 W Hart Rd",
+      "city": "Beloit",
+      "state": "WI",
+      "zip": "53511"
+    },
+    "contact": {
+      "phone": "(608) 364-5011",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "beloithealthsystem.org/beloit-hospital"
+    }
+  },
+  {
+    "id": 83,
+    "account_name": "Columbia St. Mary's - Milwaukee Campus",
+    "npi": "1811926132",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2323 North Lake Drive",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53211-2126"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 84,
+    "account_name": "Columbia St. Mary's - Ozaukee Campus",
+    "npi": "1316000706",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "13111 North Port Washington Road",
+      "city": "Mequon",
+      "state": "WI",
+      "zip": "53097"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 85,
+    "account_name": "Community Memorial Hospital (WI)",
+    "npi": "1326086570",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "W180 N8085 Town Hall Road",
+      "city": "Menomonee Falls",
+      "state": "WI",
+      "zip": "53051"
+    },
+    "contact": {
+      "phone": "(262) 251-1000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.froedtert.com/community-memorial"
+    }
+  },
+  {
+    "id": 86,
+    "account_name": "Dickinson County Memorial Hospital",
+    "npi": "1801887013",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1721 S Stephenson Ave",
+      "city": "Iron Mountain",
+      "state": "MI",
+      "zip": "49801"
+    },
+    "contact": {
+      "phone": "(906) 774-1313",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.dchs.org"
+    }
+  },
+  {
+    "id": 87,
+    "account_name": "Divine Savior Healthcare",
+    "npi": "1124083894",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2817 New Pinery Rd",
+      "city": "Portage",
+      "state": "WI",
+      "zip": "53901"
+    },
+    "contact": {
+      "phone": "(608) 742-4131",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.dshealthcare.com"
+    }
+  },
+  {
+    "id": 88,
+    "account_name": "Door County Medical Center",
+    "npi": "1093743874",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "323 South 18th Avenue",
+      "city": "Sturgeon Bay",
+      "state": "WI",
+      "zip": "54235-1495"
+    },
+    "contact": {
+      "phone": "(800) 522-8919",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 89,
+    "account_name": "Eagle River Hospital",
+    "npi": "1346204385",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "201 Hospital Road",
+      "city": "Eagle River",
+      "state": "WI",
+      "zip": "54521"
+    },
+    "contact": {
+      "phone": "715.479.7411",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 90,
+    "account_name": "Elmbrook Memorial Hospital",
+    "npi": "1598714420",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "19333 W North Avenue",
+      "city": "Brookfield",
+      "state": "WI",
+      "zip": "53045"
+    },
+    "contact": {
+      "phone": "(262) 785-2000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 91,
+    "account_name": "FHN Memorial Hospital",
+    "npi": "1447228788",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1045 W Stephenson St",
+      "city": "Freeport",
+      "state": "IL",
+      "zip": "61032"
+    },
+    "contact": {
+      "phone": "(877) 600-0346",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.fhn.org/"
+    }
+  },
+  {
+    "id": 92,
+    "account_name": "Fort Memorial Hospital (AKA Fort HealthCare)",
+    "npi": "1811916281",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "611 Sherman Ave E",
+      "city": "Fort Atkinson",
+      "state": "WI",
+      "zip": "53538"
+    },
+    "contact": {
+      "phone": "(920) 568-5000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.forthealthcare.com/"
+    }
+  },
+  {
+    "id": 93,
+    "account_name": "Froedtert & Medical College of Wisconsin Regional Health Network",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "9200 W. Wisconsin Ave.",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53226"
+    },
+    "contact": {
+      "phone": "(414) 805-3666",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.froedtert.com/"
+    }
+  },
+  {
+    "id": 94,
+    "account_name": "Froedtert Hospital",
+    "npi": "1255334173",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "9200 W. Wisconsin Ave.",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53226"
+    },
+    "contact": {
+      "phone": "(414) 805-3000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.froedtert.com/froedtert"
+    }
+  },
+  {
+    "id": 95,
+    "account_name": "Froedtert Pleasant Prairie (FKA St. Catherine's)",
+    "npi": "1942259726",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "9555 76th Street",
+      "city": "Pleasant Prairie",
+      "state": "WI",
+      "zip": "53158"
+    },
+    "contact": {
+      "phone": "(262) 557-8000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.uhsi.org/AboutUs/St.CatherinesMedicalCenterCampus.aspx"
+    }
+  },
+  {
+    "id": 96,
+    "account_name": "Froedtert South System (Parent)",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "6308 8th Avenue",
+      "city": "Kenosha",
+      "state": "WI",
+      "zip": "53143"
+    },
+    "contact": {
+      "phone": "(262) 656-2011",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.froedtertsouth.com/"
+    }
+  },
+  {
+    "id": 97,
+    "account_name": "Good Samaritan Hospital",
+    "npi": "1124084678",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "601 South Center Avenue",
+      "city": "Merrill",
+      "state": "WI",
+      "zip": "54452"
+    },
+    "contact": {
+      "phone": "(715) 536-5511",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 98,
+    "account_name": "Grant Regional Health Center",
+    "npi": "1255339867",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "507 S Monroe St",
+      "city": "Lancaster",
+      "state": "WI",
+      "zip": "53813"
+    },
+    "contact": {
+      "phone": "(608) 723-2143",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.grantregional.com"
+    }
+  },
+  {
+    "id": 99,
+    "account_name": "Gundersen Boscobel Area Hospital (FKA Boscobel Area Health Care)",
+    "npi": "1760459846",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "205 Parker St",
+      "city": "Boscobel",
+      "state": "WI",
+      "zip": "53805"
+    },
+    "contact": {
+      "phone": "(608) 375-4112",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.gundersenhealth.org/boscobel/hospital/"
+    }
+  },
+  {
+    "id": 100,
+    "account_name": "Helen Newberry Joy Hospital",
+    "npi": "1497742050",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "502 W Harrie St",
+      "city": "Newberry",
+      "state": "MI",
+      "zip": "49868"
+    },
+    "contact": {
+      "phone": "(906) 293-9200",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.hnjh.org"
+    }
+  },
+  {
+    "id": 101,
+    "account_name": "Holy Family Memorial (Manitowoc WI)",
+    "npi": "1700998697",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2300 Western Avenue",
+      "city": "Manitowoc",
+      "state": "WI",
+      "zip": "54221"
+    },
+    "contact": {
+      "phone": "(920) 320-2011",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.hfmhealth.org/"
+    }
+  },
+  {
+    "id": 102,
+    "account_name": "Howard Young Medical Center",
+    "npi": "1134183171",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "240 Maple Street",
+      "city": "Woodruff",
+      "state": "WI",
+      "zip": "54568"
+    },
+    "contact": {
+      "phone": "715.356.8000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 103,
+    "account_name": "HSHS St. Clare Memorial Hospital",
+    "npi": "1851477913",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "855 S. Main St.",
+      "city": "Oconto Falls",
+      "state": "WI",
+      "zip": "54154"
+    },
+    "contact": {
+      "phone": "(920) 846-3444",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://stclarememorial.org/index.html"
+    }
+  },
+  {
+    "id": 104,
+    "account_name": "HSHS St. Mary's Hospital - Green Bay",
+    "npi": "1649246877",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1726 Shawano Avenue",
+      "city": "Green Bay",
+      "state": "WI",
+      "zip": "54303"
+    },
+    "contact": {
+      "phone": "800) 666-5606",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.stmgb.org/Scripts/"
+    }
+  },
+  {
+    "id": 105,
+    "account_name": "HSHS St. Vincent Hospital - Green Bay",
+    "npi": "1114908001",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "835 South Van Buren Street",
+      "city": "Green Bay",
+      "state": "WI",
+      "zip": "54301"
+    },
+    "contact": {
+      "phone": "(800) 236-3030",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.stvincenthospital.org/Scripts/"
+    }
+  },
+  {
+    "id": 106,
+    "account_name": "Javon Bea Hospital Riverside",
+    "npi": "1811488109",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "8201 E. Riverside Blvd.",
+      "city": "Rockford",
+      "state": "IL",
+      "zip": "61114"
+    },
+    "contact": {
+      "phone": "(815) 971-7000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://mercyhealthsystem.org/find-a-location/&location-type=Hospitals"
+    }
+  },
+  {
+    "id": 107,
+    "account_name": "Javon Bea Hospital?Rockton (FKA Rockford Memorial Hospital)",
+    "npi": "1629118609",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2400 North Rockton Avenue",
+      "city": "Rockford",
+      "state": "IL",
+      "zip": "61103"
+    },
+    "contact": {
+      "phone": "(815) 971-5000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.rockfordhealthsystem.org/rockford-memorial-hospital"
+    }
+  },
+  {
+    "id": 108,
+    "account_name": "Kenosha Medical Center",
+    "npi": "1003831132",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "6308 Eighth Avenue",
+      "city": "Kenosha",
+      "state": "WI",
+      "zip": "53143"
+    },
+    "contact": {
+      "phone": "(262) 656-2011",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.uhsi.org/"
+    }
+  },
+  {
+    "id": 109,
+    "account_name": "Mackinac Straits Health System",
+    "npi": "1124283502",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1140 N State St",
+      "city": "Saint Ignace",
+      "state": "MI",
+      "zip": "49781"
+    },
+    "contact": {
+      "phone": "(906) 643-8585",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.mackinacstraitshealth.org/"
+    }
+  },
+  {
+    "id": 110,
+    "account_name": "Marquette General Hospital",
+    "npi": "1568727048",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "850 West Baraga Ave.",
+      "city": "Marquette",
+      "state": "MI",
+      "zip": "49855"
+    },
+    "contact": {
+      "phone": "(906) 449-3000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.mgh.org/"
+    }
+  },
+  {
+    "id": 111,
+    "account_name": "Marshfield Medical Center - Minocqua",
+    "npi": "1467085878",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "9576 WI-70",
+      "city": "Minocqua",
+      "state": "WI",
+      "zip": "54548"
+    },
+    "contact": {
+      "phone": "(715) 358-1710",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.marshfieldclinic.org/locations/centers/Minocqua%20-%20Marshfield%20Medical%20Center"
+    }
+  },
+  {
+    "id": 112,
+    "account_name": "Marshfield Medical Center Beaver Dam (FKA Beaver Dam Community Hospital)",
+    "npi": "1023187416",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "707 S University Ave",
+      "city": "Beaver Dam",
+      "state": "WI",
+      "zip": "53916"
+    },
+    "contact": {
+      "phone": "(920) 887-7181",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "bdch.com"
+    }
+  },
+  {
+    "id": 113,
+    "account_name": "Mercyhealth (FKA Mercy Health System)",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1000 Mineral Point Ave",
+      "city": "Janesville",
+      "state": "WI",
+      "zip": "53548"
+    },
+    "contact": {
+      "phone": "(608) 756-6000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.mercyhealthsystem.org"
+    }
+  },
+  {
+    "id": 114,
+    "account_name": "Mercyhealth Hospital and Medical Center - Harvard",
+    "npi": "1427001445",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "901 Grant St",
+      "city": "Harvard",
+      "state": "IL",
+      "zip": "60033"
+    },
+    "contact": {
+      "phone": "(815) 943-5431",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "mercyhealthsystem.org/location/mercyhealth-harvard-hospital-and-medical-center-campus/"
+    }
+  },
+  {
+    "id": 115,
+    "account_name": "Mercyhealth Hospital and Medical Center - Walworth",
+    "npi": "1699728550",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "N2950 WI-67",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    },
+    "contact": {
+      "phone": "(262) 245-0535",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "mercyhealthsystem.org/location/mercyhealth-walworth-hospital-and-medical-center-campus/"
+    }
+  },
+  {
+    "id": 116,
+    "account_name": "Mercyhealth Hospital and Trauma Center - Janesville",
+    "npi": "1093768962",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1000 Mineral Point Ave",
+      "city": "Janesville",
+      "state": "WI",
+      "zip": "53548"
+    },
+    "contact": {
+      "phone": "(608) 756-6000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "mercyhealthsystem.org/location/mercyhealth-hospital-and-trauma-center-janesville/"
+    }
+  },
+  {
+    "id": 117,
+    "account_name": "Meriter Hospital",
+    "npi": "1114920048",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "202 S. Park Street",
+      "city": "Madison",
+      "state": "WI",
+      "zip": "53715"
+    },
+    "contact": {
+      "phone": "(608) 417-6000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.meriter.com/"
+    }
+  },
+  {
+    "id": 118,
+    "account_name": "Midwest Orthopedic Specialty Hospital",
+    "npi": "1861635971",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2nd Floor",
+      "city": "Franklin",
+      "state": "WI",
+      "zip": "53132"
+    },
+    "contact": {
+      "phone": "(414) 817-5800",
+      "mobile": null,
+      "email": null,
+      "fax": "(414) 817-5801",
+      "website": "Mymosh.com"
+    }
+  },
+  {
+    "id": 119,
+    "account_name": "Mile Bluff Medical Center",
+    "npi": "1568487411",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1050 Division St",
+      "city": "Mauston",
+      "state": "WI",
+      "zip": "53948"
+    },
+    "contact": {
+      "phone": "(608) 847-6161",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.milebluff.com/"
+    }
+  },
+  {
+    "id": 120,
+    "account_name": "Milwaukee VA Medical Center (AKA Clement J Zablocki VA Medical Center)",
+    "npi": "1851828685",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "5000 W National Ave",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53295"
+    },
+    "contact": {
+      "phone": "(414) 384-2000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.milwaukee.va.gov/"
+    }
+  },
+  {
+    "id": 121,
+    "account_name": "Monroe Clinic Hospital",
+    "npi": "1740291491",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "515 22nd Ave",
+      "city": "Monroe",
+      "state": "WI",
+      "zip": "53566"
+    },
+    "contact": {
+      "phone": "(608) 324-2000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.monroeclinic.org/hours-locations/monroe-clinic-hospital"
+    }
+  },
+  {
+    "id": 122,
+    "account_name": "Northwestern Medicine McHenry Hospital (FKA Centegra Hospital - McHenry)",
+    "npi": "1982611281",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "4201 Medical Center Dr",
+      "city": "McHenry",
+      "state": "IL",
+      "zip": "60050"
+    },
+    "contact": {
+      "phone": "(815) 344-5000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.nm.org/locations/mchenry-hospital"
+    }
+  },
+  {
+    "id": 123,
+    "account_name": "Oconomowoc Memorial Hospital",
+    "npi": "1366420531",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "791 Summit Ave.",
+      "city": "Oconomowoc",
+      "state": "WI",
+      "zip": "53066"
+    },
+    "contact": {
+      "phone": "(262) 569-9400",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.prohealthcare.org/facility-oconomowoc-oconomowoc-memorial-hospital-1.aspx"
+    }
+  },
+  {
+    "id": 124,
+    "account_name": "Orthopaedic Hospital of WI",
+    "npi": "1669584983",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "475 West River Woods Parkway",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53212"
+    },
+    "contact": {
+      "phone": "(414) 961-6800",
+      "mobile": null,
+      "email": null,
+      "fax": "(414) 961-6738",
+      "website": "http://www.ohow.com"
+    }
+  },
+  {
+    "id": 125,
+    "account_name": "Oscar G Johnson VA Medical Center (AKA Iron Mountain VA Medical Center)",
+    "npi": "1679522213",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "325 E H St",
+      "city": "Iron Mountain",
+      "state": "MI",
+      "zip": "49801"
+    },
+    "contact": {
+      "phone": "(906) 774-3300",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.ironmountain.va.gov/"
+    }
+  },
+  {
+    "id": 126,
+    "account_name": "OSF Saint Anthony Medical Center",
+    "npi": "1790739977",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "5666 E. State St.",
+      "city": "Rockford",
+      "state": "IL",
+      "zip": "61108"
+    },
+    "contact": {
+      "phone": "(815) 395-5166",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "Osfsaintsnthony.org"
+    }
+  },
+  {
+    "id": 127,
+    "account_name": "OSF St Francis Hospital (Escanaba)",
+    "npi": "1922058551",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3401 Ludington St",
+      "city": "Escanaba",
+      "state": "MI",
+      "zip": "49829"
+    },
+    "contact": {
+      "phone": "(906) 786-3311",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.osfhealthcare.org/st-francis/"
+    }
+  },
+  {
+    "id": 128,
+    "account_name": "Prairie Ridge Health Hospital (FKA Columbus Community Hospital)",
+    "npi": "1841376183",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1515 Park Ave",
+      "city": "Columbus",
+      "state": "WI",
+      "zip": "53925"
+    },
+    "contact": {
+      "phone": "(920) 623-2200",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "prairieridge.health/en/"
+    }
+  },
+  {
+    "id": 129,
+    "account_name": "Pro Spine & Pain (Corporate Parent)",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2500 W. Layton Ave. Suite 120",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53221"
+    },
+    "contact": {
+      "phone": "262-297-7246",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.ppwhealth.com/"
+    }
+  },
+  {
+    "id": 130,
+    "account_name": "ProHealth Care",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "N17 W24300 Riverwood Dr.",
+      "city": "Waukesha",
+      "state": "WI",
+      "zip": "53188"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.prohealthcare.org/home.aspx"
+    }
+  },
+  {
+    "id": 131,
+    "account_name": "Reedsburg Area Medical Center",
+    "npi": "1891796710",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2000 N Dewey Ave",
+      "city": "Reedsburg",
+      "state": "WI",
+      "zip": "53959"
+    },
+    "contact": {
+      "phone": "(608) 524-6487",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.ramchealth.com/"
+    }
+  },
+  {
+    "id": 132,
+    "account_name": "Richland Hospital",
+    "npi": "1659301273",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "333 E 2nd St",
+      "city": "Richland Center",
+      "state": "WI",
+      "zip": "53581"
+    },
+    "contact": {
+      "phone": "(608) 647-6321",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.richlandhospital.com"
+    }
+  },
+  {
+    "id": 133,
+    "account_name": "Ripon Medical Center",
+    "npi": "1053362624",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "845 Parkside St.",
+      "city": "Ripon",
+      "state": "WI",
+      "zip": "54971"
+    },
+    "contact": {
+      "phone": "(920) 926-4932",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.agnesian.com/locations/ripon-medical-center"
+    }
+  },
+  {
+    "id": 134,
+    "account_name": "Sacred Heart Hospital (Tomahawk WI)",
+    "npi": "1598715401",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "401 West Mohawk Drive",
+      "city": "Tomahawk",
+      "state": "WI",
+      "zip": "54487"
+    },
+    "contact": {
+      "phone": "(715) 453-7700",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 135,
+    "account_name": "Sauk Prairie Memorial Hospital",
+    "npi": "1861466153",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "260 26th St",
+      "city": "Prairie Du Sac",
+      "state": "WI",
+      "zip": "53578"
+    },
+    "contact": {
+      "phone": "(608) 643-3311",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.saukprairiehealthcare.org/about/locations"
+    }
+  },
+  {
+    "id": 136,
+    "account_name": "Southwest Health Center",
+    "npi": "1831279793",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1400 Eastside Rd",
+      "city": "Platteville",
+      "state": "WI",
+      "zip": "53818"
+    },
+    "contact": {
+      "phone": "(608) 348-2331",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.southwesthealth.org"
+    }
+  },
+  {
+    "id": 137,
+    "account_name": "SSM Health in Wisconsin",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1808 W Beltline Hwy",
+      "city": "Madison",
+      "state": "WI",
+      "zip": "53713"
+    },
+    "contact": {
+      "phone": "(314) 994-7800",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.ssmhealth.com/wisconsin"
+    }
+  },
+  {
+    "id": 138,
+    "account_name": "SSM Health St. Clare Hospital - Baraboo",
+    "npi": "1386641207",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "??????????????????????????????????707 Fourteenth Street",
+      "city": "Baraboo",
+      "state": "WI",
+      "zip": "53913"
+    },
+    "contact": {
+      "phone": "(608) 356-1400",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.stclare.com/"
+    }
+  },
+  {
+    "id": 139,
+    "account_name": "SSM Health St. Mary's Hospital - Janesville",
+    "npi": "1194004408",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "????????????????????????????3400 E. Racine St.",
+      "city": "Janesville",
+      "state": "WI",
+      "zip": "53546"
+    },
+    "contact": {
+      "phone": "(608) 373-8000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.stmarysjanesville.com/"
+    }
+  },
+  {
+    "id": 140,
+    "account_name": "SSM Health St. Mary's Hospital - Madison",
+    "npi": "1184621211",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "??700 South Park Street",
+      "city": "Madison",
+      "state": "WI",
+      "zip": "53715"
+    },
+    "contact": {
+      "phone": "(608) 251-6100",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.stmarysmadison.com/locations/hospital"
+    }
+  },
+  {
+    "id": 141,
+    "account_name": "St Agnes Hospital",
+    "npi": "1346228541",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "430 E Division St",
+      "city": "Fond du Lac",
+      "state": "WI",
+      "zip": "54935"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.agnesian.com/locations/st-agnes-hospital"
+    }
+  },
+  {
+    "id": 142,
+    "account_name": "St Joseph West Bend",
+    "npi": "1851336044",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3200 Pleasant Valley Road",
+      "city": "West Bend",
+      "state": "WI",
+      "zip": "53095"
+    },
+    "contact": {
+      "phone": "(262) 334-5533",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.froedtert.com/st-josephs"
+    }
+  },
+  {
+    "id": 143,
+    "account_name": "St. Lukes Medical Center (Milwaukee)",
+    "npi": "1861447179",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2900 W Oklahoma Ave",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53215"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 144,
+    "account_name": "St. Mary's Hospital (Rhinelander WI)",
+    "npi": "1356391247",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2251 North Shore Drive",
+      "city": "Rhinelander",
+      "state": "WI",
+      "zip": "54501"
+    },
+    "contact": {
+      "phone": "(800) 578-0840",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 145,
+    "account_name": "St. Michael's Hospital (Stevens Point WI)",
+    "npi": "1538112230",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "900 Illinois Avenue",
+      "city": "Stevens Point",
+      "state": "WI",
+      "zip": "54481"
+    },
+    "contact": {
+      "phone": "(715) 346-5000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 146,
+    "account_name": "St. Nicholas Hospital",
+    "npi": "1730184342",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3100 Superior Avenue",
+      "city": "Sheboygan",
+      "state": "WI",
+      "zip": "53081"
+    },
+    "contact": {
+      "phone": "(920) 459-8300",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.stnicholashospital.org/Home.aspx"
+    }
+  },
+  {
+    "id": 147,
+    "account_name": "Swedish American Hospital",
+    "npi": "1760542732",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1401 East State St",
+      "city": "Rockford",
+      "state": "IL",
+      "zip": "61104"
+    },
+    "contact": {
+      "phone": "(815) 968-4400",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.swedishamerican.org/"
+    }
+  },
+  {
+    "id": 148,
+    "account_name": "SYSTEM: University of Wisconsin Health System (AKA UW Health)",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "600 Highland Ave",
+      "city": "Madison",
+      "state": "WI",
+      "zip": "53792"
+    },
+    "contact": {
+      "phone": "(608) 263-6400",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.uwhealth.org/"
+    }
+  },
+  {
+    "id": 149,
+    "account_name": "Theda Clark Medical Center",
+    "npi": "1518993880",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "130 2nd Street",
+      "city": "Neenah",
+      "state": "WI",
+      "zip": "54956"
+    },
+    "contact": {
+      "phone": "(920) 729-3100",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.thedacare.org/Hospitals-and-Clinics/ThedaClark-Medical-Center.aspx"
+    }
+  },
+  {
+    "id": 150,
+    "account_name": "ThedaCare Inc. Health System",
+    "npi": "1376656959",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3 Neenah Ctr",
+      "city": "Neenah",
+      "state": "WI",
+      "zip": "54956"
+    },
+    "contact": {
+      "phone": "(920) 996-3200",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.thedacare.org/"
+    }
+  },
+  {
+    "id": 151,
+    "account_name": "ThedaCare Medical Center - New London (FKA New London Family Medical Center)",
+    "npi": "1538127220",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1405 Mill St",
+      "city": "New London",
+      "state": "WI",
+      "zip": "54961"
+    },
+    "contact": {
+      "phone": "(920) 531-2400",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.thedacare.org/hospitals-and-clinics/thedacare-medical-center-new-london.aspx"
+    }
+  },
+  {
+    "id": 152,
+    "account_name": "ThedaCare Medical Center - Shawano (FKA Shawano Medical Center)",
+    "npi": "1548260839",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "100 County Road B",
+      "city": "Shawano",
+      "state": "WI",
+      "zip": "54166"
+    },
+    "contact": {
+      "phone": "(715) 526-2111",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.thedacare.org/hospitals-and-clinics/thedacare-medical-center-shawano.aspx"
+    }
+  },
+  {
+    "id": 153,
+    "account_name": "Thedacare Medical Center-Berlin",
+    "npi": "1760413777",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "225 Memorial Dr",
+      "city": "Berlin",
+      "state": "WI",
+      "zip": "54923"
+    },
+    "contact": {
+      "phone": "(920) 361-1313",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.thedacare.org/Hospitals-and-Clinics/Community-Health-Network.aspx"
+    }
+  },
+  {
+    "id": 154,
+    "account_name": "ThedaCare Medical Center-Orthopedic, Spine and Pain",
+    "npi": "1740920909",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2400 E. Capitol Drive",
+      "city": "Appleton",
+      "state": "WI",
+      "zip": "94911"
+    },
+    "contact": {
+      "phone": "(920) 454-3300",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 155,
+    "account_name": "ThedaCare Medical Center-Waupaca",
+    "npi": "1013995521",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "800 Riverside Drive",
+      "city": "Waupaca",
+      "state": "WI",
+      "zip": "54981"
+    },
+    "contact": {
+      "phone": "(800) 924-4442",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.thedacare.org/Hospitals-and-Clinics/Riverside-Medical-Center.aspx"
+    }
+  },
+  {
+    "id": 156,
+    "account_name": "Tomah Memorial Hospital",
+    "npi": "1184765240",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "501 Gopher Dr",
+      "city": "Tomah",
+      "state": "WI",
+      "zip": "54660"
+    },
+    "contact": {
+      "phone": "(608) 372-2181",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.tomahhospital.org/contact"
+    }
+  },
+  {
+    "id": 157,
+    "account_name": "Tomah VA Medical Center",
+    "npi": "1356391775",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "500 E Veterans St",
+      "city": "Tomah",
+      "state": "WI",
+      "zip": "54660"
+    },
+    "contact": {
+      "phone": "(608) 372-3971",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.tomah.va.gov/"
+    }
+  },
+  {
+    "id": 158,
+    "account_name": "UP Health System",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "500 Campus Dr",
+      "city": "Hancock",
+      "state": "MI",
+      "zip": "49930"
+    },
+    "contact": {
+      "phone": "(906) 483-1000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.uphealthsystem.com"
+    }
+  },
+  {
+    "id": 159,
+    "account_name": "UP Health System - Bell Hospital",
+    "npi": "1699101345",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "901 Lakeshore Drive",
+      "city": "Ishpeming",
+      "state": "MI",
+      "zip": "49849"
+    },
+    "contact": {
+      "phone": "906-486-4431",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.bellhospital.org/"
+    }
+  },
+  {
+    "id": 160,
+    "account_name": "UP Health System - Portage Hospital",
+    "npi": "1245667229",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "500 Campus Drive",
+      "city": "Hancock",
+      "state": "MI",
+      "zip": "49930"
+    },
+    "contact": {
+      "phone": "(906) 483-1000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.portagehealth.org/"
+    }
+  },
+  {
+    "id": 161,
+    "account_name": "Upland Hills Health",
+    "npi": "1487745501",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "800 Compassion Way",
+      "city": "Dodgeville",
+      "state": "WI",
+      "zip": "53533"
+    },
+    "contact": {
+      "phone": "(608) 930-8000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.uplandhillshealth.org"
+    }
+  },
+  {
+    "id": 162,
+    "account_name": "UW Health University Hospital",
+    "npi": "1922043744",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "600 Highland Avenue",
+      "city": "Madison",
+      "state": "WI",
+      "zip": "53792"
+    },
+    "contact": {
+      "phone": "(608) 263-6400",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 163,
+    "account_name": "Vernon Memorial Hospital",
+    "npi": "1497750921",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "507 Main St",
+      "city": "Viroqua",
+      "state": "WI",
+      "zip": "54665"
+    },
+    "contact": {
+      "phone": "(608) 637-2101",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.vmh.org/"
+    }
+  },
+  {
+    "id": 164,
+    "account_name": "Vista Medical Center East",
+    "npi": "1639120694",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1324 North Sheridan Road",
+      "city": "Waukegan",
+      "state": "IL",
+      "zip": "60085"
+    },
+    "contact": {
+      "phone": "(847) 360-4184",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 165,
+    "account_name": "War Memorial Hospital - Sault Sainte Marie MI",
+    "npi": "1295756948",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "500 Osborn Blvd",
+      "city": "Sault Sainte Marie",
+      "state": "MI",
+      "zip": "49783"
+    },
+    "contact": {
+      "phone": "(906) 635-4460",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.warmemorialhospital.org/locations-12/"
+    }
+  },
+  {
+    "id": 166,
+    "account_name": "Watertown Regional Medical Center",
+    "npi": "1992776041",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "125 Hospital Dr",
+      "city": "Watertown",
+      "state": "WI",
+      "zip": "53098"
+    },
+    "contact": {
+      "phone": "(920) 261-4210",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.watertownregional.com/"
+    }
+  },
+  {
+    "id": 167,
+    "account_name": "Waukesha Memorial Hospital",
+    "npi": "1629056890",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "725 American Ave",
+      "city": "Waukesha",
+      "state": "WI",
+      "zip": "53188"
+    },
+    "contact": {
+      "phone": "(262) 928-1000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.prohealthcare.org"
+    }
+  },
+  {
+    "id": 168,
+    "account_name": "Waupun Memorial Hospital",
+    "npi": "1548248644",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "620 W Brown St",
+      "city": "Waupun",
+      "state": "WI",
+      "zip": "53963"
+    },
+    "contact": {
+      "phone": "(920) 324-5581",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "www.agnesian.com/locations/waupun-memorial-hospital"
+    }
+  },
+  {
+    "id": 169,
+    "account_name": "Weston - Marshfield Medical Center",
+    "npi": "1235177122",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3400 Ministry Parkway",
+      "city": "Weston",
+      "state": "WI",
+      "zip": "54476"
+    },
+    "contact": {
+      "phone": "(715) 393-3000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.marshfieldclinic.org/locations/centers/Weston%20-%20Marshfield%20Medical%20Center"
+    }
+  },
+  {
+    "id": 170,
+    "account_name": "Wheaton Franciscan Healthcare",
+    "npi": null,
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "400 W. River Woods Parkway",
+      "city": "Glendale",
+      "state": "WI",
+      "zip": "53212"
+    },
+    "contact": {
+      "phone": "(414) 465-3000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.mywheaton.org/"
+    }
+  },
+  {
+    "id": 171,
+    "account_name": "Wheaton Franciscan Healthcare - Saint Francis",
+    "npi": "1225087190",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "3237 S. 16th Street",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53215"
+    },
+    "contact": {
+      "phone": "(414) 647-7459",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": null
+    }
+  },
+  {
+    "id": 172,
+    "account_name": "Wheaton Franciscan Healthcare Franklin",
+    "npi": "1457479552",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "10101 S. 27th Street",
+      "city": "Franklin",
+      "state": "WI",
+      "zip": "53132"
+    },
+    "contact": {
+      "phone": "(414) 325-4700",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.mywheaton.org/franklin"
+    }
+  },
+  {
+    "id": 173,
+    "account_name": "Wheaton Franciscan St. Joseph Campus",
+    "npi": "1427007384",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "5000 W. Chambers Street",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53210"
+    },
+    "contact": {
+      "phone": "(414) 447-2000",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.mywheaton.org/stjoseph"
+    }
+  },
+  {
+    "id": 174,
+    "account_name": "William S Middleton Memorial Veterans Hospital",
+    "npi": "1427309269",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "2500 Overlook Ter",
+      "city": "Madison",
+      "state": "WI",
+      "zip": "53705"
+    },
+    "contact": {
+      "phone": "(888) 478-8321",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://www.madison.va.gov/"
+    }
+  },
+  {
+    "id": 175,
+    "account_name": "Wisconsin Heart Hospital",
+    "npi": "1457301665",
+    "account_record_type": "Hospital",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "10000 W Bluemound Road",
+      "city": "Milwaukee",
+      "state": "WI",
+      "zip": "53226"
+    },
+    "contact": {
+      "phone": "(414) 778-7800",
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "http://www.mywheaton.org/hearthospital"
+    }
+  },
+  {
+    "id": 176,
+    "account_name": "Alleviate Pain & Spine",
+    "npi": null,
+    "account_record_type": "OBL",
+    "specialty": "Ortho",
+    "territory": "Wisconsin East",
+    "account_owner": "Eric Swick",
+    "address": {
+      "street": "1716 Lawrence Drive, Suite 103",
+      "city": "De Pere",
+      "state": "WI",
+      "zip": "54115"
+    },
+    "contact": {
+      "phone": null,
+      "mobile": null,
+      "email": null,
+      "fax": null,
+      "website": "https://alleviatepainandspine.com/"
+    }
+  }
+]

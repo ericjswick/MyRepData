@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Search, Plus, Filter, MapPin, Phone, Mail, Building2, Users, Eye, X } from 'lucide-react'
+import facilitiesData from '../data/facilities.json'
 
 const FacilityListFixedNew = () => {
   const [facilities, setFacilities] = useState([])
@@ -37,37 +38,8 @@ const FacilityListFixedNew = () => {
   const fetchFacilities = async () => {
     try {
       setLoading(true)
-      // Use mock data for now
-      setFacilities([
-        {
-          id: 1,
-          account_name: 'Advanced Spine Center',
-          account_record_type: 'ASC',
-          specialty: 'Ortho Spine',
-          territory: 'Wisconsin East',
-          account_owner: 'Eric Swick',
-          shipping_address_line_1: '123 Medical Drive',
-          shipping_city: 'Milwaukee',
-          shipping_state: 'WI',
-          shipping_zip: '53202',
-          phone: '(414) 555-0123',
-          website: 'https://advancedspine.com'
-        },
-        {
-          id: 2,
-          account_name: 'Regional Medical Center',
-          account_record_type: 'Hospital',
-          specialty: 'Neuro',
-          territory: 'Wisconsin West',
-          account_owner: 'Moore Medical Solutions, LLC',
-          shipping_address_line_1: '456 Healthcare Blvd',
-          shipping_city: 'Madison',
-          shipping_state: 'WI',
-          shipping_zip: '53703',
-          phone: '(608) 555-0456',
-          website: 'https://regionalmed.com'
-        }
-      ])
+      // Use real facilities data from CSV
+      setFacilities(facilitiesData)
     } catch (error) {
       console.error('Error fetching facilities:', error)
     } finally {
@@ -78,8 +50,8 @@ const FacilityListFixedNew = () => {
   const filteredFacilities = facilities.filter(facility => {
     const matchesSearch = !searchTerm || 
       facility.account_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      facility.shipping_city?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      facility.shipping_state?.toLowerCase().includes(searchTerm.toLowerCase())
+      facility.address?.city?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      facility.address?.state?.toLowerCase().includes(searchTerm.toLowerCase())
     
     const matchesTerritory = !selectedTerritory || facility.territory === selectedTerritory
     const matchesSpecialty = !selectedSpecialty || facility.specialty === selectedSpecialty

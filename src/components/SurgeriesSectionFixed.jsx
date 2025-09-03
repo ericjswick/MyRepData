@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge.jsx'
 import CalendarIntegration from '@/components/CalendarIntegration.jsx'
 import physiciansData from '../data/physicians.json'
+import facilitiesData from '../data/facilities.json'
 
 function SurgeriesSectionFixed() {
   const [showCalendarModal, setShowCalendarModal] = useState(false)
@@ -55,7 +56,7 @@ function SurgeriesSectionFixed() {
       id: 1,
       procedure: 'L4-L5 Fusion',
       physician: 'Dr. Branko Prpa',
-      facility: 'Advanced Spine Center',
+      facility: 'Advanced Spine Center (Neenah WI)',
       date: '2025-08-24',
       time: '8:00 AM',
       duration: 180,
@@ -67,7 +68,7 @@ function SurgeriesSectionFixed() {
       id: 2,
       procedure: 'Cervical Discectomy',
       physician: 'Dr. Max Ots',
-      facility: 'Regional Medical Center',
+      facility: 'Access Medical Center',
       date: '2025-08-25',
       time: '10:30 AM',
       duration: 120,
@@ -514,11 +515,11 @@ function SurgeriesSectionFixed() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select Facility</option>
-                      <option value="Advanced Spine Center">Advanced Spine Center</option>
-                      <option value="Access Medical Center">Access Medical Center</option>
-                      <option value="Regional Medical Center">Regional Medical Center</option>
-                      <option value="Milwaukee Surgical Center">Milwaukee Surgical Center</option>
-                      <option value="Wisconsin Spine Institute">Wisconsin Spine Institute</option>
+                      {facilitiesData.map((facility) => (
+                        <option key={facility.id} value={facility.account_name}>
+                          {facility.account_name} - {facility.address.city}, {facility.address.state}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   
