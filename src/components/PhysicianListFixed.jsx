@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge.jsx'
 import PhysicianDetails from './PhysicianDetails.jsx'
 import PhysicianDetailsMobile from './PhysicianDetailsMobile.jsx'
 import PhysicianEditModal from './PhysicianEditModal.jsx'
+import physiciansData from '../data/physicians.json'
 
 const PhysicianListFixed = () => {
   const [physicians, setPhysicians] = useState([])
@@ -37,130 +38,13 @@ const PhysicianListFixed = () => {
         const data = await response.json()
         setPhysicians(data.physicians || [])
       } else {
-        // Fallback to mock data for testing
-        const mockPhysicians = [
-          {
-            id: 1,
-            full_name: 'Dr. John Smith',
-            first_name: 'John',
-            last_name: 'Smith',
-            npi: '1234567890',
-            specialty: 'Ortho Spine',
-            degree: 'MD',
-            account_owner: 'Eric Swick',
-            phone: '(555) 123-4567',
-            email: 'john.smith@example.com',
-            first_surgery_date: '2023-01-15',
-            offices: [{
-              city: 'Milwaukee',
-              state: 'WI',
-              phone: '(555) 123-4567',
-              email: 'john.smith@example.com'
-            }],
-            affiliations: [
-              { facility_name: 'Advanced Spine Center' },
-              { facility_name: 'Regional Medical Center' }
-            ]
-          },
-          {
-            id: 2,
-            full_name: 'Dr. Jane Doe',
-            first_name: 'Jane',
-            last_name: 'Doe',
-            npi: '0987654321',
-            specialty: 'Neuro',
-            degree: 'MD',
-            account_owner: 'Moore Medical Solutions, LLC',
-            phone: '(555) 987-6543',
-            email: 'jane.doe@example.com',
-            first_surgery_date: '2022-08-20',
-            offices: [{
-              city: 'Madison',
-              state: 'WI',
-              phone: '(555) 987-6543',
-              email: 'jane.doe@example.com'
-            }],
-            affiliations: [
-              { facility_name: 'University Hospital' }
-            ]
-          },
-          {
-            id: 3,
-            full_name: 'Dr. Mike Johnson',
-            first_name: 'Mike',
-            last_name: 'Johnson',
-            npi: '1122334455',
-            specialty: 'Ortho',
-            degree: 'DO',
-            account_owner: 'MDT Direct',
-            phone: '(555) 456-7890',
-            email: 'mike.johnson@example.com',
-            first_surgery_date: '2023-03-10',
-            offices: [{
-              city: 'Chicago',
-              state: 'IL',
-              phone: '(555) 456-7890',
-              email: 'mike.johnson@example.com'
-            }],
-            affiliations: [
-              { facility_name: 'Chicago Medical Center' },
-              { facility_name: 'Orthopedic Institute' }
-            ]
-          }
-        ]
-        setPhysicians(mockPhysicians)
+        // Use real physician data
+        setPhysicians(physiciansData || [])
       }
     } catch (error) {
       console.error('Error fetching physicians:', error)
-      // Use mock data on error
-      const mockPhysicians = [
-        {
-          id: 1,
-          full_name: 'Dr. John Smith',
-          first_name: 'John',
-          last_name: 'Smith',
-          npi: '1234567890',
-          specialty: 'Ortho Spine',
-          degree: 'MD',
-          account_owner: 'Eric Swick',
-          phone: '(555) 123-4567',
-          email: 'john.smith@example.com',
-          first_surgery_date: '2023-01-15',
-          offices: [{
-            city: 'Milwaukee',
-            state: 'WI',
-            phone: '(555) 123-4567',
-            email: 'john.smith@example.com'
-          }],
-          affiliations: [
-            { facility_name: 'Advanced Spine Center' },
-            { facility_name: 'Regional Medical Center' }
-          ]
-        },
-        {
-          id: 2,
-          full_name: 'Dr. Jane Doe',
-          first_name: 'Jane',
-          last_name: 'Doe',
-          npi: '0987654321',
-          specialty: 'Neuro',
-          degree: 'MD',
-          account_owner: 'Moore Medical Solutions, LLC',
-          phone: '(555) 987-6543',
-          email: 'jane.doe@example.com',
-          first_surgery_date: '2022-08-20',
-          offices: [{
-            city: 'Madison',
-            state: 'WI',
-            phone: '(555) 987-6543',
-            email: 'jane.doe@example.com'
-          }],
-          affiliations: [
-            { facility_name: 'University Hospital' }
-          ]
-        }
-      ]
-      setPhysicians(mockPhysicians)
+      // Use real physician data on error
+      setPhysicians(physiciansData || [])
     } finally {
       setLoading(false)
     }

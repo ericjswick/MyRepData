@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "full_name": "Dr. Max Ots",
+    "first_name": "Max",
+    "last_name": "Ots",
+    "npi": "1669498093",
+    "specialty": "Neuro",
+    "degree": "MD",
+    "account_owner": "Moore Medical Solutions, LLC",
+    "phone": "(920) 288-8350",
+    "mobile": "(920) 819-2113",
+    "email": "mots@baycare.net",
+    "fax": "(920) 288-8355",
+    "website": "https://www.baycare.net/doctor-or-provider/max-ots-md-facs/",
+    "first_surgery_date": "1/21/2016",
+    "offices": [
+      {
+        "address_line_1": "2845 Greenbriar Rd",
+        "address_line_2": "",
+        "city": "Green Bay",
+        "state": "WI",
+        "zip": "54311",
+        "phone": "(920) 288-8350",
+        "email": "mots@baycare.net"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 2,
+    "full_name": "Dr. Branko Prpa",
+    "first_name": "Branko",
+    "last_name": "Prpa",
+    "npi": "1447271309",
+    "specialty": "Ortho Spine",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(414) 939-5447",
+    "mobile": "",
+    "email": "",
+    "fax": "",
+    "website": "www.prpaspinesurgery.com",
+    "first_surgery_date": "11/14/2013",
+    "offices": [
+      {
+        "address_line_1": "6308 8th Ave",
+        "address_line_2": "",
+        "city": "Kenosha",
+        "state": "WI",
+        "zip": "53143",
+        "phone": "(414) 939-5447",
+        "email": ""
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 3,
+    "full_name": "Dr. Shekhar Dagam",
+    "first_name": "Shekhar",
+    "last_name": "Dagam",
+    "npi": "1629020946",
+    "specialty": "Neuro",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(414) 385-7150",
+    "mobile": "",
+    "email": "alaina_s17@yahoo.com",
+    "fax": "",
+    "website": "http://www.dagamneurosurgery.com/",
+    "first_surgery_date": "8/13/2013",
+    "offices": [
+      {
+        "address_line_1": "2801 Kinnickinnic River Parkway",
+        "address_line_2": "Suite 102",
+        "city": "Milwaukee",
+        "state": "WI",
+        "zip": "53215-3696",
+        "phone": "(414) 385-7150",
+        "email": "alaina_s17@yahoo.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 4,
+    "full_name": "Dr. Vishal M. Patel",
+    "first_name": "Vishal",
+    "last_name": "M. Patel",
+    "npi": "1619313475",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "920-303-8700",
+    "mobile": "",
+    "email": "vpatel235362@direct.myadvocateaurora.org",
+    "fax": "",
+    "website": "https://care.aurorahealthcare.org/doctors/vishal-m-patel-oshkosh-pain-management-interventional",
+    "first_surgery_date": "7/5/2024",
+    "offices": [
+      {
+        "address_line_1": "855 N Westhaven Dr.",
+        "address_line_2": "",
+        "city": "Oshkosh",
+        "state": "WI",
+        "zip": "54904",
+        "phone": "920-303-8700",
+        "email": "vpatel235362@direct.myadvocateaurora.org"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 5,
+    "full_name": "Dr. Mansoor Aman",
+    "first_name": "Mansoor",
+    "last_name": "Aman",
+    "npi": "1487094074",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "920-303-8700",
+    "mobile": "",
+    "email": "mansoor.aman@aah.org",
+    "fax": "",
+    "website": "https://care.aurorahealthcare.org/doctors/mansoor-m-aman-oshkosh-pain-management-interventional-2",
+    "first_surgery_date": "4/30/2024",
+    "offices": [
+      {
+        "address_line_1": "855 N Westhaven Dr.",
+        "address_line_2": "",
+        "city": "Oshkosh",
+        "state": "WI",
+        "zip": "54904",
+        "phone": "920-303-8700",
+        "email": "mansoor.aman@aah.org"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 6,
+    "full_name": "Dr. Leah Mortensen",
+    "first_name": "Leah",
+    "last_name": "Mortensen",
+    "npi": "1972090207",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(414) 260-5544",
+    "mobile": "",
+    "email": "mortensen.leah@gmail.com",
+    "fax": "",
+    "website": "https://www.innovativepaincare.net/dr-l-mortensen",
+    "first_surgery_date": "1/14/2025",
+    "offices": [
+      {
+        "address_line_1": "3111 W Rawson Ave.",
+        "address_line_2": "",
+        "city": "Franklin",
+        "state": "WI",
+        "zip": "53132",
+        "phone": "(414) 260-5544",
+        "email": "mortensen.leah@gmail.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 7,
+    "full_name": "Dr. Christina Moore",
+    "first_name": "Christina",
+    "last_name": "Moore",
+    "npi": "1962848945",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(414) 352-3100",
+    "mobile": "",
+    "email": "",
+    "fax": "",
+    "website": "https://www.aurorahealthcare.org/doctors/christina-c-moore-1962848945?address_id=70128",
+    "first_surgery_date": "6/3/2025",
+    "offices": [
+      {
+        "address_line_1": "3003 W Good Hope Rd",
+        "address_line_2": "",
+        "city": "Milwaukee",
+        "state": "WI",
+        "zip": "53209",
+        "phone": "(414) 352-3100",
+        "email": ""
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 8,
+    "full_name": "Dr. Cyril Philip",
+    "first_name": "Cyril",
+    "last_name": "Philip",
+    "npi": "1578713343",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(262) 205-6920",
+    "mobile": "",
+    "email": "",
+    "fax": "",
+    "website": "https://www.mwsportsandspine.com/",
+    "first_surgery_date": "10/29/2024",
+    "offices": [
+      {
+        "address_line_1": "850 Geneva Parkway N  ",
+        "address_line_2": "Suite 100",
+        "city": "Lake Geneva",
+        "state": "WI",
+        "zip": "53147",
+        "phone": "(262) 205-6920",
+        "email": ""
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 9,
+    "full_name": "Dr. Atit Shah",
+    "first_name": "Atit",
+    "last_name": "Shah",
+    "npi": "1487881108",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(833) 821-7246",
+    "mobile": "",
+    "email": "ashah@wispineandpain.com",
+    "fax": "",
+    "website": "https://www.wispineandpain.com/atit-shah-md",
+    "first_surgery_date": "2/28/2023",
+    "offices": [
+      {
+        "address_line_1": "2124 Kohler Memorial Drive",
+        "address_line_2": "",
+        "city": "Sheboygan",
+        "state": "WI",
+        "zip": "53081",
+        "phone": "(833) 821-7246",
+        "email": "ashah@wispineandpain.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 10,
+    "full_name": "Dr. Shailesh Gandhi",
+    "first_name": "Shailesh",
+    "last_name": "Gandhi",
+    "npi": "1992758783",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(414) 385-7450",
+    "mobile": "",
+    "email": "",
+    "fax": "",
+    "website": "https://healthcare.ascension.org/find-care/provider/1992758783/shailesh-gandhi",
+    "first_surgery_date": "3/24/2023",
+    "offices": [
+      {
+        "address_line_1": "2900 W Oklahoma Ave",
+        "address_line_2": "",
+        "city": "Milwaukee",
+        "state": "WI",
+        "zip": "53215",
+        "phone": "(414) 385-7450",
+        "email": ""
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 11,
+    "full_name": "Dr. Michael Jung",
+    "first_name": "Michael",
+    "last_name": "Jung",
+    "npi": "1861665747",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(833) 821-7246",
+    "mobile": "",
+    "email": "mjungmd@wispineandpain.com",
+    "fax": "",
+    "website": "https://wispineandpain.com/michael-jung",
+    "first_surgery_date": "1/25/2023",
+    "offices": [
+      {
+        "address_line_1": "2124 Kohler Memorial Drive",
+        "address_line_2": "",
+        "city": "Sheboygan",
+        "state": "WI",
+        "zip": "53081",
+        "phone": "(833) 821-7246",
+        "email": "mjungmd@wispineandpain.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 12,
+    "full_name": "Dr. Jeremy Scarlett",
+    "first_name": "Jeremy",
+    "last_name": "Scarlett",
+    "npi": "1992737589",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(833) 821-7246",
+    "mobile": "",
+    "email": "",
+    "fax": "",
+    "website": "https://www.wispineandpain.com/jeremy-scarlett-md",
+    "first_surgery_date": "2/14/2023",
+    "offices": [
+      {
+        "address_line_1": "2124 Kohler Memorial Dr ",
+        "address_line_2": "Suite 100",
+        "city": "Sheboygan",
+        "state": "WI",
+        "zip": "53081",
+        "phone": "(833) 821-7246",
+        "email": ""
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 13,
+    "full_name": "Dr. Raymond Sohn",
+    "first_name": "Raymond",
+    "last_name": "Sohn",
+    "npi": "1033430640",
+    "specialty": "Pain Management",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(833) 821-7246",
+    "mobile": "",
+    "email": "rsohn@wispineandpain.com",
+    "fax": "",
+    "website": "https://www.wispineandpain.com/raymond-seth-sohn-do",
+    "first_surgery_date": "8/9/2023",
+    "offices": [
+      {
+        "address_line_1": "2595 Development Drive",
+        "address_line_2": "Suite 150",
+        "city": "Green Bay",
+        "state": "WI",
+        "zip": "54311",
+        "phone": "(833) 821-7246",
+        "email": "rsohn@wispineandpain.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 14,
+    "full_name": "Dr. Syed Mehdi",
+    "first_name": "Syed",
+    "last_name": "Mehdi",
+    "npi": "1295266245",
+    "specialty": "Ortho Spine",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(262) 671-7465",
+    "mobile": "",
+    "email": "smehdi09@gmail.com",
+    "fax": "",
+    "website": "https://www.froedtert.com/doctors/syed-mehdi-1518931138",
+    "first_surgery_date": "4/15/2024",
+    "offices": [
+      {
+        "address_line_1": "9697 St Catherine's Dr.",
+        "address_line_2": "",
+        "city": "Pleasant Prairie",
+        "state": "WI",
+        "zip": "53158",
+        "phone": "(262) 671-7465",
+        "email": "smehdi09@gmail.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 15,
+    "full_name": "Dr. Chris Sliva",
+    "first_name": "Chris",
+    "last_name": "Sliva",
+    "npi": "1619959897",
+    "specialty": "Ortho",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(815) 316-2100",
+    "mobile": "",
+    "email": "csliva@rockfordspine.com",
+    "fax": "(815) 316-2099",
+    "website": "https://www.orthoillinois.com/find-a-provider/christopher-sliva-md/",
+    "first_surgery_date": "7/28/2022",
+    "offices": [
+      {
+        "address_line_1": "2902 McFarland Road",
+        "address_line_2": "Suite 300",
+        "city": "Rockford",
+        "state": "IL",
+        "zip": "61107",
+        "phone": "(815) 316-2100",
+        "email": "csliva@rockfordspine.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 16,
+    "full_name": "Dr. Peeush Singhal",
+    "first_name": "Peeush",
+    "last_name": "Singhal",
+    "npi": "1346270220",
+    "specialty": "Ortho Spine",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(262) 532-9700",
+    "mobile": "",
+    "email": "",
+    "fax": "(262) 532-9701",
+    "website": "https://care.aurorahealthcare.org/doctors/peeush-singhal-germantown-spine-surgery-14",
+    "first_surgery_date": "5/16/2017",
+    "offices": [
+      {
+        "address_line_1": "W180N11070 River Ln",
+        "address_line_2": "",
+        "city": "Germantown",
+        "state": "WI",
+        "zip": "53022",
+        "phone": "(262) 532-9700",
+        "email": ""
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 17,
+    "full_name": "Dr. Arvind Ahuja",
+    "first_name": "Arvind",
+    "last_name": "Ahuja",
+    "npi": "1801857297",
+    "specialty": "Neuro",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(414) 488-1111",
+    "mobile": "",
+    "email": "cbalaban@neuroendomke.com",
+    "fax": "(414) 488-0700",
+    "website": "http://www.neuroendomke.com/",
+    "first_surgery_date": "2/29/2012",
+    "offices": [
+      {
+        "address_line_1": "10500 W Loomis Rd ",
+        "address_line_2": "#130",
+        "city": "Franklin",
+        "state": "WI",
+        "zip": "53132",
+        "phone": "(414) 488-1111",
+        "email": "cbalaban@neuroendomke.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 18,
+    "full_name": "Dr. Andrew Beykovsky",
+    "first_name": "Andrew",
+    "last_name": "Beykovsky",
+    "npi": "1114036092",
+    "specialty": "Neuro",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(262) 785-2263",
+    "mobile": "(262) 542-8447",
+    "email": "",
+    "fax": "(262) 347-3035",
+    "website": "https://healthcare.ascension.org/doctors/1114036092/andrew-victor-beykovsky-racine-wi",
+    "first_surgery_date": "12/14/2011",
+    "offices": [
+      {
+        "address_line_1": "19475 W. North Ave",
+        "address_line_2": "Suite 304",
+        "city": "Brookfield",
+        "state": "WI",
+        "zip": "53045",
+        "phone": "(262) 785-2263",
+        "email": ""
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 19,
+    "full_name": "Dr. Robert Limoni",
+    "first_name": "Robert",
+    "last_name": "Limoni",
+    "npi": "1548206444",
+    "specialty": "Ortho Hip",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(920) 882-8200",
+    "mobile": "",
+    "email": "rlimoni@hotmail.com",
+    "fax": "(920) 882-8210",
+    "website": "https://www.neurospinewi.com/about",
+    "first_surgery_date": "11/30/2011",
+    "offices": [
+      {
+        "address_line_1": "5320 W. Michaels Dr.",
+        "address_line_2": "",
+        "city": "Appleton",
+        "state": "WI",
+        "zip": "54913",
+        "phone": "(920) 882-8200",
+        "email": "rlimoni@hotmail.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 20,
+    "full_name": "Dr. John Verre",
+    "first_name": "John",
+    "last_name": "Verre",
+    "npi": "1013336577",
+    "specialty": "Ortho",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(715) 847-2382",
+    "mobile": "",
+    "email": "verrejj@gmail.com",
+    "fax": "",
+    "website": "https://oaw-ortho.com/",
+    "first_surgery_date": "5/14/2021",
+    "offices": [
+      {
+        "address_line_1": "3200 Westhill Dr.",
+        "address_line_2": "Suite 201",
+        "city": "Wausau",
+        "state": "WI",
+        "zip": "54401",
+        "phone": "(715) 847-2382",
+        "email": "verrejj@gmail.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 21,
+    "full_name": "Dr. David Coran",
+    "first_name": "David",
+    "last_name": "Coran",
+    "npi": "1578552378",
+    "specialty": "Ortho Spine",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(414) 647-0033",
+    "mobile": "",
+    "email": "",
+    "fax": "(414) 647-0079",
+    "website": "https://www.drcoran.com/index.html",
+    "first_surgery_date": "12/24/2018",
+    "offices": [
+      {
+        "address_line_1": "3033 W. Layton Avenue ",
+        "address_line_2": "Suite 102",
+        "city": "Greenfield",
+        "state": "WI",
+        "zip": "53221",
+        "phone": "(414) 647-0033",
+        "email": ""
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 22,
+    "full_name": "Dr. Eric Verwiebe",
+    "first_name": "Eric",
+    "last_name": "Verwiebe",
+    "npi": "1275686610",
+    "specialty": "Trauma",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(262) 434-5000",
+    "mobile": "",
+    "email": "weebs74@hotmail.com",
+    "fax": "(262) 434-7450",
+    "website": "https://care.aurorahealthcare.org/doctors/eric-verwiebe-summit-orthopedic-surgery-1",
+    "first_surgery_date": "2/8/2022",
+    "offices": [
+      {
+        "address_line_1": "36500 Aurora Dr.",
+        "address_line_2": "",
+        "city": "Summit",
+        "state": "WI",
+        "zip": "53066",
+        "phone": "(262) 434-5000",
+        "email": "weebs74@hotmail.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 23,
+    "full_name": "Dr. Lynn Bartl",
+    "first_name": "Lynn",
+    "last_name": "Bartl",
+    "npi": "1871502476",
+    "specialty": "Neuro",
+    "degree": "MD",
+    "account_owner": "Eric Swick",
+    "phone": "(262) 542-9503",
+    "mobile": "",
+    "email": "lbartl@neurologicltd.com",
+    "fax": "",
+    "website": "http://www.neurologicltd.com/lynn-m-bartl-md#Lynn",
+    "first_surgery_date": "8/12/2015",
+    "offices": [
+      {
+        "address_line_1": "1111 Delafield St ",
+        "address_line_2": "#105",
+        "city": "Waukesha",
+        "state": "WI",
+        "zip": "53188",
+        "phone": "(262) 542-9503",
+        "email": "lbartl@neurologicltd.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 24,
+    "full_name": "Dr. Alexander Hawkins",
+    "first_name": "Alexander",
+    "last_name": "Hawkins",
+    "npi": "1619070802",
+    "specialty": "Neuro",
+    "degree": "MD",
+    "account_owner": "MDT Direct",
+    "phone": "(920) 725-9373",
+    "mobile": "",
+    "email": "alexander.hawkins@neurosciencegroup.com",
+    "fax": "",
+    "website": "https://neurosciencegroup.com/",
+    "first_surgery_date": "8/31/2012",
+    "offices": [
+      {
+        "address_line_1": "1305 American Dr",
+        "address_line_2": "#300",
+        "city": "Neenah",
+        "state": "WI",
+        "zip": "54956",
+        "phone": "(920) 725-9373",
+        "email": "alexander.hawkins@neurosciencegroup.com"
+      }
+    ],
+    "affiliations": []
+  },
+  {
+    "id": 25,
+    "full_name": "Dr. Randall Johnson",
+    "first_name": "Randall",
+    "last_name": "Johnson",
+    "npi": "1447293188",
+    "specialty": "Neuro",
+    "degree": "MD",
+    "account_owner": "MDT Direct",
+    "phone": "(920) 725-9373",
+    "mobile": "(262) 719-4256",
+    "email": "randall.johnson@neurosciencegroup.com",
+    "fax": "(920) 720-7392",
+    "website": "https://neurosciencegroup.com/",
+    "first_surgery_date": "7/10/2015",
+    "offices": [
+      {
+        "address_line_1": "1305 West American Drive",
+        "address_line_2": "",
+        "city": "Neenah",
+        "state": "WI",
+        "zip": "54956",
+        "phone": "(920) 725-9373",
+        "email": "randall.johnson@neurosciencegroup.com"
+      }
+    ],
+    "affiliations": []
+  }
+]
