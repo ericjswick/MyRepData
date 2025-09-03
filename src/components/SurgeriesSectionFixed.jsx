@@ -13,6 +13,18 @@ function SurgeriesSectionFixed() {
   const [showScheduleModal, setShowScheduleModal] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)
   const [editingCase, setEditingCase] = useState(null)
+  
+  // Form state for Schedule Surgery modal
+  const [scheduleForm, setScheduleForm] = useState({
+    caseType: '',
+    physician: '',
+    facility: '',
+    date: '',
+    time: '',
+    duration: '',
+    notes: ''
+  })
+  
   const [surgicalCases, setSurgicalCases] = useState([
     {
       id: 1,
@@ -69,6 +81,56 @@ function SurgeriesSectionFixed() {
     console.log('Opening calendar integration for:', surgery.procedure)
     setSelectedSurgery(surgery)
     setShowCalendarModal(true)
+  }
+
+  // Form handlers for Schedule Surgery modal
+  const handleScheduleFormChange = (field, value) => {
+    setScheduleForm(prev => ({
+      ...prev,
+      [field]: value
+    }))
+  }
+
+  const handleSaveSchedule = () => {
+    const newCase = {
+      id: surgicalCases.length + 1,
+      procedure: scheduleForm.caseType,
+      physician: scheduleForm.physician,
+      facility: scheduleForm.facility,
+      date: scheduleForm.date,
+      time: scheduleForm.time,
+      duration: parseInt(scheduleForm.duration) || 120,
+      status: 'scheduled',
+      notes: scheduleForm.notes,
+      surgeryType: scheduleForm.caseType,
+      anesthesia: 'General',
+      estimatedCost: '$25,000'
+    }
+    
+    setSurgicalCases([...surgicalCases, newCase])
+    setScheduleForm({
+      caseType: '',
+      physician: '',
+      facility: '',
+      date: '',
+      time: '',
+      duration: '',
+      notes: ''
+    })
+    setShowScheduleModal(false)
+  }
+
+  const handleCloseScheduleModal = () => {
+    setScheduleForm({
+      caseType: '',
+      physician: '',
+      facility: '',
+      date: '',
+      time: '',
+      duration: '',
+      notes: ''
+    })
+    setShowScheduleModal(false)
   }
 
   const handleSaveEdit = () => {
@@ -362,46 +424,141 @@ function SurgeriesSectionFixed() {
       {/* Schedule Surgery Modal */}
       {showScheduleModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-t-2xl">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold">Schedule New Surgery</h2>
+                <h2 className="text-xl font-bold">Schedule New Surgery</h2>
                 <button 
-                  onClick={() => setShowScheduleModal(false)}
-                  className="text-white hover:text-gray-200 text-2xl font-bold"
+                  onClick={handleCloseScheduleModal}
+                  className="text-white hover:text-gray-200"
                 >
                   ×
                 </button>
               </div>
             </div>
+            
             <div className="p-6">
-              <p className="text-gray-600 mb-4">Schedule a new surgical procedure</p>
-              <div className="flex justify-end space-x-3">
+              <form className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Case Type
+                    </label>
+                    <select
+                      value={scheduleForm.caseType}
+                      onChange={(e) => handleScheduleFormChange('caseType', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                      <option value="">Select Case Type</option>
+                      <option value="Spinal Fusion">Spinal Fusion</option>
+                      <option value="Hip Replacement">Hip Replacement</option>
+                      <option value="Knee Replacement">Knee Replacement</option>
+                      <option value="Shoulder Surgery">Shoulder Surgery</option>
+                      <option value="Trauma Surgery">Trauma Surgery</option>
+                      <option value="Arthroscopy">Arthroscopy</option>
+                      <option value="Discectomy">Discectomy</option>
+                      <option value="Laminectomy">Laminectomy</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Treating Physician
+                    </label>
+                    <select
+                      value={scheduleForm.physician}
+                      onChange={(e) => handleScheduleFormChange('physician', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                      <option value="">Select Physician</option>
+                      <option value="Dr. Branko Prpa">Dr. Branko Prpa - Spine Surgery</option>
+                      <option value="Dr. Sarah Johnson">Dr. Sarah Johnson - Orthopedic Surgery</option>
+                      <option value="Dr. Michael Chen">Dr. Michael Chen - Joint Replacement</option>
+                      <option value="Dr. Emily Rodriguez">Dr. Emily Rodriguez - Sports Medicine</option>
+                      <option value="Dr. Max Ots">Dr. Max Ots - Neurosurgery</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Facility
+                    </label>
+                    <select
+                      value={scheduleForm.facility}
+                      onChange={(e) => handleScheduleFormChange('facility', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                      <option value="">Select Facility</option>
+                      <option value="Advanced Spine Center">Advanced Spine Center</option>
+                      <option value="Access Medical Center">Access Medical Center</option>
+                      <option value="Regional Medical Center">Regional Medical Center</option>
+                      <option value="Milwaukee Surgical Center">Milwaukee Surgical Center</option>
+                      <option value="Wisconsin Spine Institute">Wisconsin Spine Institute</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Date
+                    </label>
+                    <input
+                      type="date"
+                      value={scheduleForm.date}
+                      onChange={(e) => handleScheduleFormChange('date', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Time
+                    </label>
+                    <input
+                      type="time"
+                      value={scheduleForm.time}
+                      onChange={(e) => handleScheduleFormChange('time', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Duration (minutes)
+                    </label>
+                    <input
+                      type="number"
+                      value={scheduleForm.duration}
+                      onChange={(e) => handleScheduleFormChange('duration', e.target.value)}
+                      placeholder="120"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Procedure Notes
+                  </label>
+                  <textarea
+                    value={scheduleForm.notes}
+                    onChange={(e) => handleScheduleFormChange('notes', e.target.value)}
+                    rows={3}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter procedure notes and special requirements..."
+                  />
+                </div>
+              </form>
+              
+              <div className="flex justify-end space-x-3 pt-6 border-t mt-6">
                 <button 
-                  onClick={() => setShowScheduleModal(false)}
-                  className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  onClick={handleCloseScheduleModal}
+                  className="px-6 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50"
                 >
                   Cancel
                 </button>
                 <button 
-                  onClick={() => {
-                    handleScheduleNew({
-                      procedure: 'New Procedure',
-                      physician: 'Dr. New Physician',
-                      facility: 'New Facility',
-                      date: '2025-08-26',
-                      time: '2:00 PM',
-                      duration: 90,
-                      status: 'scheduled',
-                      notes: 'New surgery scheduled',
-                      patientName: 'New Patient',
-                      patientAge: 45,
-                      surgeryType: 'General',
-                      anesthesia: 'General',
-                      estimatedCost: '$25,000'
-                    })
-                  }}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  onClick={handleSaveSchedule}
+                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                 >
                   Schedule Surgery
                 </button>
