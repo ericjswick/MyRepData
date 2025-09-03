@@ -66,13 +66,40 @@ const CalendarIntegration = ({ appointment, onClose, onSuccess }) => {
 
     setLoading(true)
     try {
+      // Create consistent calendar event structure
+      const eventData = {
+        // Event name: Case Type, Physician (Doctor)
+        title: appointment.case_type ? 
+          `${appointment.case_type}, ${appointment.physician}` : 
+          `${appointment.procedure || appointment.title}, ${appointment.physician}`,
+        
+        // Location: Facility name & address
+        location: appointment.facility_address ? 
+          `${appointment.facility}, ${appointment.facility_address}` : 
+          appointment.facility,
+        
+        // Notes: Any additional details
+        description: appointment.notes ? 
+          `${appointment.notes}\n\nDuration: ${appointment.duration || 60} minutes` :
+          `Duration: ${appointment.duration || 60} minutes`,
+        
+        startTime: appointment.date && appointment.time ? 
+          new Date(`${appointment.date} ${appointment.time}`) : 
+          appointment.startTime,
+        
+        endTime: appointment.endTime || 
+          new Date((appointment.date && appointment.time ? 
+            new Date(`${appointment.date} ${appointment.time}`) : 
+            appointment.startTime).getTime() + ((appointment.duration || 60) * 60000))
+      };
+
       const response = await fetch('/api/calendar/add-event', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          appointment,
+          appointment: eventData,
           calendarIds: selectedCalendars,
           sendInvitations: true
         }),
