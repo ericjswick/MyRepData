@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Calendar, TrendingUp, Users, Building2, Package, Clock, MapPin, User, Plus, Eye, Edit } from 'lucide-react'
+import { Calendar, TrendingUp, Users, Building2, Package, Clock, MapPin, User, Plus, Eye, Edit, X } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -8,12 +8,22 @@ import SurgeriesSectionFixed from '@/components/SurgeriesSectionFixed.jsx'
 function DashboardMobile({ onNavigate }) {
   const [activeView, setActiveView] = useState('overview')
   const [showAddAppointmentModal, setShowAddAppointmentModal] = useState(false)
+  const [showScheduleCaseModal, setShowScheduleCaseModal] = useState(false)
   const [appointmentForm, setAppointmentForm] = useState({
     title: '',
     physician: '',
     date: '',
     time: '',
     type: '',
+    notes: ''
+  })
+  const [caseForm, setCaseForm] = useState({
+    caseType: '',
+    physician: '',
+    facility: '',
+    date: '',
+    time: '',
+    duration: '',
     notes: ''
   })
 
@@ -45,6 +55,37 @@ function DashboardMobile({ onNavigate }) {
     console.log('Saving appointment:', appointmentForm)
     // Here you would typically save to backend
     handleCloseAppointmentModal()
+  }
+
+  const handleScheduleCase = () => {
+    console.log('Schedule case clicked')
+    setShowScheduleCaseModal(true)
+  }
+
+  const handleCloseCaseModal = () => {
+    setShowScheduleCaseModal(false)
+    setCaseForm({
+      caseType: '',
+      physician: '',
+      facility: '',
+      date: '',
+      time: '',
+      duration: '',
+      notes: ''
+    })
+  }
+
+  const handleCaseFormChange = (field, value) => {
+    setCaseForm(prev => ({
+      ...prev,
+      [field]: value
+    }))
+  }
+
+  const handleSaveCase = () => {
+    console.log('Saving case:', caseForm)
+    // Here you would typically save to backend
+    handleCloseCaseModal()
   }
 
   const stats = [
@@ -122,14 +163,25 @@ function DashboardMobile({ onNavigate }) {
               <h2 className="text-xl font-bold">Surgical Cases</h2>
               <p className="text-blue-100">Track upcoming and recent surgical procedures</p>
             </div>
-            <Button 
-              variant="secondary" 
-              size="sm"
-              onClick={() => setActiveView('surgeries')}
-              className="bg-white text-blue-600 hover:bg-blue-50"
-            >
-              View All
-            </Button>
+            <div className="flex gap-2">
+              <Button 
+                variant="secondary" 
+                size="sm"
+                onClick={handleScheduleCase}
+                className="bg-white text-blue-600 hover:bg-blue-50"
+              >
+                <Plus className="w-4 h-4 mr-1" />
+                Schedule
+              </Button>
+              <Button 
+                variant="secondary" 
+                size="sm"
+                onClick={() => setActiveView('surgeries')}
+                className="bg-white text-blue-600 hover:bg-blue-50"
+              >
+                View All
+              </Button>
+            </div>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
@@ -387,6 +439,148 @@ function DashboardMobile({ onNavigate }) {
                   className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                 >
                   Save Appointment
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Schedule Case Modal */}
+      {showScheduleCaseModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-t-2xl">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold">Schedule New Case</h2>
+                <button 
+                  onClick={handleCloseCaseModal}
+                  className="text-white hover:text-gray-200"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+            
+            <div className="p-6">
+              <form className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Case Type
+                    </label>
+                    <select
+                      value={caseForm.caseType}
+                      onChange={(e) => handleCaseFormChange('caseType', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                      <option value="">Select Case Type</option>
+                      <option value="Spinal Fusion">Spinal Fusion</option>
+                      <option value="Hip Replacement">Hip Replacement</option>
+                      <option value="Knee Replacement">Knee Replacement</option>
+                      <option value="Shoulder Surgery">Shoulder Surgery</option>
+                      <option value="Trauma Surgery">Trauma Surgery</option>
+                      <option value="Arthroscopy">Arthroscopy</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Treating Physician
+                    </label>
+                    <select
+                      value={caseForm.physician}
+                      onChange={(e) => handleCaseFormChange('physician', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                      <option value="">Select Physician</option>
+                      <option value="Dr. Branko Prpa">Dr. Branko Prpa - Spine Surgery</option>
+                      <option value="Dr. Sarah Johnson">Dr. Sarah Johnson - Orthopedic Surgery</option>
+                      <option value="Dr. Michael Chen">Dr. Michael Chen - Joint Replacement</option>
+                      <option value="Dr. Emily Rodriguez">Dr. Emily Rodriguez - Sports Medicine</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Facility
+                    </label>
+                    <select
+                      value={caseForm.facility}
+                      onChange={(e) => handleCaseFormChange('facility', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                      <option value="">Select Facility</option>
+                      <option value="Advanced Spine Center">Advanced Spine Center (Surgical Facility)</option>
+                      <option value="Access Medical Center">Access Medical Center (Hospital)</option>
+                      <option value="Regional Orthopedic Hospital">Regional Orthopedic Hospital (Hospital)</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Date
+                    </label>
+                    <input
+                      type="date"
+                      value={caseForm.date}
+                      onChange={(e) => handleCaseFormChange('date', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Time
+                    </label>
+                    <input
+                      type="time"
+                      value={caseForm.time}
+                      onChange={(e) => handleCaseFormChange('time', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Duration (minutes)
+                    </label>
+                    <input
+                      type="number"
+                      value={caseForm.duration}
+                      onChange={(e) => handleCaseFormChange('duration', e.target.value)}
+                      placeholder="120"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Procedure Notes
+                  </label>
+                  <textarea
+                    value={caseForm.notes}
+                    onChange={(e) => handleCaseFormChange('notes', e.target.value)}
+                    rows={3}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter procedure notes and special requirements..."
+                  />
+                </div>
+              </form>
+              
+              <div className="flex justify-end space-x-3 pt-6 border-t mt-6">
+                <button 
+                  onClick={handleCloseCaseModal}
+                  className="px-6 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50"
+                >
+                  Cancel
+                </button>
+                <button 
+                  onClick={handleSaveCase}
+                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                >
+                  Schedule Case
                 </button>
               </div>
             </div>
