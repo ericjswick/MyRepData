@@ -39,8 +39,6 @@ function SurgeriesSectionFixed() {
       patientName: 'John Smith',
       patientAge: 65,
       surgeryType: 'Spinal Fusion',
-      anesthesia: 'General',
-      estimatedCost: '$45,000'
     },
     {
       id: 2,
@@ -55,8 +53,6 @@ function SurgeriesSectionFixed() {
       patientName: 'Jane Doe',
       patientAge: 52,
       surgeryType: 'Discectomy',
-      anesthesia: 'General',
-      estimatedCost: '$28,000'
     }
   ])
 
@@ -103,8 +99,6 @@ function SurgeriesSectionFixed() {
       status: 'scheduled',
       notes: scheduleForm.notes,
       surgeryType: scheduleForm.caseType,
-      anesthesia: 'General',
-      estimatedCost: '$25,000'
     }
     
     setSurgicalCases([...surgicalCases, newCase])
@@ -709,36 +703,6 @@ function SurgeriesSectionFixed() {
                       <option value="Cervical Surgery">Cervical Surgery</option>
                       <option value="Lumbar Surgery">Lumbar Surgery</option>
                     </select>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Anesthesia Type
-                    </label>
-                    <select
-                      value={editingCase.anesthesia || ''}
-                      onChange={(e) => setEditingCase({...editingCase, anesthesia: e.target.value})}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      <option value="">Select Anesthesia</option>
-                      <option value="General">General</option>
-                      <option value="Local">Local</option>
-                      <option value="Regional">Regional</option>
-                      <option value="Spinal">Spinal</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Estimated Cost
-                    </label>
-                    <input
-                      type="text"
-                      value={editingCase.estimatedCost || ''}
-                      onChange={(e) => setEditingCase({...editingCase, estimatedCost: e.target.value})}
-                      placeholder="$25,000"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
                   </div>
                 </div>
                 

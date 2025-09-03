@@ -31,8 +31,6 @@ const CasesModule = () => {
       status: 'confirmed',
       required_trays: ['SPINE-001', 'INST-001', 'GRAFT-001'],
       tray_status: 'ready',
-      anesthesia_type: 'General',
-      estimated_cost: '$45,000',
       notes: 'Posterior approach with instrumentation'
     },
     {
@@ -52,8 +50,6 @@ const CasesModule = () => {
       status: 'pending',
       required_trays: ['CERV-001', 'MICRO-001'],
       tray_status: 'missing',
-      anesthesia_type: 'General',
-      estimated_cost: '$32,000',
       notes: 'Anterior approach with fusion'
     },
     {
@@ -73,8 +69,6 @@ const CasesModule = () => {
       status: 'confirmed',
       required_trays: ['LUMB-001', 'LAMIN-001'],
       tray_status: 'ready',
-      anesthesia_type: 'Regional',
-      estimated_cost: '$28,000',
       notes: 'Decompression only'
     },
     {
@@ -94,8 +88,6 @@ const CasesModule = () => {
       status: 'scheduled',
       required_trays: ['THOR-001', 'INST-002', 'GRAFT-002'],
       tray_status: 'partial',
-      anesthesia_type: 'General',
-      estimated_cost: '$52,000',
       notes: 'Complex thoracic fusion with instrumentation'
     },
     {
@@ -115,8 +107,6 @@ const CasesModule = () => {
       status: 'confirmed',
       required_trays: ['CERV-002', 'INST-001', 'GRAFT-001'],
       tray_status: 'ready',
-      anesthesia_type: 'General',
-      estimated_cost: '$48,000',
       notes: 'Multi-level cervical fusion'
     }
   ];
@@ -270,8 +260,6 @@ const CasesModule = () => {
             <div className="flex justify-between items-center text-sm text-gray-600">
               <div className="flex items-center gap-4">
                 <span>Duration: {case_item.duration} min</span>
-                <span>Anesthesia: {case_item.anesthesia_type}</span>
-                <span>Cost: {case_item.estimated_cost}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Package className="w-4 h-4" />
