@@ -286,10 +286,9 @@ const CasesModule = () => {
 
           {/* Main Content Section */}
           <div className="p-6">
-            {/* Case Type & Procedure */}
+            {/* Case Type Only */}
             <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{case_item.case_type}</h3>
-              <p className="text-gray-600 text-base">{case_item.procedure_name}</p>
+              <h3 className="text-xl font-semibold text-gray-900">{case_item.case_type}</h3>
             </div>
 
             {/* Doctor & Facility Info */}
@@ -482,7 +481,7 @@ const CasesModule = () => {
               <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search cases, physicians, or patients..."
+                placeholder="Search case types, physicians, or facilities..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -532,7 +531,7 @@ const CasesModule = () => {
         <div className="bg-white rounded-lg shadow-md p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Cases</p>
+              <p className="text-sm text-gray-600">Total Case Types</p>
               <p className="text-2xl font-bold text-gray-900">{cases.length}</p>
             </div>
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -544,7 +543,7 @@ const CasesModule = () => {
         <div className="bg-white rounded-lg shadow-md p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Ready Cases</p>
+              <p className="text-sm text-gray-600">Ready Case Types</p>
               <p className="text-2xl font-bold text-green-600">
                 {cases.filter(c => c.tray_status === 'ready').length}
               </p>
@@ -599,7 +598,7 @@ const CasesModule = () => {
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold text-gray-900">
-                  {selectedCase ? 'Edit Case' : 'Schedule New Case'}
+                  {selectedCase ? 'Edit Case Type' : 'Schedule New Case Type'}
                 </h2>
                 <button
                   onClick={() => {
@@ -697,7 +696,7 @@ const CasesModule = () => {
                   }}
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  {selectedCase ? 'Update Case' : 'Schedule Case'}
+                  {selectedCase ? 'Update Case Type' : 'Schedule Case Type'}
                 </button>
               </div>
             </div>
@@ -711,7 +710,7 @@ const CasesModule = () => {
           <div className="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold text-gray-900">Case Details</h2>
+                <h2 className="text-xl font-bold text-gray-900">Case Type Details</h2>
                 <button
                   onClick={() => setSelectedCase(null)}
                   className="text-gray-400 hover:text-gray-600"
@@ -723,10 +722,9 @@ const CasesModule = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-medium text-gray-900 mb-2">Case Information</h3>
+                    <h3 className="font-medium text-gray-900 mb-2">Case Type Information</h3>
                     <div className="bg-gray-50 rounded-lg p-4 space-y-2">
                       <p><span className="font-medium">Type:</span> {selectedCase.case_type}</p>
-                      <p><span className="font-medium">Procedure:</span> {selectedCase.procedure_name}</p>
                       <p><span className="font-medium">Date:</span> {selectedCase.date}</p>
                       <p><span className="font-medium">Time:</span> {selectedCase.time}</p>
                       <p><span className="font-medium">Duration:</span> {selectedCase.duration} minutes</p>
@@ -791,7 +789,7 @@ const CasesModule = () => {
                   onClick={() => handleEditCase(selectedCase)}
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  Edit Case
+                  Edit Case Type
                 </button>
               </div>
             </div>
