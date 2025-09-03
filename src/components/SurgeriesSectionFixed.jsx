@@ -305,32 +305,6 @@ function SurgeriesSectionFixed() {
                       </div>
                     </div>
                   </div>
-
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Patient Information</h4>
-                    <div className="space-y-3">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Patient:</span>
-                        <span className="font-medium">{selectedCase.patientName}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Age:</span>
-                        <span className="font-medium">{selectedCase.patientAge} years</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Surgery Type:</span>
-                        <span className="font-medium">{selectedCase.surgeryType}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Anesthesia:</span>
-                        <span className="font-medium">{selectedCase.anesthesia}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Estimated Cost:</span>
-                        <span className="font-medium">{selectedCase.estimatedCost}</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 <div>

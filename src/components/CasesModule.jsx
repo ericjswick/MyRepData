@@ -239,11 +239,6 @@ const CasesModule = () => {
                   <span className="text-gray-600">Date/Time:</span>
                   <span className="font-medium">{case_item.date} at {case_item.time}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-orange-600" />
-                  <span className="text-gray-600">Patient:</span>
-                  <span className="font-medium">{case_item.patient_name}, {case_item.patient_age}y</span>
-                </div>
               </div>
             </div>
             
@@ -666,16 +661,6 @@ const CasesModule = () => {
                       <p><span className="font-medium">Date:</span> {selectedCase.date}</p>
                       <p><span className="font-medium">Time:</span> {selectedCase.time}</p>
                       <p><span className="font-medium">Duration:</span> {selectedCase.duration} minutes</p>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-medium text-gray-900 mb-2">Patient Information</h3>
-                    <div className="bg-gray-50 rounded-lg p-4 space-y-2">
-                      <p><span className="font-medium">Name:</span> {selectedCase.patient_name}</p>
-                      <p><span className="font-medium">Age:</span> {selectedCase.patient_age} years</p>
-                      <p><span className="font-medium">Anesthesia:</span> {selectedCase.anesthesia_type}</p>
-                      <p><span className="font-medium">Estimated Cost:</span> {selectedCase.estimated_cost}</p>
                     </div>
                   </div>
                 </div>
