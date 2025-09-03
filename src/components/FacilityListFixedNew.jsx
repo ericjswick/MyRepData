@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Search, Plus, Filter, MapPin, Phone, Mail, Building2, Users, Eye } from 'lucide-react'
+import React, { useState, useEffect } from 'react'
+import { Search, Plus, Filter, MapPin, Phone, Mail, Building2, Users, Eye, X } from 'lucide-react'
 
 const FacilityListFixedNew = () => {
   const [facilities, setFacilities] = useState([])
@@ -13,6 +13,22 @@ const FacilityListFixedNew = () => {
   const [selectedFacilityId, setSelectedFacilityId] = useState(null)
   const [showEditModal, setShowEditModal] = useState(false)
   const [editingFacility, setEditingFacility] = useState(null)
+  
+  // Add Facility Form State
+  const [facilityForm, setFacilityForm] = useState({
+    facilityName: '',
+    facilityType: '',
+    specialty: '',
+    territory: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    phone: '',
+    website: '',
+    accountOwner: '',
+    notes: ''
+  })
 
   useEffect(() => {
     fetchFacilities()
@@ -95,6 +111,71 @@ const FacilityListFixedNew = () => {
     ))
     setShowEditModal(false)
     setEditingFacility(null)
+  }
+
+  // Add Facility Form Handlers
+  const handleFacilityFormChange = (field, value) => {
+    setFacilityForm(prev => ({
+      ...prev,
+      [field]: value
+    }))
+  }
+
+  const handleAddFacility = () => {
+    // Create new facility object
+    const newFacility = {
+      id: facilities.length + 1,
+      account_name: facilityForm.facilityName,
+      account_record_type: facilityForm.facilityType,
+      specialty: facilityForm.specialty,
+      territory: facilityForm.territory,
+      account_owner: facilityForm.accountOwner,
+      shipping_address_line_1: facilityForm.address,
+      shipping_city: facilityForm.city,
+      shipping_state: facilityForm.state,
+      shipping_zip: facilityForm.zipCode,
+      phone: facilityForm.phone,
+      website: facilityForm.website,
+      notes: facilityForm.notes
+    }
+    
+    // Add to facilities list
+    setFacilities([...facilities, newFacility])
+    
+    // Reset form and close modal
+    setFacilityForm({
+      facilityName: '',
+      facilityType: '',
+      specialty: '',
+      territory: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      phone: '',
+      website: '',
+      accountOwner: '',
+      notes: ''
+    })
+    setShowAddModal(false)
+  }
+
+  const handleCloseAddModal = () => {
+    setShowAddModal(false)
+    setFacilityForm({
+      facilityName: '',
+      facilityType: '',
+      specialty: '',
+      territory: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      phone: '',
+      website: '',
+      accountOwner: '',
+      notes: ''
+    })
   }
 
   const territories = [...new Set(facilities.map(f => f.territory).filter(Boolean))]
@@ -390,7 +471,7 @@ const FacilityListFixedNew = () => {
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold">Add New Facility</h2>
                 <button 
-                  onClick={() => setShowAddModal(false)}
+                  onClick={handleCloseAddModal}
                   className="text-white hover:text-gray-200 text-2xl font-bold"
                 >
                   ×
@@ -398,17 +479,208 @@ const FacilityListFixedNew = () => {
               </div>
             </div>
             <div className="p-6">
-              <p className="text-gray-600">Add facility form would go here...</p>
+              <form className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Facility Name *
+                    </label>
+                    <input
+                      type="text"
+                      value={facilityForm.facilityName}
+                      onChange={(e) => handleFacilityFormChange('facilityName', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Enter facility name"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Facility Type *
+                    </label>
+                    <select
+                      value={facilityForm.facilityType}
+                      onChange={(e) => handleFacilityFormChange('facilityType', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      required
+                    >
+                      <option value="">Select Facility Type</option>
+                      <option value="ASC">ASC (Ambulatory Surgery Center)</option>
+                      <option value="Hospital">Hospital</option>
+                      <option value="Clinic">Clinic</option>
+                      <option value="Surgery Center">Surgery Center</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Specialty *
+                    </label>
+                    <select
+                      value={facilityForm.specialty}
+                      onChange={(e) => handleFacilityFormChange('specialty', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      required
+                    >
+                      <option value="">Select Specialty</option>
+                      <option value="Ortho Spine">Ortho Spine</option>
+                      <option value="Neuro">Neuro</option>
+                      <option value="Orthopedic">Orthopedic</option>
+                      <option value="Neurosurgery">Neurosurgery</option>
+                      <option value="Sports Medicine">Sports Medicine</option>
+                      <option value="Pain Management">Pain Management</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Territory *
+                    </label>
+                    <select
+                      value={facilityForm.territory}
+                      onChange={(e) => handleFacilityFormChange('territory', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      required
+                    >
+                      <option value="">Select Territory</option>
+                      <option value="Wisconsin East">Wisconsin East</option>
+                      <option value="Wisconsin West">Wisconsin West</option>
+                      <option value="Wisconsin North">Wisconsin North</option>
+                      <option value="Wisconsin South">Wisconsin South</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Address *
+                    </label>
+                    <input
+                      type="text"
+                      value={facilityForm.address}
+                      onChange={(e) => handleFacilityFormChange('address', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Enter street address"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        City *
+                      </label>
+                      <input
+                        type="text"
+                        value={facilityForm.city}
+                        onChange={(e) => handleFacilityFormChange('city', e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter city"
+                        required
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        State *
+                      </label>
+                      <select
+                        value={facilityForm.state}
+                        onChange={(e) => handleFacilityFormChange('state', e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        required
+                      >
+                        <option value="">Select State</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="IL">Illinois</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="IA">Iowa</option>
+                      </select>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        ZIP Code *
+                      </label>
+                      <input
+                        type="text"
+                        value={facilityForm.zipCode}
+                        onChange={(e) => handleFacilityFormChange('zipCode', e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter ZIP code"
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        value={facilityForm.phone}
+                        onChange={(e) => handleFacilityFormChange('phone', e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="(555) 123-4567"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Website
+                      </label>
+                      <input
+                        type="url"
+                        value={facilityForm.website}
+                        onChange={(e) => handleFacilityFormChange('website', e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="https://example.com"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Account Owner
+                    </label>
+                    <input
+                      type="text"
+                      value={facilityForm.accountOwner}
+                      onChange={(e) => handleFacilityFormChange('accountOwner', e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Enter account owner name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Notes
+                    </label>
+                    <textarea
+                      value={facilityForm.notes}
+                      onChange={(e) => handleFacilityFormChange('notes', e.target.value)}
+                      rows={3}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Enter any additional notes or comments"
+                    />
+                  </div>
+                </div>
+              </form>
+              
               <div className="mt-6 flex justify-end space-x-3">
                 <button 
-                  onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  onClick={handleCloseAddModal}
+                  className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   Cancel
                 </button>
                 <button 
-                  onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  onClick={handleAddFacility}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   Add Facility
                 </button>
