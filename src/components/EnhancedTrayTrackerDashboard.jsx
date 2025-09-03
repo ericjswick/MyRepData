@@ -10,12 +10,13 @@ const EnhancedTrayTrackerDashboard = () => {
 
   // Mock data for case types and their tray requirements
   const caseTypes = [
-    'L4-L5 Fusion',
-    'Cervical Discectomy', 
-    'Lumbar Laminectomy',
-    'Thoracic Fusion',
-    'Cervical Fusion',
-    'Minimally Invasive Discectomy'
+    'SI fusion – lateral',
+    'SI fusion – Intra–articular', 
+    'SI fusion – Oblique/Postero lateral',
+    'SI fusion – Medial to lateral',
+    'Spine fusion – Long Construct',
+    'Spine fusion – Short construct',
+    'Sacral fracture – TNT/TORQ'
   ];
 
   const physicians = [
@@ -69,7 +70,7 @@ const EnhancedTrayTrackerDashboard = () => {
   const mockUpcomingCases = [
     {
       id: 1,
-      case_type: 'L4-L5 Fusion',
+      case_type: 'SI fusion – lateral',
       physician: 'Dr. John Smith',
       facility: 'Advanced Spine Center',
       date: '2024-09-02',
@@ -80,7 +81,7 @@ const EnhancedTrayTrackerDashboard = () => {
     },
     {
       id: 2,
-      case_type: 'Cervical Discectomy',
+      case_type: 'SI fusion – Intra–articular',
       physician: 'Dr. Jane Doe',
       facility: 'Regional Medical Center',
       date: '2024-09-02',
@@ -91,7 +92,7 @@ const EnhancedTrayTrackerDashboard = () => {
     },
     {
       id: 3,
-      case_type: 'Lumbar Laminectomy',
+      case_type: 'Spine fusion – Long Construct',
       physician: 'Dr. Michael Johnson',
       facility: 'Milwaukee Surgical Center',
       date: '2024-09-03',

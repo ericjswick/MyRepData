@@ -16,7 +16,7 @@ const CasesModule = () => {
   const mockCases = [
     {
       id: 1,
-      case_type: 'L4-L5 Fusion',
+      case_type: 'SI fusion – lateral',
       procedure_name: 'L4-L5 Posterior Spinal Fusion',
       physician: 'Dr. John Smith',
       physician_id: 1,
@@ -35,7 +35,7 @@ const CasesModule = () => {
     },
     {
       id: 2,
-      case_type: 'Cervical Discectomy',
+      case_type: 'SI fusion – Intra–articular',
       procedure_name: 'C5-C6 Anterior Cervical Discectomy',
       physician: 'Dr. Jane Doe',
       physician_id: 2,
@@ -54,7 +54,7 @@ const CasesModule = () => {
     },
     {
       id: 3,
-      case_type: 'Lumbar Laminectomy',
+      case_type: 'Spine fusion – Long Construct',
       procedure_name: 'L3-L4 Lumbar Laminectomy',
       physician: 'Dr. Michael Johnson',
       physician_id: 3,
@@ -73,7 +73,7 @@ const CasesModule = () => {
     },
     {
       id: 4,
-      case_type: 'Thoracic Fusion',
+      case_type: 'SI fusion – Oblique/Postero lateral',
       procedure_name: 'T11-T12 Posterior Fusion',
       physician: 'Dr. Sarah Wilson',
       physician_id: 4,
@@ -92,7 +92,7 @@ const CasesModule = () => {
     },
     {
       id: 5,
-      case_type: 'Cervical Fusion',
+      case_type: 'Spine fusion – Short construct',
       procedure_name: 'C4-C5-C6 Posterior Cervical Fusion',
       physician: 'Dr. John Smith',
       physician_id: 1,
@@ -113,14 +113,13 @@ const CasesModule = () => {
 
   // Available options for dropdowns
   const caseTypes = [
-    'L4-L5 Fusion',
-    'Cervical Discectomy',
-    'Lumbar Laminectomy',
-    'Thoracic Fusion',
-    'Cervical Fusion',
-    'Minimally Invasive Discectomy',
-    'Scoliosis Correction',
-    'Vertebroplasty'
+    'SI fusion – lateral',
+    'SI fusion – Intra–articular', 
+    'SI fusion – Oblique/Postero lateral',
+    'SI fusion – Medial to lateral',
+    'Spine fusion – Long Construct',
+    'Spine fusion – Short construct',
+    'Sacral fracture – TNT/TORQ'
   ];
 
   const physicians = [

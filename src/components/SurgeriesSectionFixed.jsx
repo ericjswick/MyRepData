@@ -444,14 +444,14 @@ function SurgeriesSectionFixed() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select Case Type</option>
-                      <option value="Spinal Fusion">Spinal Fusion</option>
-                      <option value="Hip Replacement">Hip Replacement</option>
-                      <option value="Knee Replacement">Knee Replacement</option>
-                      <option value="Shoulder Surgery">Shoulder Surgery</option>
-                      <option value="Trauma Surgery">Trauma Surgery</option>
-                      <option value="Arthroscopy">Arthroscopy</option>
-                      <option value="Discectomy">Discectomy</option>
-                      <option value="Laminectomy">Laminectomy</option>
+                      <option value="SI fusion – lateral">SI fusion – lateral</option>
+                      <option value="SI fusion – Intra–articular">SI fusion – Intra–articular</option>
+                      <option value="SI fusion – Oblique/Postero lateral">SI fusion – Oblique/Postero lateral</option>
+                      <option value="SI fusion – Medial to lateral">SI fusion – Medial to lateral</option>
+                      <option value="Spine fusion – Long Construct">Spine fusion – Long Construct</option>
+                      <option value="Spine fusion – Short construct">Spine fusion – Short construct</option>
+                      <option value="Sacral fracture – TNT/TORQ">Sacral fracture – TNT/TORQ</option>
+                      <option value="+ Add New Case Type">+ Add New Case Type</option>
                     </select>
                   </div>
                   
