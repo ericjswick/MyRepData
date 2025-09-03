@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, AlertTriangle, CheckCircle, RefreshCw, Settings, BarChart3, Plus } from 'lucide-react';
+import physiciansData from '@/data/physicians.json';
 
 const EnhancedTrayTrackerDashboard = () => {
   const [selectedCaseType, setSelectedCaseType] = useState('L4-L5 Fusion');
-  const [selectedPhysician, setSelectedPhysician] = useState('Dr. John Smith');
+  const [selectedPhysician, setSelectedPhysician] = useState(physicians.length > 0 ? physicians[0].value : '');
   const [selectedFacility, setSelectedFacility] = useState('Advanced Spine Center');
   const [trayRequirements, setTrayRequirements] = useState([]);
   const [trayAvailability, setTrayAvailability] = useState({});
@@ -22,12 +23,12 @@ const EnhancedTrayTrackerDashboard = () => {
     'Sacral fracture – TNT/TORQ'
   ];
 
-  const physicians = [
-    'Dr. John Smith',
-    'Dr. Jane Doe',
-    'Dr. Michael Johnson',
-    'Dr. Sarah Wilson'
-  ];
+  // Real physicians from database
+  const physicians = physiciansData.map(physician => ({
+    value: `Dr. ${physician.first_name} ${physician.last_name}`,
+    label: `Dr. ${physician.first_name} ${physician.last_name} - ${physician.specialty}`,
+    specialty: physician.specialty
+  }));
 
   const facilities = [
     'Advanced Spine Center',
@@ -88,12 +89,12 @@ const EnhancedTrayTrackerDashboard = () => {
     'sacral_fracture___tnt_torq_backup': { status: 'cleaning', location: 'Sterilization', expected_available: '2024-08-30 12:00' }
   };
 
-  // Mock upcoming cases with tray status
+  // Mock upcoming cases with tray status using real physician names
   const mockUpcomingCases = [
     {
       id: 1,
       case_type: 'SI fusion – lateral',
-      physician: 'Dr. John Smith',
+      physician: physicians.length > 0 ? physicians[0].value : 'Dr. Max Ots',
       facility: 'Advanced Spine Center',
       date: '2024-09-02',
       time: '08:00 AM',
@@ -104,7 +105,7 @@ const EnhancedTrayTrackerDashboard = () => {
     {
       id: 2,
       case_type: 'SI fusion – Intra–articular',
-      physician: 'Dr. Jane Doe',
+      physician: physicians.length > 1 ? physicians[1].value : 'Dr. Branko Prpa',
       facility: 'Regional Medical Center',
       date: '2024-09-02',
       time: '10:30 AM',
@@ -115,7 +116,7 @@ const EnhancedTrayTrackerDashboard = () => {
     {
       id: 3,
       case_type: 'Spine fusion – Long Construct',
-      physician: 'Dr. Michael Johnson',
+      physician: physicians.length > 2 ? physicians[2].value : 'Dr. Shekhar Dagam',
       facility: 'Milwaukee Surgical Center',
       date: '2024-09-03',
       time: '09:00 AM',
@@ -126,7 +127,7 @@ const EnhancedTrayTrackerDashboard = () => {
     {
       id: 4,
       case_type: 'Sacral fracture – TNT/TORQ',
-      physician: 'Dr. Sarah Wilson',
+      physician: physicians.length > 3 ? physicians[3].value : 'Dr. Vishal Patel',
       facility: 'Wisconsin Spine Institute',
       date: '2024-09-04',
       time: '07:30 AM',
@@ -209,14 +210,14 @@ const EnhancedTrayTrackerDashboard = () => {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Physician</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Treating Physician</label>
           <select 
             value={selectedPhysician}
             onChange={(e) => setSelectedPhysician(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
           >
             {physicians.map(physician => (
-              <option key={physician} value={physician}>{physician}</option>
+              <option key={physician.value} value={physician.value}>{physician.label}</option>
             ))}
           </select>
         </div>
@@ -309,6 +310,118 @@ const EnhancedTrayTrackerDashboard = () => {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Case Type Preferences Section */}
+      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-semibold text-gray-900">Case Type Preferences</h2>
+          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+            <Plus className="w-4 h-4" />
+            Add Preference
+          </button>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {caseTypes.map((caseType, index) => {
+            const isPreferred = index < 4; // Mock some as preferred
+            const trayCount = index % 3 + 2; // Mock tray counts
+            const lastUsed = new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toLocaleDateString();
+            
+            return (
+              <div key={caseType} className={`border-2 rounded-xl p-5 transition-all hover:shadow-lg ${
+                isPreferred ? 'border-blue-200 bg-blue-50' : 'border-gray-200 bg-white hover:border-gray-300'
+              }`}>
+                {/* Case Type Header */}
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-gray-900 text-lg mb-1">{caseType}</h3>
+                    <div className="flex items-center gap-2">
+                      {isPreferred && (
+                        <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
+                          Preferred
+                        </span>
+                      )}
+                      <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
+                        {trayCount} trays
+                      </span>
+                    </div>
+                  </div>
+                  <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                    <Settings className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Tray Requirements Preview */}
+                <div className="mb-4">
+                  <div className="text-sm font-medium text-gray-700 mb-2">Tray Requirements:</div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-600">{caseType} Primary Tray</span>
+                      <span className="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium">
+                        Required
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-600">{caseType} Backup Tray</span>
+                      <span className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">
+                        Optional
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Usage Statistics */}
+                <div className="border-t pt-3">
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <div className="text-gray-500">Last Used</div>
+                      <div className="font-medium text-gray-900">{lastUsed}</div>
+                    </div>
+                    <div>
+                      <div className="text-gray-500">Frequency</div>
+                      <div className="font-medium text-gray-900">{Math.floor(Math.random() * 20) + 5}/month</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-2 mt-4">
+                  <button className="flex-1 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium">
+                    Edit Trays
+                  </button>
+                  <button className={`flex-1 px-3 py-2 rounded-lg transition-colors text-sm font-medium ${
+                    isPreferred 
+                      ? 'bg-red-100 text-red-700 hover:bg-red-200' 
+                      : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                  }`}>
+                    {isPreferred ? 'Remove' : 'Set Preferred'}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Summary Statistics */}
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4 pt-6 border-t">
+          <div className="text-center">
+            <div className="text-2xl font-bold text-blue-600">{caseTypes.length}</div>
+            <div className="text-sm text-gray-600">Total Case Types</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-green-600">4</div>
+            <div className="text-sm text-gray-600">Preferred Types</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-purple-600">18</div>
+            <div className="text-sm text-gray-600">Total Trays</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-orange-600">85%</div>
+            <div className="text-sm text-gray-600">Availability Rate</div>
+          </div>
         </div>
       </div>
 

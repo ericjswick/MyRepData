@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ArrowLeft, Edit, MapPin, Phone, Mail, Globe, Calendar, Building2, User, Stethoscope, Plus, TrendingUp, Clock, CheckCircle, AlertCircle, BarChart3, X, Save, Trash2 } from 'lucide-react'
+import { ArrowLeft, Edit, MapPin, Phone, Mail, Globe, Calendar, Building2, User, Stethoscope, Plus, TrendingUp, Clock, CheckCircle, AlertCircle, BarChart3, X, Save, Trash2, Users, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -9,6 +9,8 @@ import { Input } from '@/components/ui/input.jsx'
 import { Label } from '@/components/ui/label.jsx'
 import { Textarea } from '@/components/ui/textarea.jsx'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx'
+import facilitiesData from '@/data/facilities.json'
+import contactsData from '@/data/contacts.json'
 
 const PhysicianDetails = ({ physicianId, onBack }) => {
   const [physician, setPhysician] = useState(null)
@@ -24,6 +26,14 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
   const [showAddCaseTypeModal, setShowAddCaseTypeModal] = useState(false)
   const [showEditTrayModal, setShowEditTrayModal] = useState(false)
   const [showAddTrayModal, setShowAddTrayModal] = useState(false)
+  
+  // Affiliations state
+  const [facilityAffiliations, setFacilityAffiliations] = useState([])
+  const [contactAffiliations, setContactAffiliations] = useState([])
+  const [showAddFacilityModal, setShowAddFacilityModal] = useState(false)
+  const [showAddContactModal, setShowAddContactModal] = useState(false)
+  const [selectedFacility, setSelectedFacility] = useState('')
+  const [selectedContact, setSelectedContact] = useState('')
   
   // Available case types
   const availableCaseTypes = [
@@ -215,6 +225,59 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
       }
     ])
     setShowAddCaseTypeModal(false)
+  }
+
+  // Affiliation management functions
+  const handleAddFacilityAffiliation = () => {
+    if (!selectedFacility) return
+    
+    const facility = facilitiesData.find(f => f.id === selectedFacility)
+    if (!facility) return
+
+    const newAffiliation = {
+      id: Date.now(),
+      facilityId: facility.id,
+      facility: facility,
+      type: 'facility',
+      affiliationType: 'Primary',
+      startDate: new Date().toISOString().split('T')[0],
+      isActive: true,
+      notes: ''
+    }
+
+    setFacilityAffiliations(prev => [...prev, newAffiliation])
+    setSelectedFacility('')
+    setShowAddFacilityModal(false)
+  }
+
+  const handleAddContactAffiliation = () => {
+    if (!selectedContact) return
+    
+    const contact = contactsData.find(c => c.id === selectedContact)
+    if (!contact) return
+
+    const newAffiliation = {
+      id: Date.now(),
+      contactId: contact.id,
+      contact: contact,
+      type: 'contact',
+      affiliationType: 'Primary',
+      startDate: new Date().toISOString().split('T')[0],
+      isActive: true,
+      notes: ''
+    }
+
+    setContactAffiliations(prev => [...prev, newAffiliation])
+    setSelectedContact('')
+    setShowAddContactModal(false)
+  }
+
+  const handleRemoveFacilityAffiliation = (affiliationId) => {
+    setFacilityAffiliations(prev => prev.filter(a => a.id !== affiliationId))
+  }
+
+  const handleRemoveContactAffiliation = (affiliationId) => {
+    setContactAffiliations(prev => prev.filter(a => a.id !== affiliationId))
   }
 
   useEffect(() => {
@@ -561,6 +624,105 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
                     }
                   </span>
                 </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Affiliations Overview */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Facility Affiliations Overview */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Building2 className="w-5 h-5" />
+                  Facility Affiliations
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {facilityAffiliations.length > 0 ? (
+                  <div className="space-y-2">
+                    {facilityAffiliations.slice(0, 3).map((affiliation) => (
+                      <div key={affiliation.id} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                        <span 
+                          className="text-sm font-medium text-blue-600 hover:text-blue-800 cursor-pointer flex items-center gap-1"
+                          onClick={() => setActiveTab('affiliations')}
+                        >
+                          {affiliation.facility.account_name}
+                          <ExternalLink className="w-3 h-3" />
+                        </span>
+                        <Badge variant="outline" className="text-xs">
+                          {affiliation.affiliationType}
+                        </Badge>
+                      </div>
+                    ))}
+                    {facilityAffiliations.length > 3 && (
+                      <p className="text-xs text-gray-500 text-center pt-2">
+                        +{facilityAffiliations.length - 3} more facilities
+                      </p>
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-center py-4">
+                    <Building2 className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                    <p className="text-sm text-gray-600">No facility affiliations</p>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="mt-2"
+                      onClick={() => setActiveTab('affiliations')}
+                    >
+                      Add Facilities
+                    </Button>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Contact Affiliations Overview */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="w-5 h-5" />
+                  Contact Affiliations
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {contactAffiliations.length > 0 ? (
+                  <div className="space-y-2">
+                    {contactAffiliations.slice(0, 3).map((affiliation) => (
+                      <div key={affiliation.id} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                        <span 
+                          className="text-sm font-medium text-green-600 hover:text-green-800 cursor-pointer flex items-center gap-1"
+                          onClick={() => setActiveTab('affiliations')}
+                        >
+                          {affiliation.contact.first_name} {affiliation.contact.last_name}
+                          <ExternalLink className="w-3 h-3" />
+                        </span>
+                        <Badge variant="outline" className="text-xs">
+                          {affiliation.contact.title || 'Contact'}
+                        </Badge>
+                      </div>
+                    ))}
+                    {contactAffiliations.length > 3 && (
+                      <p className="text-xs text-gray-500 text-center pt-2">
+                        +{contactAffiliations.length - 3} more contacts
+                      </p>
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-center py-4">
+                    <Users className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                    <p className="text-sm text-gray-600">No contact affiliations</p>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="mt-2"
+                      onClick={() => setActiveTab('affiliations')}
+                    >
+                      Add Contacts
+                    </Button>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
@@ -1122,78 +1284,227 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
         </TabsContent>
 
         <TabsContent value="affiliations" className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold">Facility Affiliations</h3>
-            <Button className="bg-blue-600 hover:bg-blue-700">
-              <Plus className="w-4 h-4 mr-2" />
-              Add Affiliation
-            </Button>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {physician.affiliations?.map((affiliation) => (
-              <Card key={affiliation.id}>
-                <CardHeader>
-                  <CardTitle className="text-lg">
-                    {affiliation.facility?.account_name}
-                  </CardTitle>
-                  <CardDescription>
-                    {affiliation.facility?.shipping_city}, {affiliation.facility?.shipping_state}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Affiliation Type</span>
-                    <Badge variant="outline">{affiliation.affiliation_type}</Badge>
-                  </div>
+            {/* Facility Affiliations */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold flex items-center gap-2">
+                  <Building2 className="w-5 h-5" />
+                  Facility Affiliations
+                </h3>
+                <Button 
+                  onClick={() => setShowAddFacilityModal(true)}
+                  className="bg-blue-600 hover:bg-blue-700"
+                  size="sm"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add Facility
+                </Button>
+              </div>
 
-                  {affiliation.start_date && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Start Date</span>
-                      <span className="text-sm text-gray-900">{formatDate(affiliation.start_date)}</span>
-                    </div>
-                  )}
+              <div className="space-y-3">
+                {facilityAffiliations.map((affiliation) => (
+                  <Card key={affiliation.id} className="hover:shadow-md transition-shadow">
+                    <CardContent className="p-4">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <h4 className="font-medium text-gray-900 hover:text-blue-600 cursor-pointer flex items-center gap-1">
+                              {affiliation.facility.account_name}
+                              <ExternalLink className="w-3 h-3" />
+                            </h4>
+                            <Badge variant="outline" className="text-xs">
+                              {affiliation.affiliationType}
+                            </Badge>
+                          </div>
+                          <p className="text-sm text-gray-600 mb-1">
+                            {affiliation.facility.shipping_city}, {affiliation.facility.shipping_state}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            Since: {new Date(affiliation.startDate).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleRemoveFacilityAffiliation(affiliation.id)}
+                          className="text-red-600 hover:text-red-800 hover:bg-red-50"
+                        >
+                          <X className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Status</span>
-                    <Badge variant={affiliation.is_active ? "default" : "secondary"}>
-                      {affiliation.is_active ? "Active" : "Inactive"}
-                    </Badge>
-                  </div>
+                {facilityAffiliations.length === 0 && (
+                  <Card className="border-dashed">
+                    <CardContent className="p-8 text-center">
+                      <Building2 className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                      <p className="text-sm text-gray-600 mb-3">No facility affiliations</p>
+                      <Button 
+                        onClick={() => setShowAddFacilityModal(true)}
+                        variant="outline" 
+                        size="sm"
+                      >
+                        <Plus className="w-4 h-4 mr-2" />
+                        Add First Facility
+                      </Button>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </div>
 
-                  {affiliation.notes && (
-                    <div>
-                      <span className="text-sm text-gray-600">Notes</span>
-                      <p className="text-sm text-gray-900 mt-1">{affiliation.notes}</p>
-                    </div>
-                  )}
+            {/* Contact Affiliations */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold flex items-center gap-2">
+                  <Users className="w-5 h-5" />
+                  Contact Affiliations
+                </h3>
+                <Button 
+                  onClick={() => setShowAddContactModal(true)}
+                  className="bg-green-600 hover:bg-green-700"
+                  size="sm"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add Contact
+                </Button>
+              </div>
 
-                  <div className="flex gap-2 pt-2">
-                    <Button variant="outline" size="sm" className="flex-1">
-                      Edit
-                    </Button>
-                    <Button variant="outline" size="sm" className="flex-1">
-                      View Facility
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+              <div className="space-y-3">
+                {contactAffiliations.map((affiliation) => (
+                  <Card key={affiliation.id} className="hover:shadow-md transition-shadow">
+                    <CardContent className="p-4">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <h4 className="font-medium text-gray-900 hover:text-green-600 cursor-pointer flex items-center gap-1">
+                              {affiliation.contact.first_name} {affiliation.contact.last_name}
+                              <ExternalLink className="w-3 h-3" />
+                            </h4>
+                            <Badge variant="outline" className="text-xs">
+                              {affiliation.contact.title || 'Contact'}
+                            </Badge>
+                          </div>
+                          <p className="text-sm text-gray-600 mb-1">
+                            {affiliation.contact.company || 'No company'}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            Since: {new Date(affiliation.startDate).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleRemoveContactAffiliation(affiliation.id)}
+                          className="text-red-600 hover:text-red-800 hover:bg-red-50"
+                        >
+                          <X className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+
+                {contactAffiliations.length === 0 && (
+                  <Card className="border-dashed">
+                    <CardContent className="p-8 text-center">
+                      <Users className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                      <p className="text-sm text-gray-600 mb-3">No contact affiliations</p>
+                      <Button 
+                        onClick={() => setShowAddContactModal(true)}
+                        variant="outline" 
+                        size="sm"
+                      >
+                        <Plus className="w-4 h-4 mr-2" />
+                        Add First Contact
+                      </Button>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </div>
           </div>
 
-          {(!physician.affiliations || physician.affiliations.length === 0) && (
-            <Card>
-              <CardContent className="p-12 text-center">
-                <Building2 className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No affiliations found</h3>
-                <p className="text-gray-600 mb-4">Add facility affiliations for this physician</p>
-                <Button className="bg-blue-600 hover:bg-blue-700">
-                  <Plus className="w-4 h-4 mr-2" />
+          {/* Add Facility Modal */}
+          <Dialog open={showAddFacilityModal} onOpenChange={setShowAddFacilityModal}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add Facility Affiliation</DialogTitle>
+                <DialogDescription>
+                  Select a facility where this physician performs surgery
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="facility-select">Facility</Label>
+                  <Select value={selectedFacility} onValueChange={setSelectedFacility}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a facility..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {facilitiesData
+                        .filter(facility => !facilityAffiliations.some(aff => aff.facilityId === facility.id))
+                        .map((facility) => (
+                          <SelectItem key={facility.id} value={facility.id}>
+                            {facility.account_name} - {facility.shipping_city}, {facility.shipping_state}
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setShowAddFacilityModal(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={handleAddFacilityAffiliation} disabled={!selectedFacility}>
                   Add Affiliation
                 </Button>
-              </CardContent>
-            </Card>
-          )}
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+          {/* Add Contact Modal */}
+          <Dialog open={showAddContactModal} onOpenChange={setShowAddContactModal}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add Contact Affiliation</DialogTitle>
+                <DialogDescription>
+                  Select a contact this physician works with
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="contact-select">Contact</Label>
+                  <Select value={selectedContact} onValueChange={setSelectedContact}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a contact..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {contactsData
+                        .filter(contact => !contactAffiliations.some(aff => aff.contactId === contact.id))
+                        .map((contact) => (
+                          <SelectItem key={contact.id} value={contact.id}>
+                            {contact.first_name} {contact.last_name} - {contact.title || 'Contact'}
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setShowAddContactModal(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={handleAddContactAffiliation} disabled={!selectedContact}>
+                  Add Affiliation
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </TabsContent>
 
         <TabsContent value="activity" className="space-y-6">

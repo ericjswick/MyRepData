@@ -1,0 +1,123 @@
+[
+  {
+    "id": "1",
+    "first_name": "Sarah",
+    "last_name": "Johnson",
+    "title": "OR Manager",
+    "company": "Advanced Spine Center",
+    "email": "sarah.johnson@advancedspine.com",
+    "phone": "(555) 123-4567",
+    "mobile": "(555) 123-4568",
+    "department": "Operating Room",
+    "notes": "Primary OR contact for spine procedures"
+  },
+  {
+    "id": "2",
+    "first_name": "Michael",
+    "last_name": "Chen",
+    "title": "Surgery Coordinator",
+    "company": "Regional Medical Center",
+    "email": "michael.chen@regionalmed.com",
+    "phone": "(555) 234-5678",
+    "mobile": "(555) 234-5679",
+    "department": "Surgery",
+    "notes": "Coordinates all surgical scheduling"
+  },
+  {
+    "id": "3",
+    "first_name": "Jennifer",
+    "last_name": "Williams",
+    "title": "Nurse Manager",
+    "company": "University Hospital",
+    "email": "jennifer.williams@universityhospital.com",
+    "phone": "(555) 345-6789",
+    "mobile": "(555) 345-6790",
+    "department": "Neurosurgery",
+    "notes": "Manages neurosurgery unit"
+  },
+  {
+    "id": "4",
+    "first_name": "David",
+    "last_name": "Rodriguez",
+    "title": "Materials Manager",
+    "company": "Madison Medical Center",
+    "email": "david.rodriguez@madisonmed.com",
+    "phone": "(555) 456-7890",
+    "mobile": "(555) 456-7891",
+    "department": "Supply Chain",
+    "notes": "Handles medical device procurement"
+  },
+  {
+    "id": "5",
+    "first_name": "Lisa",
+    "last_name": "Thompson",
+    "title": "Clinical Coordinator",
+    "company": "Spine Institute of Wisconsin",
+    "email": "lisa.thompson@spinewi.com",
+    "phone": "(555) 567-8901",
+    "mobile": "(555) 567-8902",
+    "department": "Clinical Operations",
+    "notes": "Coordinates patient care and procedures"
+  },
+  {
+    "id": "6",
+    "first_name": "Robert",
+    "last_name": "Anderson",
+    "title": "OR Technician",
+    "company": "Green Bay Surgery Center",
+    "email": "robert.anderson@gbsurgery.com",
+    "phone": "(555) 678-9012",
+    "mobile": "(555) 678-9013",
+    "department": "Operating Room",
+    "notes": "Senior OR tech specializing in spine procedures"
+  },
+  {
+    "id": "7",
+    "first_name": "Amanda",
+    "last_name": "Davis",
+    "title": "Purchasing Manager",
+    "company": "Wisconsin Spine Hospital",
+    "email": "amanda.davis@wispinehospital.com",
+    "phone": "(555) 789-0123",
+    "mobile": "(555) 789-0124",
+    "department": "Purchasing",
+    "notes": "Manages medical device purchasing decisions"
+  },
+  {
+    "id": "8",
+    "first_name": "Christopher",
+    "last_name": "Miller",
+    "title": "Anesthesia Coordinator",
+    "company": "Milwaukee Surgical Center",
+    "email": "christopher.miller@milwaukeesurgical.com",
+    "phone": "(555) 890-1234",
+    "mobile": "(555) 890-1235",
+    "department": "Anesthesia",
+    "notes": "Coordinates anesthesia services for spine cases"
+  },
+  {
+    "id": "9",
+    "first_name": "Nicole",
+    "last_name": "Wilson",
+    "title": "Quality Manager",
+    "company": "Orthopedic Associates",
+    "email": "nicole.wilson@orthoassociates.com",
+    "phone": "(555) 901-2345",
+    "mobile": "(555) 901-2346",
+    "department": "Quality Assurance",
+    "notes": "Oversees quality metrics and outcomes"
+  },
+  {
+    "id": "10",
+    "first_name": "Kevin",
+    "last_name": "Brown",
+    "title": "Facility Manager",
+    "company": "Neuro Spine Center",
+    "email": "kevin.brown@neurospinecenter.com",
+    "phone": "(555) 012-3456",
+    "mobile": "(555) 012-3457",
+    "department": "Administration",
+    "notes": "Manages facility operations and logistics"
+  }
+]
+
