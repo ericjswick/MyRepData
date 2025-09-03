@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import SurgeriesSectionFixed from '@/components/SurgeriesSectionFixed.jsx'
 
-function DashboardMobile() {
+function DashboardMobile({ onNavigate }) {
   const [activeView, setActiveView] = useState('overview')
   const [showAddAppointmentModal, setShowAddAppointmentModal] = useState(false)
   const [appointmentForm, setAppointmentForm] = useState({
@@ -153,19 +153,35 @@ function DashboardMobile() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-16 flex flex-col gap-1">
+            <Button 
+              variant="outline" 
+              className="h-16 flex flex-col gap-1"
+              onClick={() => onNavigate && onNavigate('physicians')}
+            >
               <Plus className="w-5 h-5" />
               <span className="text-xs">Add Physician</span>
             </Button>
-            <Button variant="outline" className="h-16 flex flex-col gap-1">
+            <Button 
+              variant="outline" 
+              className="h-16 flex flex-col gap-1"
+              onClick={() => onNavigate && onNavigate('facilities')}
+            >
               <Building2 className="w-5 h-5" />
               <span className="text-xs">Add Facility</span>
             </Button>
-            <Button variant="outline" className="h-16 flex flex-col gap-1">
+            <Button 
+              variant="outline" 
+              className="h-16 flex flex-col gap-1"
+              onClick={() => onNavigate && onNavigate('scheduling')}
+            >
               <Calendar className="w-5 h-5" />
               <span className="text-xs">Schedule</span>
             </Button>
-            <Button variant="outline" className="h-16 flex flex-col gap-1">
+            <Button 
+              variant="outline" 
+              className="h-16 flex flex-col gap-1"
+              onClick={() => onNavigate && onNavigate('tray-tracking')}
+            >
               <Package className="w-5 h-5" />
               <span className="text-xs">Track Trays</span>
             </Button>

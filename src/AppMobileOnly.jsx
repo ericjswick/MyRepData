@@ -35,7 +35,7 @@ function AppMobileOnly() {
   const renderContent = () => {
     switch (activeSection) {
       case 'dashboard':
-        return <DashboardMobile />
+        return <DashboardMobile onNavigate={setActiveSection} />
       case 'cases':
         return <CasesModule />
       case 'facilities':
@@ -55,7 +55,7 @@ function AppMobileOnly() {
       case 'bulk-upload':
         return <BulkUploadEnhanced />
       default:
-        return <DashboardMobile />
+        return <DashboardMobile onNavigate={setActiveSection} />
     }
   }
 
