@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, List, Plus, Search, Filter, Clock, MapPin, User, Building2, Package, Edit, Trash2, Eye, CheckCircle, AlertCircle, XCircle, CalendarPlus, Share2, Mail, MessageSquare } from 'lucide-react';
 import physiciansData from '../data/physicians.json';
 import facilitiesData from '../data/facilities.json';
+import { useTrayTrackerSync } from '../hooks/useTrayTrackerSync.js';
 
 const CasesModule = () => {
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'calendar'
@@ -23,6 +24,25 @@ const CasesModule = () => {
     time: '',
     duration: '',
     notes: ''
+  });
+
+  // TrayTracker bi-directional sync integration
+  const trayTrackerSync = useTrayTrackerSync({
+    autoInitialize: true,
+    onSyncComplete: (data) => {
+      console.log('TrayTracker sync completed:', data);
+    },
+    onSyncError: (error) => {
+      console.error('TrayTracker sync error:', error);
+    },
+    onTrayUpdate: (data) => {
+      console.log('Tray status update received:', data);
+      // Update local tray status if needed
+    },
+    onCaseUpdate: (data) => {
+      console.log('Case update received from TrayTracker:', data);
+      // Update local case data if needed
+    }
   });
 
   // Mock data for scheduled cases
@@ -213,7 +233,7 @@ const CasesModule = () => {
     }));
   };
 
-  const handleSaveCase = () => {
+  const handleSaveCase = async () => {
     // Validate required fields
     if (!caseForm.caseType || !caseForm.physician || !caseForm.facility || !caseForm.date || !caseForm.time) {
       alert('Please fill in all required fields (Case Type, Treating Physician, Facility, Date, and Time)');
@@ -235,17 +255,32 @@ const CasesModule = () => {
       updatedAt: new Date().toISOString()
     };
 
-    console.log('Saving case:', newCase);
-    
-    // Save to localStorage for persistence
     try {
+      // Save case locally
       const existingCases = JSON.parse(localStorage.getItem('scheduledCases') || '[]');
       const updatedCases = [...existingCases, newCase];
       localStorage.setItem('scheduledCases', JSON.stringify(updatedCases));
-      
-      // Show success message
-      alert(`Case successfully scheduled!\n\nCase Type: ${newCase.case_type}\nPhysician: ${newCase.physician}\nFacility: ${newCase.facility}\nDate: ${newCase.date}\nTime: ${newCase.time}`);
-      
+      setCases(updatedCases);
+
+      // Sync case to TrayTracker if connected
+      if (trayTrackerSync.isConnected) {
+        try {
+          console.log('Syncing case to TrayTracker:', newCase);
+          await trayTrackerSync.syncCaseToTrayTracker(newCase);
+          console.log('Case successfully synced to TrayTracker');
+          
+          // Show success message with sync confirmation
+          alert(`Case scheduled successfully!\n\nCase Details:\n- Type: ${newCase.case_type}\n- Physician: ${newCase.physician}\n- Facility: ${newCase.facility}\n- Date: ${newCase.date} at ${newCase.time}\n\n✅ Synced to TrayTracker`);
+        } catch (syncError) {
+          console.error('Failed to sync case to TrayTracker:', syncError);
+          // Still show success for local save, but warn about sync failure
+          alert(`Case scheduled successfully!\n\nCase Details:\n- Type: ${newCase.case_type}\n- Physician: ${newCase.physician}\n- Facility: ${newCase.facility}\n- Date: ${newCase.date} at ${newCase.time}\n\n⚠️ TrayTracker sync failed: ${syncError.message}\nCase saved locally and will sync when connection is restored.`);
+        }
+      } else {
+        // Show success message without sync
+        alert(`Case scheduled successfully!\n\nCase Details:\n- Type: ${newCase.case_type}\n- Physician: ${newCase.physician}\n- Facility: ${newCase.facility}\n- Date: ${newCase.date} at ${newCase.time}\n\n📡 TrayTracker offline - will sync when connection is restored.`);
+      }
+
       // Reset form and close modal
       setCaseForm({
         caseType: '',
@@ -257,13 +292,12 @@ const CasesModule = () => {
         notes: ''
       });
       setShowScheduleModal(false);
-      setSelectedCase(null);
+
     } catch (error) {
       console.error('Error saving case:', error);
-      alert('Error saving case. Please try again.');
+      alert('Failed to save case. Please try again.');
     }
   };
-
   const handleImportToCalendar = (case_item) => {
     // Create calendar event data with consistent structure
     // Event name: Case Type, Physician (Doctor)
