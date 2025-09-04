@@ -6,6 +6,20 @@ import { Badge } from '@/components/ui/badge.jsx'
 import physiciansData from '../data/physicians.json'
 import facilitiesData from '../data/facilities.json'
 
+// Real facilities from database with priority sorting
+const facilities = facilitiesData.map(facility => ({
+  value: facility.account_name,
+  label: `${facility.account_name} (${facility.account_record_type})`,
+  type: facility.account_record_type,
+  priority: facility.priority
+})).sort((a, b) => {
+  // Sort by priority first (1 = priority, 0 = non-priority), then by name
+  if (a.priority !== b.priority) {
+    return b.priority - a.priority; // Priority facilities first
+  }
+  return a.value.localeCompare(b.value);
+});
+
 function DashboardMobile({ onNavigate }) {
   const [showAddAppointmentModal, setShowAddAppointmentModal] = useState(false)
   const [showScheduleCaseModal, setShowScheduleCaseModal] = useState(false)
@@ -616,9 +630,11 @@ function DashboardMobile({ onNavigate }) {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select Facility</option>
-                      <option value="Advanced Spine Center">Advanced Spine Center (Surgical Facility)</option>
-                      <option value="Access Medical Center">Access Medical Center (Hospital)</option>
-                      <option value="Regional Orthopedic Hospital">Regional Orthopedic Hospital (Hospital)</option>
+                      {facilities.map(facility => (
+                        <option key={facility.value} value={facility.value}>
+                          {facility.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   

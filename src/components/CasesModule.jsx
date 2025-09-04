@@ -132,13 +132,21 @@ const CasesModule = () => {
   // Use real physicians data instead of mock data
   const physicians = physiciansData;
 
-  const facilities = [
-    { id: 1, name: 'Advanced Spine Center', type: 'ASC' },
-    { id: 2, name: 'Regional Medical Center', type: 'Hospital' },
-    { id: 3, name: 'Milwaukee Surgical Center', type: 'ASC' },
-    { id: 4, name: 'Wisconsin Spine Institute', type: 'Hospital' },
-    { id: 5, name: 'Access Medical Center', type: 'OBL' }
-  ];
+  // Use real facilities data with priority sorting
+  const facilities = facilitiesData.map(facility => ({
+    id: facility.id,
+    name: facility.account_name,
+    type: facility.account_record_type,
+    priority: facility.priority,
+    address: facility.address,
+    contact: facility.contact
+  })).sort((a, b) => {
+    // Sort by priority first (1 = priority, 0 = non-priority), then by name
+    if (a.priority !== b.priority) {
+      return b.priority - a.priority; // Priority facilities first
+    }
+    return a.name.localeCompare(b.name);
+  });
 
   useEffect(() => {
     setCases(mockCases);

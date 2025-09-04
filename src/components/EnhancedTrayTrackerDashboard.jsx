@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, AlertTriangle, CheckCircle, RefreshCw, Settings, BarChart3, Plus } from 'lucide-react';
 import physiciansData from '@/data/physicians.json';
+import facilitiesData from '@/data/facilities.json';
 
 // Real physicians from database - moved before component to avoid reference error
 const physicians = physiciansData.map(physician => ({
@@ -9,10 +10,24 @@ const physicians = physiciansData.map(physician => ({
   specialty: physician.specialty
 }));
 
+// Real facilities from database with priority sorting
+const facilities = facilitiesData.map(facility => ({
+  value: facility.account_name,
+  label: `${facility.account_name} (${facility.account_record_type})`,
+  type: facility.account_record_type,
+  priority: facility.priority
+})).sort((a, b) => {
+  // Sort by priority first (1 = priority, 0 = non-priority), then by name
+  if (a.priority !== b.priority) {
+    return b.priority - a.priority; // Priority facilities first
+  }
+  return a.value.localeCompare(b.value);
+});
+
 const EnhancedTrayTrackerDashboard = () => {
   const [selectedCaseType, setSelectedCaseType] = useState('L4-L5 Fusion');
   const [selectedPhysician, setSelectedPhysician] = useState(physicians.length > 0 ? physicians[0].value : '');
-  const [selectedFacility, setSelectedFacility] = useState('Advanced Spine Center');
+  const [selectedFacility, setSelectedFacility] = useState(facilities.length > 0 ? facilities[0].value : '');
   const [trayRequirements, setTrayRequirements] = useState([]);
   const [trayAvailability, setTrayAvailability] = useState({});
   const [upcomingCases, setUpcomingCases] = useState([]);
@@ -229,7 +244,7 @@ const EnhancedTrayTrackerDashboard = () => {
             className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
           >
             {facilities.map(facility => (
-              <option key={facility} value={facility}>{facility}</option>
+              <option key={facility.value} value={facility.value}>{facility.label}</option>
             ))}
           </select>
         </div>
