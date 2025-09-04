@@ -13,6 +13,17 @@ const CasesModule = () => {
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [selectedCase, setSelectedCase] = useState(null);
   const [cases, setCases] = useState([]);
+  
+  // Form state for new case scheduling
+  const [caseForm, setCaseForm] = useState({
+    caseType: '',
+    physician: '',
+    facility: '',
+    date: '',
+    time: '',
+    duration: '',
+    notes: ''
+  });
 
   // Mock data for scheduled cases
   const mockCases = [
@@ -184,6 +195,65 @@ const CasesModule = () => {
   const handleEditCase = (case_item) => {
     setSelectedCase(case_item);
     setShowScheduleModal(true);
+  };
+
+  // Form handlers for case scheduling
+  const handleCaseFormChange = (field, value) => {
+    setCaseForm(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handleSaveCase = () => {
+    // Validate required fields
+    if (!caseForm.caseType || !caseForm.physician || !caseForm.facility || !caseForm.date || !caseForm.time) {
+      alert('Please fill in all required fields (Case Type, Treating Physician, Facility, Date, and Time)');
+      return;
+    }
+
+    // Create case object with unique ID and timestamp
+    const newCase = {
+      id: Date.now().toString(),
+      case_type: caseForm.caseType,
+      physician: caseForm.physician,
+      facility: caseForm.facility,
+      date: caseForm.date,
+      time: caseForm.time,
+      duration: caseForm.duration || 120,
+      notes: caseForm.notes,
+      status: 'scheduled',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    console.log('Saving case:', newCase);
+    
+    // Save to localStorage for persistence
+    try {
+      const existingCases = JSON.parse(localStorage.getItem('scheduledCases') || '[]');
+      const updatedCases = [...existingCases, newCase];
+      localStorage.setItem('scheduledCases', JSON.stringify(updatedCases));
+      
+      // Show success message
+      alert(`Case successfully scheduled!\n\nCase Type: ${newCase.case_type}\nPhysician: ${newCase.physician}\nFacility: ${newCase.facility}\nDate: ${newCase.date}\nTime: ${newCase.time}`);
+      
+      // Reset form and close modal
+      setCaseForm({
+        caseType: '',
+        physician: '',
+        facility: '',
+        date: '',
+        time: '',
+        duration: '',
+        notes: ''
+      });
+      setShowScheduleModal(false);
+      setSelectedCase(null);
+    } catch (error) {
+      console.error('Error saving case:', error);
+      alert('Error saving case. Please try again.');
+    }
   };
 
   const handleImportToCalendar = (case_item) => {
@@ -620,7 +690,12 @@ const CasesModule = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Case Type</label>
-                  <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                  <select 
+                    value={caseForm.caseType}
+                    onChange={(e) => handleCaseFormChange('caseType', e.target.value)}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Select Case Type</option>
                     {caseTypes.map(type => (
                       <option key={type} value={type}>{type}</option>
                     ))}
@@ -629,9 +704,14 @@ const CasesModule = () => {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Treating Physician</label>
-                  <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                  <select 
+                    value={caseForm.physician}
+                    onChange={(e) => handleCaseFormChange('physician', e.target.value)}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Select Physician</option>
                     {physicians.map(physician => (
-                      <option key={physician.id} value={physician.id}>
+                      <option key={physician.id} value={physician.full_name}>
                         {physician.full_name} - {physician.specialty}
                       </option>
                     ))}
@@ -640,9 +720,14 @@ const CasesModule = () => {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Facility</label>
-                  <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                  <select 
+                    value={caseForm.facility}
+                    onChange={(e) => handleCaseFormChange('facility', e.target.value)}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Select Facility</option>
                     {facilities.map(facility => (
-                      <option key={facility.id} value={facility.id}>
+                      <option key={facility.id} value={facility.name}>
                         {facility.name} ({facility.type})
                       </option>
                     ))}
@@ -653,6 +738,8 @@ const CasesModule = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
                   <input
                     type="date"
+                    value={caseForm.date}
+                    onChange={(e) => handleCaseFormChange('date', e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -661,6 +748,8 @@ const CasesModule = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Time</label>
                   <input
                     type="time"
+                    value={caseForm.time}
+                    onChange={(e) => handleCaseFormChange('time', e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -669,6 +758,8 @@ const CasesModule = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Duration (minutes)</label>
                   <input
                     type="number"
+                    value={caseForm.duration}
+                    onChange={(e) => handleCaseFormChange('duration', e.target.value)}
                     placeholder="120"
                     className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
@@ -678,6 +769,8 @@ const CasesModule = () => {
               <div className="mt-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Procedure Notes</label>
                 <textarea
+                  value={caseForm.notes}
+                  onChange={(e) => handleCaseFormChange('notes', e.target.value)}
                   rows={3}
                   placeholder="Enter procedure notes and special requirements..."
                   className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
@@ -695,14 +788,10 @@ const CasesModule = () => {
                   Cancel
                 </button>
                 <button
-                  onClick={() => {
-                    console.log('Case scheduled/updated');
-                    setShowScheduleModal(false);
-                    setSelectedCase(null);
-                  }}
+                  onClick={handleSaveCase}
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  {selectedCase ? 'Update Case Type' : 'Schedule Case Type'}
+                  {selectedCase ? 'Update Case' : 'Schedule Case'}
                 </button>
               </div>
             </div>

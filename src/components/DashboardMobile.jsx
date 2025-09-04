@@ -113,9 +113,48 @@ function DashboardMobile({ onNavigate }) {
   }
 
   const handleSaveCase = () => {
-    console.log('Saving case:', caseForm)
-    // Here you would typically save to backend
-    handleCloseCaseModal()
+    // Validate required fields
+    if (!caseForm.caseType || !caseForm.physician || !caseForm.facility || !caseForm.date || !caseForm.time) {
+      alert('Please fill in all required fields (Case Type, Treating Physician, Facility, Date, and Time)')
+      return
+    }
+
+    // Create case object with unique ID and timestamp
+    const newCase = {
+      id: Date.now().toString(),
+      ...caseForm,
+      status: 'scheduled',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
+
+    console.log('Saving case:', newCase)
+    
+    // Save to localStorage for persistence (in a real app, this would be saved to backend)
+    try {
+      const existingCases = JSON.parse(localStorage.getItem('scheduledCases') || '[]')
+      const updatedCases = [...existingCases, newCase]
+      localStorage.setItem('scheduledCases', JSON.stringify(updatedCases))
+      
+      // Show success message
+      alert(`Case successfully scheduled!\n\nCase Type: ${newCase.caseType}\nPhysician: ${newCase.physician}\nFacility: ${newCase.facility}\nDate: ${newCase.date}\nTime: ${newCase.time}`)
+      
+      // Reset form and close modal
+      setCaseForm({
+        caseType: '',
+        physician: '',
+        facility: '',
+        date: '',
+        time: '',
+        duration: '',
+        notes: '',
+        requiredTrays: []
+      })
+      handleCloseCaseModal()
+    } catch (error) {
+      console.error('Error saving case:', error)
+      alert('Error saving case. Please try again.')
+    }
   }
 
   const stats = [
