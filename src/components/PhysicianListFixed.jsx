@@ -9,6 +9,9 @@ import PhysicianDetailsMobile from './PhysicianDetailsMobile.jsx'
 import PhysicianEditModal from './PhysicianEditModal.jsx'
 import physiciansData from '../data/physicians.json'
 
+// Extract unique specialties from physician data
+const uniqueSpecialties = [...new Set(physiciansData.map(physician => physician.specialty))].sort()
+
 const PhysicianListFixed = () => {
   const [physicians, setPhysicians] = useState([])
   const [loading, setLoading] = useState(true)
@@ -216,12 +219,9 @@ const PhysicianListFixed = () => {
               className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Specialties</option>
-              <option value="Neuro">Neuro</option>
-              <option value="Ortho Spine">Ortho Spine</option>
-              <option value="Ortho">Ortho</option>
-              <option value="Ortho Hip">Ortho Hip</option>
-              <option value="Trauma">Trauma</option>
-              <option value="Other">Other</option>
+              {uniqueSpecialties.map(specialty => (
+                <option key={specialty} value={specialty}>{specialty}</option>
+              ))}
             </select>
 
             <select 

@@ -5,6 +5,10 @@ import { Input } from '@/components/ui/input.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx'
+import physiciansData from '../data/physicians.json'
+
+// Extract unique specialties from physician data
+const uniqueSpecialties = [...new Set(physiciansData.map(physician => physician.specialty))].sort()
 
 const PhysicianList = () => {
   const [physicians, setPhysicians] = useState([])
@@ -178,12 +182,9 @@ const PhysicianList = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="">All Specialties</SelectItem>
-                <SelectItem value="Neuro">Neuro</SelectItem>
-                <SelectItem value="Ortho Spine">Ortho Spine</SelectItem>
-                <SelectItem value="Ortho">Ortho</SelectItem>
-                <SelectItem value="Ortho Hip">Ortho Hip</SelectItem>
-                <SelectItem value="Trauma">Trauma</SelectItem>
-                <SelectItem value="Other">Other</SelectItem>
+                {uniqueSpecialties.map(specialty => (
+                  <SelectItem key={specialty} value={specialty}>{specialty}</SelectItem>
+                ))}
               </SelectContent>
             </Select>
 
