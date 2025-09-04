@@ -523,10 +523,11 @@ function DashboardMobile({ onNavigate }) {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select Physician</option>
-                      <option value="Dr. Branko Prpa">Dr. Branko Prpa - Spine Surgery</option>
-                      <option value="Dr. Sarah Johnson">Dr. Sarah Johnson - Orthopedic Surgery</option>
-                      <option value="Dr. Michael Chen">Dr. Michael Chen - Joint Replacement</option>
-                      <option value="Dr. Emily Rodriguez">Dr. Emily Rodriguez - Sports Medicine</option>
+                      {physiciansData.map(physician => (
+                        <option key={physician.id} value={`Dr. ${physician.first_name} ${physician.last_name}`}>
+                          Dr. {physician.first_name} {physician.last_name} - {physician.specialty}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   
