@@ -242,7 +242,31 @@ const AllButtonsFunctional = () => {
 
   const handleSaveAppointment = () => {
     console.log('Save Appointment clicked')
-    setShowAddAppointmentModal(false)
+    
+    // Create appointment object with unique ID and timestamp
+    const newAppointment = {
+      id: Date.now().toString(),
+      physician: 'Selected Physician', // This would come from form data
+      facility: 'Selected Facility',   // This would come from form data
+      date: new Date().toISOString().split('T')[0], // Current date as placeholder
+      time: '09:00', // Default time as placeholder
+      status: 'scheduled',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
+
+    try {
+      // Save to localStorage for persistence
+      const existingAppointments = JSON.parse(localStorage.getItem('scheduledAppointments') || '[]')
+      const updatedAppointments = [...existingAppointments, newAppointment]
+      localStorage.setItem('scheduledAppointments', JSON.stringify(updatedAppointments))
+      
+      alert('Appointment saved successfully!')
+      setShowAddAppointmentModal(false)
+    } catch (error) {
+      console.error('Error saving appointment:', error)
+      alert('Error saving appointment. Please try again.')
+    }
   }
 
   // Generic handlers

@@ -77,12 +77,25 @@ const FacilityListFixedNew = () => {
   }
 
   const handleSaveEdit = () => {
-    // Update facility in the list
-    setFacilities(facilities.map(f => 
-      f.id === editingFacility.id ? editingFacility : f
-    ))
-    setShowEditModal(false)
-    setEditingFacility(null)
+    try {
+      // Update facility in the list
+      const updatedFacilities = facilities.map(f => 
+        f.id === editingFacility.id ? { ...editingFacility, updatedAt: new Date().toISOString() } : f
+      )
+      
+      // Save to localStorage for persistence
+      localStorage.setItem('facilities', JSON.stringify(updatedFacilities))
+      
+      // Update local state
+      setFacilities(updatedFacilities)
+      setShowEditModal(false)
+      setEditingFacility(null)
+      
+      alert(`Facility "${editingFacility.account_name || editingFacility.name}" updated successfully!`)
+    } catch (error) {
+      console.error('Error saving facility:', error)
+      alert('Error saving facility. Please try again.')
+    }
   }
 
   // Add Facility Form Handlers

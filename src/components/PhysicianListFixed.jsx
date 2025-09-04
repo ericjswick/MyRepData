@@ -353,8 +353,39 @@ const PhysicianListFixed = () => {
           onClose={() => setShowAddModal(false)}
           onSave={(physicianData) => {
             console.log('Saving physician:', physicianData)
-            setShowAddModal(false)
-            fetchPhysicians() // Refresh the list
+            
+            try {
+              // Save to localStorage for persistence
+              const existingPhysicians = JSON.parse(localStorage.getItem('physicians') || '[]')
+              
+              // Check if updating existing physician or adding new one
+              const existingIndex = existingPhysicians.findIndex(p => p.id === physicianData.id)
+              
+              if (existingIndex >= 0) {
+                // Update existing physician
+                existingPhysicians[existingIndex] = physicianData
+                alert(`Physician "${physicianData.full_name}" updated successfully!`)
+              } else {
+                // Add new physician
+                const newPhysician = {
+                  ...physicianData,
+                  id: Date.now().toString(),
+                  createdAt: new Date().toISOString()
+                }
+                existingPhysicians.push(newPhysician)
+                alert(`Physician "${physicianData.full_name}" added successfully!`)
+              }
+              
+              localStorage.setItem('physicians', JSON.stringify(existingPhysicians))
+              
+              // Update local state
+              setPhysicians(existingPhysicians)
+              setShowAddModal(false)
+              
+            } catch (error) {
+              console.error('Error saving physician:', error)
+              alert('Error saving physician. Please try again.')
+            }
           }}
         />
       )}

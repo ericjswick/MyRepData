@@ -138,38 +138,65 @@ function PhysicianDetailsMobile({ physician, onBack }) {
   }
 
   const handleSaveTray = (updatedTray) => {
-    setTrayPreferences(prev => 
-      prev.map(caseTypeData => 
-        caseTypeData.caseType === editingCaseType
-          ? {
-              ...caseTypeData,
-              trays: caseTypeData.trays.map(tray => 
-                tray.id === updatedTray.id ? updatedTray : tray
-              )
-            }
-          : caseTypeData
-      )
+    const updatedPreferences = trayPreferences.map(caseTypeData => 
+      caseTypeData.caseType === editingCaseType
+        ? {
+            ...caseTypeData,
+            trays: caseTypeData.trays.map(tray => 
+              tray.id === updatedTray.id ? { ...updatedTray, updatedAt: new Date().toISOString() } : tray
+            )
+          }
+        : caseTypeData
     )
-    setShowEditTrayModal(false)
-    setEditingTray(null)
+    
+    try {
+      // Save to localStorage for persistence
+      localStorage.setItem('trayPreferences', JSON.stringify(updatedPreferences))
+      
+      // Update local state
+      setTrayPreferences(updatedPreferences)
+      setShowEditTrayModal(false)
+      setEditingTray(null)
+      
+      alert(`Tray "${updatedTray.name}" updated successfully!`)
+    } catch (error) {
+      console.error('Error saving tray:', error)
+      alert('Error saving tray. Please try again.')
+    }
   }
 
   const handleAddNewTray = (newTray) => {
     const trayId = newTray.name.toLowerCase().replace(/[^a-z0-9]/g, '_')
-    const trayWithId = { ...newTray, id: trayId }
+    const trayWithId = { 
+      ...newTray, 
+      id: trayId,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
     
-    setTrayPreferences(prev => 
-      prev.map(caseTypeData => 
-        caseTypeData.caseType === editingCaseType
-          ? {
-              ...caseTypeData,
-              trays: [...caseTypeData.trays, trayWithId]
-            }
-          : caseTypeData
-      )
+    const updatedPreferences = trayPreferences.map(caseTypeData => 
+      caseTypeData.caseType === editingCaseType
+        ? {
+            ...caseTypeData,
+            trays: [...caseTypeData.trays, trayWithId]
+          }
+        : caseTypeData
     )
-    setShowAddTrayModal(false)
-    setEditingTray(null)
+    
+    try {
+      // Save to localStorage for persistence
+      localStorage.setItem('trayPreferences', JSON.stringify(updatedPreferences))
+      
+      // Update local state
+      setTrayPreferences(updatedPreferences)
+      setShowAddTrayModal(false)
+      setEditingTray(null)
+      
+      alert(`Tray "${newTray.name}" added successfully!`)
+    } catch (error) {
+      console.error('Error adding tray:', error)
+      alert('Error adding tray. Please try again.')
+    }
   }
 
   const handleRemoveTray = (caseType, trayId) => {

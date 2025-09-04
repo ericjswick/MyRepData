@@ -72,9 +72,45 @@ function DashboardMobile({ onNavigate }) {
   }
 
   const handleSaveAppointment = () => {
-    console.log('Saving appointment:', appointmentForm)
-    // Here you would typically save to backend
-    handleCloseAppointmentModal()
+    // Validate required fields
+    if (!appointmentForm.physician || !appointmentForm.facility || !appointmentForm.date || !appointmentForm.time) {
+      alert('Please fill in all required fields (Physician, Facility, Date, and Time)')
+      return
+    }
+
+    // Create appointment object with unique ID and timestamp
+    const newAppointment = {
+      id: Date.now().toString(),
+      ...appointmentForm,
+      status: 'scheduled',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
+
+    console.log('Saving appointment:', newAppointment)
+    
+    // Save to localStorage for persistence
+    try {
+      const existingAppointments = JSON.parse(localStorage.getItem('scheduledAppointments') || '[]')
+      const updatedAppointments = [...existingAppointments, newAppointment]
+      localStorage.setItem('scheduledAppointments', JSON.stringify(updatedAppointments))
+      
+      // Show success message
+      alert(`Appointment successfully scheduled!\n\nPhysician: ${newAppointment.physician}\nFacility: ${newAppointment.facility}\nDate: ${newAppointment.date}\nTime: ${newAppointment.time}`)
+      
+      // Reset form and close modal
+      setAppointmentForm({
+        physician: '',
+        facility: '',
+        date: '',
+        time: '',
+        notes: ''
+      })
+      handleCloseAppointmentModal()
+    } catch (error) {
+      console.error('Error saving appointment:', error)
+      alert('Error saving appointment. Please try again.')
+    }
   }
 
   const handleScheduleCase = () => {
