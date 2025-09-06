@@ -59,7 +59,7 @@ const CasesModule = () => {
       date: '2024-09-02',
       time: '08:00 AM',
       duration: 180,
-      status: 'confirmed',
+      status: 'Scheduled',
       required_trays: ['SPINE-001', 'INST-001', 'GRAFT-001'],
       tray_status: 'ready',
       notes: 'Posterior approach with instrumentation'
@@ -76,7 +76,7 @@ const CasesModule = () => {
       date: '2024-09-02',
       time: '10:30 AM',
       duration: 120,
-      status: 'pending',
+      status: 'Scheduled',
       required_trays: ['CERV-001', 'MICRO-001'],
       tray_status: 'missing',
       notes: 'Anterior approach with fusion'
@@ -93,7 +93,7 @@ const CasesModule = () => {
       date: '2024-09-03',
       time: '09:00 AM',
       duration: 90,
-      status: 'confirmed',
+      status: 'Scheduled',
       required_trays: ['LUMB-001', 'LAMIN-001'],
       tray_status: 'ready',
       notes: 'Decompression only'
@@ -112,7 +112,7 @@ const CasesModule = () => {
       duration: 240,
       patient_name: 'Lisa Brown',
       patient_age: 48,
-      status: 'scheduled',
+      status: 'Scheduled',
       required_trays: ['THOR-001', 'INST-002', 'GRAFT-002'],
       tray_status: 'partial',
       notes: 'Complex thoracic fusion with instrumentation'
@@ -131,7 +131,7 @@ const CasesModule = () => {
       duration: 200,
       patient_name: 'David Miller',
       patient_age: 55,
-      status: 'confirmed',
+      status: 'Scheduled',
       required_trays: ['CERV-002', 'INST-001', 'GRAFT-001'],
       tray_status: 'ready',
       notes: 'Multi-level cervical fusion'
@@ -174,11 +174,9 @@ const CasesModule = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'confirmed': return 'bg-green-100 text-green-800';
-      case 'scheduled': return 'bg-blue-100 text-blue-800';
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'cancelled': return 'bg-red-100 text-red-800';
-      case 'completed': return 'bg-gray-100 text-gray-800';
+      case 'Scheduled': return 'bg-blue-100 text-blue-800';
+      case 'Cancelled': return 'bg-red-100 text-red-800';
+      case 'Complete': return 'bg-green-100 text-green-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -230,7 +228,7 @@ const CasesModule = () => {
       // Update case status to completed
       const updatedCase = {
         ...case_item,
-        status: 'completed',
+        status: 'Complete',
         completed_at: new Date().toISOString(),
         completed_by: 'Current User' // You can replace this with actual user info
       };
@@ -250,7 +248,7 @@ const CasesModule = () => {
       // Sync with TrayTracker if available
       if (trayTrackerSync) {
         try {
-          await trayTrackerSync.updateCaseStatus(case_item.id, 'completed', 'Case marked as completed');
+          await trayTrackerSync.updateCaseStatus(case_item.id, 'Complete', 'Case marked as complete');
         } catch (syncError) {
           console.warn('TrayTracker sync failed:', syncError);
           // Continue anyway - local update succeeded
@@ -291,7 +289,7 @@ const CasesModule = () => {
       time: caseForm.time,
       duration: caseForm.duration || 120,
       notes: caseForm.notes,
-      status: 'scheduled',
+      status: 'Scheduled',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
@@ -561,7 +559,7 @@ const CasesModule = () => {
                           </button>
                         </div>
                         <div className="flex items-center gap-1">
-                          {case_item.status !== 'completed' && (
+                          {case_item.status !== 'Complete' && (
                             <button
                               onClick={() => handleCompleteCase(case_item)}
                               className="px-2 py-1 text-xs bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
@@ -663,11 +661,9 @@ const CasesModule = () => {
               className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">All Status</option>
-              <option value="scheduled">Scheduled</option>
-              <option value="confirmed">Confirmed</option>
-              <option value="pending">Pending</option>
-              <option value="cancelled">Cancelled</option>
-              <option value="completed">Completed</option>
+              <option value="Scheduled">Scheduled</option>
+              <option value="Cancelled">Cancelled</option>
+              <option value="Complete">Complete</option>
             </select>
             
             <select
