@@ -609,7 +609,7 @@ const PhysicianDetails = ({ physicianId, onBack }) => {
                     <Building2 className="w-4 h-4 text-gray-600" />
                     <span className="text-sm text-gray-600">Affiliations</span>
                   </div>
-                  <span className="font-semibold">{physician.affiliations?.length || 0}</span>
+                  <span className="font-semibold">{facilityAffiliations.length + contactAffiliations.length}</span>
                 </div>
                 
                 <div className="flex items-center justify-between">
