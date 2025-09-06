@@ -225,6 +225,47 @@ const CasesModule = () => {
     setShowScheduleModal(true);
   };
 
+  const handleCompleteCase = async (case_item) => {
+    try {
+      // Update case status to completed
+      const updatedCase = {
+        ...case_item,
+        status: 'completed',
+        completed_at: new Date().toISOString(),
+        completed_by: 'Current User' // You can replace this with actual user info
+      };
+
+      // Update in local storage
+      const existingCases = JSON.parse(localStorage.getItem('scheduledCases') || '[]');
+      const updatedCases = existingCases.map(c => 
+        c.id === case_item.id ? updatedCase : c
+      );
+      localStorage.setItem('scheduledCases', JSON.stringify(updatedCases));
+
+      // Update local state
+      setCases(prevCases => 
+        prevCases.map(c => c.id === case_item.id ? updatedCase : c)
+      );
+
+      // Sync with TrayTracker if available
+      if (trayTrackerSync) {
+        try {
+          await trayTrackerSync.updateCaseStatus(case_item.id, 'completed', 'Case marked as completed');
+        } catch (syncError) {
+          console.warn('TrayTracker sync failed:', syncError);
+          // Continue anyway - local update succeeded
+        }
+      }
+
+      // Show success message
+      alert(`Case "${case_item.case_type}" has been marked as completed!`);
+      
+    } catch (error) {
+      console.error('Error completing case:', error);
+      alert('Failed to complete case. Please try again.');
+    }
+  };
+
   // Form handlers for case scheduling
   const handleCaseFormChange = (field, value) => {
     setCaseForm(prev => ({
@@ -520,6 +561,16 @@ const CasesModule = () => {
                           </button>
                         </div>
                         <div className="flex items-center gap-1">
+                          {case_item.status !== 'completed' && (
+                            <button
+                              onClick={() => handleCompleteCase(case_item)}
+                              className="px-2 py-1 text-xs bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+                              title="Complete Case"
+                            >
+                              <CheckCircle className="w-3 h-3 mr-1 inline" />
+                              Complete
+                            </button>
+                          )}
                           <button
                             onClick={() => handleViewCase(case_item)}
                             className="p-1 text-blue-600 hover:bg-blue-50 rounded transition-colors"
