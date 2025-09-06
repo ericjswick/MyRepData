@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Calendar, Clock, MapPin, User, Stethoscope, Plus, List, ChevronDown, ArrowLeftRight, ExternalLink, Download, Eye, Edit3, CalendarPlus } from 'lucide-react'
 import CalendarSelectorSimple from './CalendarSelectorSimple'
+import physiciansData from '../data/physicians.json'
 
 const SurgeriesSection = () => {
   const [viewMode, setViewMode] = useState('list') // 'list' or 'calendar'
@@ -952,9 +953,15 @@ const SurgeriesSection = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">Physician</label>
                     <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                       <option value="">Select Physician</option>
-                      <option value="Dr. Branko Prpa" selected={selectedSurgery?.physician_name === 'Dr. Branko Prpa'}>Dr. Branko Prpa</option>
-                      <option value="Dr. Max Ots" selected={selectedSurgery?.physician_name === 'Dr. Max Ots'}>Dr. Max Ots</option>
-                      <option value="Dr. Shekhar Dagam" selected={selectedSurgery?.physician_name === 'Dr. Shekhar Dagam'}>Dr. Shekhar Dagam</option>
+                      {physiciansData.map(physician => (
+                        <option 
+                          key={physician.id} 
+                          value={`Dr. ${physician.first_name} ${physician.last_name}`}
+                          selected={selectedSurgery?.physician_name === `Dr. ${physician.first_name} ${physician.last_name}`}
+                        >
+                          Dr. {physician.first_name} {physician.last_name} - {physician.specialty}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div>

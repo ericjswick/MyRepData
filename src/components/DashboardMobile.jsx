@@ -6,6 +6,20 @@ import { Badge } from '@/components/ui/badge.jsx'
 import physiciansData from '../data/physicians.json'
 import facilitiesData from '../data/facilities.json'
 
+// Real facilities from database with priority sorting
+const facilities = facilitiesData.map(facility => ({
+  value: facility.account_name,
+  label: `${facility.account_name} (${facility.account_record_type})`,
+  type: facility.account_record_type,
+  priority: facility.priority
+})).sort((a, b) => {
+  // Sort by priority first (1 = priority, 0 = non-priority), then by name
+  if (a.priority !== b.priority) {
+    return b.priority - a.priority; // Priority facilities first
+  }
+  return a.value.localeCompare(b.value);
+});
+
 function DashboardMobile({ onNavigate }) {
   const [showAddAppointmentModal, setShowAddAppointmentModal] = useState(false)
   const [showScheduleCaseModal, setShowScheduleCaseModal] = useState(false)
@@ -72,9 +86,45 @@ function DashboardMobile({ onNavigate }) {
   }
 
   const handleSaveAppointment = () => {
-    console.log('Saving appointment:', appointmentForm)
-    // Here you would typically save to backend
-    handleCloseAppointmentModal()
+    // Validate required fields
+    if (!appointmentForm.physician || !appointmentForm.facility || !appointmentForm.date || !appointmentForm.time) {
+      alert('Please fill in all required fields (Physician, Facility, Date, and Time)')
+      return
+    }
+
+    // Create appointment object with unique ID and timestamp
+    const newAppointment = {
+      id: Date.now().toString(),
+      ...appointmentForm,
+      status: 'scheduled',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
+
+    console.log('Saving appointment:', newAppointment)
+    
+    // Save to localStorage for persistence
+    try {
+      const existingAppointments = JSON.parse(localStorage.getItem('scheduledAppointments') || '[]')
+      const updatedAppointments = [...existingAppointments, newAppointment]
+      localStorage.setItem('scheduledAppointments', JSON.stringify(updatedAppointments))
+      
+      // Show success message
+      alert(`Appointment successfully scheduled!\n\nPhysician: ${newAppointment.physician}\nFacility: ${newAppointment.facility}\nDate: ${newAppointment.date}\nTime: ${newAppointment.time}`)
+      
+      // Reset form and close modal
+      setAppointmentForm({
+        physician: '',
+        facility: '',
+        date: '',
+        time: '',
+        notes: ''
+      })
+      handleCloseAppointmentModal()
+    } catch (error) {
+      console.error('Error saving appointment:', error)
+      alert('Error saving appointment. Please try again.')
+    }
   }
 
   const handleScheduleCase = () => {
@@ -113,9 +163,48 @@ function DashboardMobile({ onNavigate }) {
   }
 
   const handleSaveCase = () => {
-    console.log('Saving case:', caseForm)
-    // Here you would typically save to backend
-    handleCloseCaseModal()
+    // Validate required fields
+    if (!caseForm.caseType || !caseForm.physician || !caseForm.facility || !caseForm.date || !caseForm.time) {
+      alert('Please fill in all required fields (Case Type, Treating Physician, Facility, Date, and Time)')
+      return
+    }
+
+    // Create case object with unique ID and timestamp
+    const newCase = {
+      id: Date.now().toString(),
+      ...caseForm,
+      status: 'scheduled',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
+
+    console.log('Saving case:', newCase)
+    
+    // Save to localStorage for persistence (in a real app, this would be saved to backend)
+    try {
+      const existingCases = JSON.parse(localStorage.getItem('scheduledCases') || '[]')
+      const updatedCases = [...existingCases, newCase]
+      localStorage.setItem('scheduledCases', JSON.stringify(updatedCases))
+      
+      // Show success message
+      alert(`Case successfully scheduled!\n\nCase Type: ${newCase.caseType}\nPhysician: ${newCase.physician}\nFacility: ${newCase.facility}\nDate: ${newCase.date}\nTime: ${newCase.time}`)
+      
+      // Reset form and close modal
+      setCaseForm({
+        caseType: '',
+        physician: '',
+        facility: '',
+        date: '',
+        time: '',
+        duration: '',
+        notes: '',
+        requiredTrays: []
+      })
+      handleCloseCaseModal()
+    } catch (error) {
+      console.error('Error saving case:', error)
+      alert('Error saving case. Please try again.')
+    }
   }
 
   const stats = [
@@ -523,10 +612,11 @@ function DashboardMobile({ onNavigate }) {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select Physician</option>
-                      <option value="Dr. Branko Prpa">Dr. Branko Prpa - Spine Surgery</option>
-                      <option value="Dr. Sarah Johnson">Dr. Sarah Johnson - Orthopedic Surgery</option>
-                      <option value="Dr. Michael Chen">Dr. Michael Chen - Joint Replacement</option>
-                      <option value="Dr. Emily Rodriguez">Dr. Emily Rodriguez - Sports Medicine</option>
+                      {physiciansData.map(physician => (
+                        <option key={physician.id} value={`Dr. ${physician.first_name} ${physician.last_name}`}>
+                          Dr. {physician.first_name} {physician.last_name} - {physician.specialty}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   
@@ -540,9 +630,11 @@ function DashboardMobile({ onNavigate }) {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Select Facility</option>
-                      <option value="Advanced Spine Center">Advanced Spine Center (Surgical Facility)</option>
-                      <option value="Access Medical Center">Access Medical Center (Hospital)</option>
-                      <option value="Regional Orthopedic Hospital">Regional Orthopedic Hospital (Hospital)</option>
+                      {facilities.map(facility => (
+                        <option key={facility.value} value={facility.value}>
+                          {facility.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   

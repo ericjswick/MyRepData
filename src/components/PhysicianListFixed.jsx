@@ -9,6 +9,9 @@ import PhysicianDetailsMobile from './PhysicianDetailsMobile.jsx'
 import PhysicianEditModal from './PhysicianEditModal.jsx'
 import physiciansData from '../data/physicians.json'
 
+// Extract unique specialties from physician data
+const uniqueSpecialties = [...new Set(physiciansData.map(physician => physician.specialty))].sort()
+
 const PhysicianListFixed = () => {
   const [physicians, setPhysicians] = useState([])
   const [loading, setLoading] = useState(true)
@@ -216,12 +219,9 @@ const PhysicianListFixed = () => {
               className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Specialties</option>
-              <option value="Neuro">Neuro</option>
-              <option value="Ortho Spine">Ortho Spine</option>
-              <option value="Ortho">Ortho</option>
-              <option value="Ortho Hip">Ortho Hip</option>
-              <option value="Trauma">Trauma</option>
-              <option value="Other">Other</option>
+              {uniqueSpecialties.map(specialty => (
+                <option key={specialty} value={specialty}>{specialty}</option>
+              ))}
             </select>
 
             <select 
@@ -353,8 +353,39 @@ const PhysicianListFixed = () => {
           onClose={() => setShowAddModal(false)}
           onSave={(physicianData) => {
             console.log('Saving physician:', physicianData)
-            setShowAddModal(false)
-            fetchPhysicians() // Refresh the list
+            
+            try {
+              // Save to localStorage for persistence
+              const existingPhysicians = JSON.parse(localStorage.getItem('physicians') || '[]')
+              
+              // Check if updating existing physician or adding new one
+              const existingIndex = existingPhysicians.findIndex(p => p.id === physicianData.id)
+              
+              if (existingIndex >= 0) {
+                // Update existing physician
+                existingPhysicians[existingIndex] = physicianData
+                alert(`Physician "${physicianData.full_name}" updated successfully!`)
+              } else {
+                // Add new physician
+                const newPhysician = {
+                  ...physicianData,
+                  id: Date.now().toString(),
+                  createdAt: new Date().toISOString()
+                }
+                existingPhysicians.push(newPhysician)
+                alert(`Physician "${physicianData.full_name}" added successfully!`)
+              }
+              
+              localStorage.setItem('physicians', JSON.stringify(existingPhysicians))
+              
+              // Update local state
+              setPhysicians(existingPhysicians)
+              setShowAddModal(false)
+              
+            } catch (error) {
+              console.error('Error saving physician:', error)
+              alert('Error saving physician. Please try again.')
+            }
           }}
         />
       )}

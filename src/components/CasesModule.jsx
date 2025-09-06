@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, List, Plus, Search, Filter, Clock, MapPin, User, Building2, Package, Edit, Trash2, Eye, CheckCircle, AlertCircle, XCircle, CalendarPlus, Share2, Mail, MessageSquare } from 'lucide-react';
 import physiciansData from '../data/physicians.json';
 import facilitiesData from '../data/facilities.json';
+import { useTrayTrackerSync } from '../hooks/useTrayTrackerSync.js';
 
 const CasesModule = () => {
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'calendar'
@@ -13,6 +14,36 @@ const CasesModule = () => {
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [selectedCase, setSelectedCase] = useState(null);
   const [cases, setCases] = useState([]);
+  
+  // Form state for new case scheduling
+  const [caseForm, setCaseForm] = useState({
+    caseType: '',
+    physician: '',
+    facility: '',
+    date: '',
+    time: '',
+    duration: '',
+    notes: ''
+  });
+
+  // TrayTracker bi-directional sync integration
+  const trayTrackerSync = useTrayTrackerSync({
+    autoInitialize: true,
+    onSyncComplete: (data) => {
+      console.log('TrayTracker sync completed:', data);
+    },
+    onSyncError: (error) => {
+      console.error('TrayTracker sync error:', error);
+    },
+    onTrayUpdate: (data) => {
+      console.log('Tray status update received:', data);
+      // Update local tray status if needed
+    },
+    onCaseUpdate: (data) => {
+      console.log('Case update received from TrayTracker:', data);
+      // Update local case data if needed
+    }
+  });
 
   // Mock data for scheduled cases
   const mockCases = [
@@ -28,7 +59,7 @@ const CasesModule = () => {
       date: '2024-09-02',
       time: '08:00 AM',
       duration: 180,
-      status: 'confirmed',
+      status: 'Scheduled',
       required_trays: ['SPINE-001', 'INST-001', 'GRAFT-001'],
       tray_status: 'ready',
       notes: 'Posterior approach with instrumentation'
@@ -45,7 +76,7 @@ const CasesModule = () => {
       date: '2024-09-02',
       time: '10:30 AM',
       duration: 120,
-      status: 'pending',
+      status: 'Scheduled',
       required_trays: ['CERV-001', 'MICRO-001'],
       tray_status: 'missing',
       notes: 'Anterior approach with fusion'
@@ -62,7 +93,7 @@ const CasesModule = () => {
       date: '2024-09-03',
       time: '09:00 AM',
       duration: 90,
-      status: 'confirmed',
+      status: 'Scheduled',
       required_trays: ['LUMB-001', 'LAMIN-001'],
       tray_status: 'ready',
       notes: 'Decompression only'
@@ -81,7 +112,7 @@ const CasesModule = () => {
       duration: 240,
       patient_name: 'Lisa Brown',
       patient_age: 48,
-      status: 'scheduled',
+      status: 'Scheduled',
       required_trays: ['THOR-001', 'INST-002', 'GRAFT-002'],
       tray_status: 'partial',
       notes: 'Complex thoracic fusion with instrumentation'
@@ -100,7 +131,7 @@ const CasesModule = () => {
       duration: 200,
       patient_name: 'David Miller',
       patient_age: 55,
-      status: 'confirmed',
+      status: 'Scheduled',
       required_trays: ['CERV-002', 'INST-001', 'GRAFT-001'],
       tray_status: 'ready',
       notes: 'Multi-level cervical fusion'
@@ -121,13 +152,21 @@ const CasesModule = () => {
   // Use real physicians data instead of mock data
   const physicians = physiciansData;
 
-  const facilities = [
-    { id: 1, name: 'Advanced Spine Center', type: 'ASC' },
-    { id: 2, name: 'Regional Medical Center', type: 'Hospital' },
-    { id: 3, name: 'Milwaukee Surgical Center', type: 'ASC' },
-    { id: 4, name: 'Wisconsin Spine Institute', type: 'Hospital' },
-    { id: 5, name: 'Access Medical Center', type: 'OBL' }
-  ];
+  // Use real facilities data with priority sorting
+  const facilities = facilitiesData.map(facility => ({
+    id: facility.id,
+    name: facility.account_name,
+    type: facility.account_record_type,
+    priority: facility.priority,
+    address: facility.address,
+    contact: facility.contact
+  })).sort((a, b) => {
+    // Sort by priority first (1 = priority, 0 = non-priority), then by name
+    if (a.priority !== b.priority) {
+      return b.priority - a.priority; // Priority facilities first
+    }
+    return a.name.localeCompare(b.name);
+  });
 
   useEffect(() => {
     setCases(mockCases);
@@ -135,11 +174,9 @@ const CasesModule = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'confirmed': return 'bg-green-100 text-green-800';
-      case 'scheduled': return 'bg-blue-100 text-blue-800';
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'cancelled': return 'bg-red-100 text-red-800';
-      case 'completed': return 'bg-gray-100 text-gray-800';
+      case 'Scheduled': return 'bg-blue-100 text-blue-800';
+      case 'Cancelled': return 'bg-red-100 text-red-800';
+      case 'Complete': return 'bg-green-100 text-green-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -186,6 +223,120 @@ const CasesModule = () => {
     setShowScheduleModal(true);
   };
 
+  const handleCompleteCase = async (case_item) => {
+    try {
+      // Update case status to completed
+      const updatedCase = {
+        ...case_item,
+        status: 'Complete',
+        completed_at: new Date().toISOString(),
+        completed_by: 'Current User' // You can replace this with actual user info
+      };
+
+      // Update in local storage
+      const existingCases = JSON.parse(localStorage.getItem('scheduledCases') || '[]');
+      const updatedCases = existingCases.map(c => 
+        c.id === case_item.id ? updatedCase : c
+      );
+      localStorage.setItem('scheduledCases', JSON.stringify(updatedCases));
+
+      // Update local state
+      setCases(prevCases => 
+        prevCases.map(c => c.id === case_item.id ? updatedCase : c)
+      );
+
+      // Sync with TrayTracker if available
+      if (trayTrackerSync) {
+        try {
+          await trayTrackerSync.updateCaseStatus(case_item.id, 'Complete', 'Case marked as complete');
+        } catch (syncError) {
+          console.warn('TrayTracker sync failed:', syncError);
+          // Continue anyway - local update succeeded
+        }
+      }
+
+      // Show success message
+      alert(`Case "${case_item.case_type}" has been marked as completed!`);
+      
+    } catch (error) {
+      console.error('Error completing case:', error);
+      alert('Failed to complete case. Please try again.');
+    }
+  };
+
+  // Form handlers for case scheduling
+  const handleCaseFormChange = (field, value) => {
+    setCaseForm(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handleSaveCase = async () => {
+    // Validate required fields
+    if (!caseForm.caseType || !caseForm.physician || !caseForm.facility || !caseForm.date || !caseForm.time) {
+      alert('Please fill in all required fields (Case Type, Treating Physician, Facility, Date, and Time)');
+      return;
+    }
+
+    // Create case object with unique ID and timestamp
+    const newCase = {
+      id: Date.now().toString(),
+      case_type: caseForm.caseType,
+      physician: caseForm.physician,
+      facility: caseForm.facility,
+      date: caseForm.date,
+      time: caseForm.time,
+      duration: caseForm.duration || 120,
+      notes: caseForm.notes,
+      status: 'Scheduled',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    try {
+      // Save case locally
+      const existingCases = JSON.parse(localStorage.getItem('scheduledCases') || '[]');
+      const updatedCases = [...existingCases, newCase];
+      localStorage.setItem('scheduledCases', JSON.stringify(updatedCases));
+      setCases(updatedCases);
+
+      // Sync case to TrayTracker if connected
+      if (trayTrackerSync.isConnected) {
+        try {
+          console.log('Syncing case to TrayTracker:', newCase);
+          await trayTrackerSync.syncCaseToTrayTracker(newCase);
+          console.log('Case successfully synced to TrayTracker');
+          
+          // Show success message with sync confirmation
+          alert(`Case scheduled successfully!\n\nCase Details:\n- Type: ${newCase.case_type}\n- Physician: ${newCase.physician}\n- Facility: ${newCase.facility}\n- Date: ${newCase.date} at ${newCase.time}\n\n✅ Synced to TrayTracker`);
+        } catch (syncError) {
+          console.error('Failed to sync case to TrayTracker:', syncError);
+          // Still show success for local save, but warn about sync failure
+          alert(`Case scheduled successfully!\n\nCase Details:\n- Type: ${newCase.case_type}\n- Physician: ${newCase.physician}\n- Facility: ${newCase.facility}\n- Date: ${newCase.date} at ${newCase.time}\n\n⚠️ TrayTracker sync failed: ${syncError.message}\nCase saved locally and will sync when connection is restored.`);
+        }
+      } else {
+        // Show success message without sync
+        alert(`Case scheduled successfully!\n\nCase Details:\n- Type: ${newCase.case_type}\n- Physician: ${newCase.physician}\n- Facility: ${newCase.facility}\n- Date: ${newCase.date} at ${newCase.time}\n\n📡 TrayTracker offline - will sync when connection is restored.`);
+      }
+
+      // Reset form and close modal
+      setCaseForm({
+        caseType: '',
+        physician: '',
+        facility: '',
+        date: '',
+        time: '',
+        duration: '',
+        notes: ''
+      });
+      setShowScheduleModal(false);
+
+    } catch (error) {
+      console.error('Error saving case:', error);
+      alert('Failed to save case. Please try again.');
+    }
+  };
   const handleImportToCalendar = (case_item) => {
     // Create calendar event data with consistent structure
     // Event name: Case Type, Physician (Doctor)
@@ -408,6 +559,16 @@ const CasesModule = () => {
                           </button>
                         </div>
                         <div className="flex items-center gap-1">
+                          {case_item.status !== 'Complete' && (
+                            <button
+                              onClick={() => handleCompleteCase(case_item)}
+                              className="px-2 py-1 text-xs bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+                              title="Complete Case"
+                            >
+                              <CheckCircle className="w-3 h-3 mr-1 inline" />
+                              Complete
+                            </button>
+                          )}
                           <button
                             onClick={() => handleViewCase(case_item)}
                             className="p-1 text-blue-600 hover:bg-blue-50 rounded transition-colors"
@@ -500,11 +661,9 @@ const CasesModule = () => {
               className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">All Status</option>
-              <option value="scheduled">Scheduled</option>
-              <option value="confirmed">Confirmed</option>
-              <option value="pending">Pending</option>
-              <option value="cancelled">Cancelled</option>
-              <option value="completed">Completed</option>
+              <option value="Scheduled">Scheduled</option>
+              <option value="Cancelled">Cancelled</option>
+              <option value="Complete">Complete</option>
             </select>
             
             <select
@@ -620,7 +779,12 @@ const CasesModule = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Case Type</label>
-                  <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                  <select 
+                    value={caseForm.caseType}
+                    onChange={(e) => handleCaseFormChange('caseType', e.target.value)}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Select Case Type</option>
                     {caseTypes.map(type => (
                       <option key={type} value={type}>{type}</option>
                     ))}
@@ -629,9 +793,14 @@ const CasesModule = () => {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Treating Physician</label>
-                  <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                  <select 
+                    value={caseForm.physician}
+                    onChange={(e) => handleCaseFormChange('physician', e.target.value)}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Select Physician</option>
                     {physicians.map(physician => (
-                      <option key={physician.id} value={physician.id}>
+                      <option key={physician.id} value={physician.full_name}>
                         {physician.full_name} - {physician.specialty}
                       </option>
                     ))}
@@ -640,9 +809,14 @@ const CasesModule = () => {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Facility</label>
-                  <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                  <select 
+                    value={caseForm.facility}
+                    onChange={(e) => handleCaseFormChange('facility', e.target.value)}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Select Facility</option>
                     {facilities.map(facility => (
-                      <option key={facility.id} value={facility.id}>
+                      <option key={facility.id} value={facility.name}>
                         {facility.name} ({facility.type})
                       </option>
                     ))}
@@ -653,6 +827,8 @@ const CasesModule = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
                   <input
                     type="date"
+                    value={caseForm.date}
+                    onChange={(e) => handleCaseFormChange('date', e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -661,6 +837,8 @@ const CasesModule = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Time</label>
                   <input
                     type="time"
+                    value={caseForm.time}
+                    onChange={(e) => handleCaseFormChange('time', e.target.value)}
                     className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -669,6 +847,8 @@ const CasesModule = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Duration (minutes)</label>
                   <input
                     type="number"
+                    value={caseForm.duration}
+                    onChange={(e) => handleCaseFormChange('duration', e.target.value)}
                     placeholder="120"
                     className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
@@ -678,6 +858,8 @@ const CasesModule = () => {
               <div className="mt-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Procedure Notes</label>
                 <textarea
+                  value={caseForm.notes}
+                  onChange={(e) => handleCaseFormChange('notes', e.target.value)}
                   rows={3}
                   placeholder="Enter procedure notes and special requirements..."
                   className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
@@ -695,14 +877,10 @@ const CasesModule = () => {
                   Cancel
                 </button>
                 <button
-                  onClick={() => {
-                    console.log('Case scheduled/updated');
-                    setShowScheduleModal(false);
-                    setSelectedCase(null);
-                  }}
+                  onClick={handleSaveCase}
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  {selectedCase ? 'Update Case Type' : 'Schedule Case Type'}
+                  {selectedCase ? 'Update Case' : 'Schedule Case'}
                 </button>
               </div>
             </div>

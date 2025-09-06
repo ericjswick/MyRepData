@@ -11,6 +11,7 @@ import FacilityDetails from './components/FacilityDetails'
 import ContactList from './components/ContactList'
 import ActivityList from './components/ActivityList'
 import TrayTracking from './components/TrayTracking'
+import TrayTrackerBiDirectionalSync from './components/TrayTrackerBiDirectionalSync'
 import BulkUpload from './components/BulkUploadEnhanced'
 
 // Import new physician components
@@ -30,6 +31,7 @@ function App() {
     { id: 'activities', name: 'Activities', icon: Activity, shortName: 'Activity' },
     { id: 'scheduling', name: 'Scheduling', icon: Calendar, shortName: 'Schedule' },
     { id: 'trays', name: 'Tray Tracking', icon: Package, shortName: 'Trays' },
+    { id: 'sync', name: 'TrayTracker Sync', icon: Settings, shortName: 'Sync' },
     { id: 'upload', name: 'Bulk Upload', icon: Upload, shortName: 'Upload' },
   ]
 
@@ -59,6 +61,8 @@ function App() {
         return <AppointmentScheduler />
       case 'trays':
         return <TrayTracking />
+      case 'sync':
+        return <TrayTrackerBiDirectionalSync />
       case 'upload':
         return <BulkUpload />
       default:
